@@ -1,0 +1,708 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,js数组," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="修改数组 array.pop - 删除数组最后一位元素。  123var arr = [1, 2, 3];arr.pop();// 返回 3arr;// [1,2]  array.shift - 删除数组第一位元素。  123var arr = [1, 2, 3];arr.shift();// 返回 1arr;// [2,3]  array.push - 往数组的末尾新增一个或多个元素。  123">
+<meta name="keywords" content="javascript,js数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 数组常用方法介绍">
+<meta property="og:url" content="http://zanjs.com/2016/01/10/javascript/JavaScript-数组常用方法介绍/index.html">
+<meta property="og:site_name" content="一点心怡 | 前端娃">
+<meta property="og:description" content="修改数组 array.pop - 删除数组最后一位元素。  123var arr = [1, 2, 3];arr.pop();// 返回 3arr;// [1,2]  array.shift - 删除数组第一位元素。  123var arr = [1, 2, 3];arr.shift();// 返回 1arr;// [2,3]  array.push - 往数组的末尾新增一个或多个元素。  123">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T09:12:48.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 数组常用方法介绍">
+<meta name="twitter:description" content="修改数组 array.pop - 删除数组最后一位元素。  123var arr = [1, 2, 3];arr.pop();// 返回 3arr;// [1,2]  array.shift - 删除数组第一位元素。  123var arr = [1, 2, 3];arr.shift();// 返回 1arr;// [2,3]  array.push - 往数组的末尾新增一个或多个元素。  123">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zanjs.com/2016/01/10/javascript/JavaScript-数组常用方法介绍/"/>
+
+  <title> JavaScript 数组常用方法介绍 | 一点心怡 | 前端娃 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一点心怡 | 前端娃</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">精于心, 简于形, 说前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 数组常用方法介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-10T19:59:09+08:00" content="2016-01-10">
+              2016-01-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="修改数组"><a href="#修改数组" class="headerlink" title="修改数组"></a>修改数组</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank" rel="external">array.pop</a> - 删除数组最后一位元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.pop();<span class="comment">// 返回 3</span></div><div class="line">arr;<span class="comment">// [1,2]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.shift - 删除数组第一位元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.shift();<span class="comment">// 返回 1</span></div><div class="line">arr;<span class="comment">// [2,3]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.push - 往数组的末尾新增一个或多个元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line">arr.push(<span class="number">1</span>);<span class="comment">// 返回数组长度 1</span></div><div class="line">arr;<span class="comment">// [1]</span></div><div class="line">arr.push(<span class="number">2</span>,<span class="number">3</span>);</div><div class="line">arr;<span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.unshift - 往数组的开头新增一个或多个元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.unshift(<span class="number">0</span>);</div><div class="line">arr.unshift(<span class="number">-1</span>, <span class="number">-2</span>);</div><div class="line">arr;<span class="comment">// [-1, -2, 0, 1, 2]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.reverse - 把数组元素顺序逆转。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.reverse();<span class="comment">// [3, 2, 1]</span></div><div class="line">arr;<span class="comment">// [3, 2, 1]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.sort - 数组排序。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span> ,<span class="number">-1</span>, <span class="number">2</span>];</div><div class="line">arr.sort();<span class="comment">// [-1, 1, 2]</span></div><div class="line">arr;<span class="comment">// [-1, 1, 2]</span></div><div class="line">arr = [&#123;</div><div class="line">  age: <span class="number">10</span>,</div><div class="line">&#125;,&#123;</div><div class="line">  age: <span class="number">1</span></div><div class="line">&#125;, &#123;</div><div class="line">  age: <span class="number">12</span></div><div class="line">&#125;];</div><div class="line"><span class="comment">// 按照 age 从小到大排序</span></div><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> a.age - b.age &gt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>array.splice - 给数组添加或者删除元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// splice(开始下标, 删除个数，插入元素(可以多个)）</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">arr.splice(<span class="number">1</span>, <span class="number">2</span>);<span class="comment">// [2,3]</span></div><div class="line">arr;<span class="comment">// [1,4]</span></div><div class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">arr.splice(<span class="number">1</span>, <span class="number">2</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>);<span class="comment">// [2,3]</span></div><div class="line">arr;<span class="comment">// [1, "a", "b", "c", 4]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：当数组执行上面的这些方法时，都会修改原数组。</p>
+</blockquote>
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><ul>
+<li>array.forEach - 遍历数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'a'</span> ,<span class="string">'b'</span> ,<span class="string">'c'</span>].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">each, index</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(each,index);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 输出 'a' 0  'b' 1 'c' 2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.filter - 从数组中找出所有符合指定条件的元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 找出所有正数</span></div><div class="line"><span class="keyword">var</span> res = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].filter(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">res; <span class="comment">//[3,4]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.every - 数组中是否每个元素都满足指定的条件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 是否都为正数</span></div><div class="line"><span class="keyword">var</span> isAllPositive = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isAllPositive; <span class="comment">// false;</span></div><div class="line">isAllPositive = [<span class="number">3</span>, <span class="number">4</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isAllPositive; <span class="comment">// true;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.some - 数组中是否有元素满足指定的条件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 是否有正数</span></div><div class="line"><span class="keyword">var</span> isSomePositive = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].some(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isSomePositive; <span class="comment">// true;</span></div><div class="line">isSomePositive = [<span class="number">-3</span>, <span class="number">-4</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isSomePositive; <span class="comment">// false;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.map - 将数组映射成另一个数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 内容 * 2</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each * <span class="number">2</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 返回 [2, 4, 6]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.reduce - 将数组合成一个值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 数组内容求和。0 为初始值</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> prev + each;</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="comment">// 返回 6</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>当要使用迭代方法时，forEach 应该是最后被考虑的。<br>主要原因是：forEach 与其他迭代方法比，语义性是最差的。更详细的说明见 <a href="http://aeflash.com/2014-11/avoid-foreach.html" target="_blank" rel="external">avoid forEach</a>。</p>
+</blockquote>
+<p>注意 IE8 及以下版本不支持 every, some, map, reduce。<br>如果想在 IE 8 及以下版本用这几个方法，可以用 <a href="https://github.com/es-shims/es5-shim" target="_blank" rel="external">es5-shim</a> 或 <a href="https://lodash.com/" target="_blank" rel="external">lodash</a>。</p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><ul>
+<li>Array.isArray - 是否是数组。IE9+ 支持该方法。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.isArray(<span class="number">3</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Array</span>.isArray(&#123;&#125;); <span class="comment">// false</span></div><div class="line"><span class="built_in">Array</span>.isArray([]); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.concat - 合并数组或合并数组的值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].concat(<span class="number">4</span>,<span class="number">5</span>); <span class="comment">// 输出 [1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.join - 合并数组所有元素拼接成字符串。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].join(); <span class="comment">// 输出 '1,2,3'</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].join(<span class="string">'@'</span>); <span class="comment">// 输出 '1@2@3'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.slice - 选择数组中的一部分元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// slice(开始下标, 结束下标（可选，默认为数组长度）)</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>);<span class="comment">// ["b", "c", "d"]</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>, <span class="number">2</span>);<span class="comment">// ["b"]</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>, <span class="number">3</span>);<span class="comment">// ["b", "c"]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.indexOf - 查找数组中指定元素的下标。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].indexOf(<span class="string">'c'</span>); <span class="comment">// 2</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].indexOf(<span class="string">'g'</span>); <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.lastIndexOf - 查找数组中指定元素的下标。查找方向为从后往前。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'c'</span>].lastIndexOf(<span class="string">'c'</span>); <span class="comment">// 2</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].lastIndexOf(<span class="string">'g'</span>); <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/js数组/" rel="tag">#js数组</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/27/erlang/用-Elixir-的一周/" rel="next" title="用 Elixir 的一周">
+                <i class="fa fa-chevron-left"></i> 用 Elixir 的一周
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/23/javascript/Lo-Dash？引入惰性计算/" rel="prev" title="Lo-Dash？引入惰性计算">
+                Lo-Dash？引入惰性计算 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12947276?v=3&u=b5243b88f15147a53dc05609982089fc63da9412&s=400"
+               alt="Julian" />
+          <p class="site-author-name" itemprop="name">Julian</p>
+          <p class="site-description motion-element" itemprop="description">一米阳光下，一本书，一个人，思念昉~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改数组"><span class="nav-number">1.</span> <span class="nav-text">修改数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代方法"><span class="nav-number">2.</span> <span class="nav-text">迭代方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法"><span class="nav-number">3.</span> <span class="nav-text">其他方法</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julian</span>
+   <a href="http://www.miitbeian.gov.cn/">沪ICP备15000369号-2</a>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+     
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+ 
+</body>
+</html>

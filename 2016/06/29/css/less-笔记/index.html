@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css,less," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="索引 e(@string); // 对字符串转义  escape(@string); // 通过 URL-encoding 编码字符串  %(@string, values…); // 格式化字符串  unit(@dimension, [@unit: “”]); // 移除或替换属性  color(@string); // 将字符串解析为颜色值  data-uri([mimetype,] url)">
+<meta name="keywords" content="css,less">
+<meta property="og:type" content="article">
+<meta property="og:title" content="less 笔记">
+<meta property="og:url" content="http://zanjs.com/2016/06/29/css/less-笔记/index.html">
+<meta property="og:site_name" content="一点心怡 | 前端娃">
+<meta property="og:description" content="索引 e(@string); // 对字符串转义  escape(@string); // 通过 URL-encoding 编码字符串  %(@string, values…); // 格式化字符串  unit(@dimension, [@unit: “”]); // 移除或替换属性  color(@string); // 将字符串解析为颜色值  data-uri([mimetype,] url)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T09:12:48.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="less 笔记">
+<meta name="twitter:description" content="索引 e(@string); // 对字符串转义  escape(@string); // 通过 URL-encoding 编码字符串  %(@string, values…); // 格式化字符串  unit(@dimension, [@unit: “”]); // 移除或替换属性  color(@string); // 将字符串解析为颜色值  data-uri([mimetype,] url)">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zanjs.com/2016/06/29/css/less-笔记/"/>
+
+  <title> less 笔记 | 一点心怡 | 前端娃 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一点心怡 | 前端娃</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">精于心, 简于形, 说前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                less 笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T17:32:29+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/less/" itemprop="url" rel="index">
+                    <span itemprop="name">less</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ul>
+<li><p>e(@string); // 对字符串转义</p>
+</li>
+<li><p>escape(@string); // 通过 URL-encoding 编码字符串</p>
+</li>
+<li><p>%(@string, values…); // 格式化字符串</p>
+</li>
+<li><p>unit(@dimension, [@unit: “”]); // 移除或替换属性</p>
+</li>
+<li><p>color(@string); // 将字符串解析为颜色值</p>
+</li>
+<li><p>data-uri([mimetype,] url); // * 将资源内嵌到css退到url()</p>
+</li>
+<li><p>ceil(@number); // 向上取整</p>
+</li>
+<li><p>floor(@number); // 向下取整</p>
+</li>
+<li><p>percentage(@number); // 将数字转换为百分比，例如 0.5 -&gt; 50%</p>
+</li>
+<li><p>round(number, [places: 0]); // 四舍五入取整</p>
+</li>
+<li><p>sqrt(number); // * 计算数字的平方根</p>
+</li>
+<li><p>abs(number); // * 数字的绝对值</p>
+</li>
+<li><p>sin(number); // * sin函数</p>
+</li>
+<li><p>asin(number); // * arcsin函数</p>
+</li>
+<li><p>cos(number); // * cos函数</p>
+</li>
+<li><p>acos(number); // * arccos函数</p>
+</li>
+<li><p>tan(number); // * tan函数</p>
+</li>
+<li><p>pow(@base, @exponent); // * 返回@base的@exponent次方</p>
+</li>
+<li><p>mod(number, number); // * 第一个参数对第二个参数取余</p>
+</li>
+<li><p>convert(number, units); // * 在数字之间转换</p>
+</li>
+<li><p>unit(number, units); // * 不转换的情况下替换数字的单位</p>
+</li>
+<li><p>color(string); // 将字符串或者转义后的值转换成颜色</p>
+</li>
+<li><p>rgb(@r, @g, @b); // 转换为颜色值</p>
+</li>
+<li><p>rgba(@r, @g, @b, @a); // 转换为颜色值</p>
+</li>
+<li><p>argb(@color); // 创建 #AARRGGBB 格式的颜色值</p>
+</li>
+<li><p>hsl(@hue, @saturation, @lightness); // 创建颜色值</p>
+</li>
+<li><p>hsla(@hue, @saturation, @lightness, @alpha); // 创建颜色值</p>
+</li>
+<li><p>hsv(@hue, @saturation, @value); // 创建颜色值</p>
+</li>
+<li><p>hsva(@hue, @saturation, @value, @alpha); // 创建颜色值</p>
+</li>
+<li><p>hue(@color); // 从颜色值中提取 hue 值（色相）</p>
+</li>
+<li><p>saturation(@color); // 从颜色值中提取 saturation 值（饱和度）</p>
+</li>
+<li><p>lightness(@color); // 从颜色值中提取 ‘lightness’ 值（亮度）</p>
+</li>
+<li><p>hsvhue(@color); // * 从颜色中提取 hue 值，以HSV色彩空间表示（色相）</p>
+</li>
+<li><p>hsvsaturation(@color); // * 从颜色中提取 saturation 值，以HSV色彩空间表示（饱和度）</p>
+</li>
+<li><p>hsvvalue(@color); // * 从颜色中提取 value 值，以HSV色彩空间表示（色调）</p>
+</li>
+<li><p>red(@color); // 从颜色值中提取 ‘red’ 值（红色）</p>
+</li>
+<li><p>green(@color); // 从颜色值中提取 ‘green’ 值（绿色）</p>
+</li>
+<li><p>blue(@color); // 从颜色值中提取 ‘blue’ 值（蓝色）</p>
+</li>
+<li><p>alpha(@color); // 从颜色值中提取 ‘alpha’ 值（透明度）</p>
+</li>
+<li><p>luma(@color); // 从颜色值中提取 ‘luma’ 值（亮度的百分比表示法）</p>
+</li>
+<li><p>saturate(@color, 10%); // 饱和度增加 10%</p>
+</li>
+<li><p>desaturate(@color, 10%); // 饱和度降低 10%</p>
+</li>
+<li><p>lighten(@color, 10%); // 亮度增加 10%</p>
+</li>
+<li><p>darken(@color, 10%); // 亮度降低 10%</p>
+</li>
+<li><p>fadein(@color, 10%); // 透明度增加 10%</p>
+</li>
+<li><p>fadeout(@color, 10%); // 透明度降低 10%</p>
+</li>
+<li><p>fade(@color, 50%); // 设定透明度为 50%</p>
+</li>
+<li><p>spin(@color, 10); // 色相值增加 10</p>
+</li>
+<li><p>mix(@color1, @color2, [@weight: 50%]); // 混合两种颜色</p>
+</li>
+<li><p>greyscale(@color); // 完全移除饱和度，输出灰色</p>
+</li>
+<li><p>contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%]); // 如果 @color1 的 luma 值 &gt; 43% 输出 @darkcolor，否则输出 @lightcolor</p>
+</li>
+<li><p>multiply(@color1, @color2);</p>
+</li>
+<li><p>screen(@color1, @color2);</p>
+</li>
+<li><p>overlay(@color1, @color2);</p>
+</li>
+<li><p>softlight(@color1, @color2);</p>
+</li>
+<li><p>hardlight(@color1, @color2);</p>
+</li>
+<li><p>difference(@color1, @color2);</p>
+</li>
+<li><p>exclusion(@color1, @color2);</p>
+</li>
+<li><p>average(@color1, @color2);</p>
+</li>
+<li><p>negation(@color1, @color2);</p>
+</li>
+<li><p>iscolor(@colorOrAnything); // 判断一个值是否是颜色</p>
+</li>
+<li><p>isnumber(@numberOrAnything); // 判断一个值是否是数字（可含单位）</p>
+</li>
+<li><p>isstring(@stringOrAnything); // 判断一个值是否是字符串</p>
+</li>
+<li><p>iskeyword(@keywordOrAnything); // 判断一个值是否是关键字</p>
+</li>
+<li><p>isurl(@urlOrAnything); // 判断一个值是否是url</p>
+</li>
+<li><p>ispixel(@pixelOrAnything); // 判断一个值是否是以px为单位的数值</p>
+</li>
+<li><p>ispercentage(@percentageOrAnything); // 判断一个值是否是百分数</p>
+</li>
+<li><p>isem(@emOrAnything); // 判断一个值是否是以em为单位的数值</p>
+</li>
+<li><p>isunit(@numberOrAnything, “rem”); // * 判断一个值是否是指定单位的数值</p>
+</li>
+</ul>
+<h2 id="escape"><a href="#escape" class="headerlink" title="escape"></a>escape</h2><blockquote>
+<p>字符串函数 (String functions)<br>escape(@string)</p>
+</blockquote>
+<p>使用URL-encoding的方式编码字符串。</p>
+<p>以下字符不会被编码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">, / / / ? / @ / &amp; / + / &apos; / ~ / ! / $。</div></pre></td></tr></table></figure>
+<p>最常见的被编码的字符串包括:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/ # / ^ / ( / ) / &#123; / &#125; / | / : / &gt; / &lt; / ; / ] / [ / =。</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li>字符串：需要转义的字符串<ul>
+<li>返回值：字符串 (string)</li>
+</ul>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">escape(&apos;a=1&apos;)</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a%3D1</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果参数不是字符串的话，函数行为是不可预知的。<br>目前传入颜色值的话会返回undefined，其它的值会原样返回。<br>写代码时不应该依赖这个特性，而且这个特性在未来有可能改变。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+            <a href="/tags/less/" rel="tag">#less</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/23/javascript/js-错误捕获/" rel="next" title="js 错误捕获">
+                <i class="fa fa-chevron-left"></i> js 错误捕获
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/30/Ubuntu/Ubuntu-启动定时任务Crontab-篇/" rel="prev" title="Ubuntu 启动定时任务Crontab 篇">
+                Ubuntu 启动定时任务Crontab 篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12947276?v=3&u=b5243b88f15147a53dc05609982089fc63da9412&s=400"
+               alt="Julian" />
+          <p class="site-author-name" itemprop="name">Julian</p>
+          <p class="site-description motion-element" itemprop="description">一米阳光下，一本书，一个人，思念昉~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#escape"><span class="nav-number">2.</span> <span class="nav-text">escape</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julian</span>
+   <a href="http://www.miitbeian.gov.cn/">沪ICP备15000369号-2</a>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+     
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+ 
+</body>
+</html>

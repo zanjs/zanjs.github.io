@@ -1,0 +1,658 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,Ubuntu,Crontab," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="crontab入门命令cron是linux中的守护进程，用来定期执行一些任务。基本的命令包括以下几个：  crontab -e 　编辑该用户的crontab，当指定crontab 不存在时新建。 crontab -l 　列出该用户的crontab。 crontab -r 　删除该用户的crontab。 crontab -u &amp;lt;用户名称&amp;gt; 　指定要设定crontab的用户名称。 cron">
+<meta name="keywords" content="linux,Ubuntu,Crontab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu中crontab的用法手记">
+<meta property="og:url" content="http://zanjs.com/2016/07/20/Ubuntu/ubuntu中crontab的用法手记/index.html">
+<meta property="og:site_name" content="一点心怡 | 前端娃">
+<meta property="og:description" content="crontab入门命令cron是linux中的守护进程，用来定期执行一些任务。基本的命令包括以下几个：  crontab -e 　编辑该用户的crontab，当指定crontab 不存在时新建。 crontab -l 　列出该用户的crontab。 crontab -r 　删除该用户的crontab。 crontab -u &amp;lt;用户名称&amp;gt; 　指定要设定crontab的用户名称。 cron">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T09:12:48.401Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu中crontab的用法手记">
+<meta name="twitter:description" content="crontab入门命令cron是linux中的守护进程，用来定期执行一些任务。基本的命令包括以下几个：  crontab -e 　编辑该用户的crontab，当指定crontab 不存在时新建。 crontab -l 　列出该用户的crontab。 crontab -r 　删除该用户的crontab。 crontab -u &amp;lt;用户名称&amp;gt; 　指定要设定crontab的用户名称。 cron">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zanjs.com/2016/07/20/Ubuntu/ubuntu中crontab的用法手记/"/>
+
+  <title> ubuntu中crontab的用法手记 | 一点心怡 | 前端娃 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一点心怡 | 前端娃</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">精于心, 简于形, 说前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ubuntu中crontab的用法手记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T09:43:54+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Crontab/" itemprop="url" rel="index">
+                    <span itemprop="name">Crontab</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="crontab入门命令"><a href="#crontab入门命令" class="headerlink" title="crontab入门命令"></a>crontab入门命令</h2><p>cron是linux中的守护进程，用来定期执行一些任务。基本的命令包括以下几个：</p>
+<ul>
+<li>crontab -e 　编辑该用户的crontab，当指定crontab 不存在时新建。</li>
+<li>crontab -l 　列出该用户的crontab。</li>
+<li>crontab -r 　删除该用户的crontab。</li>
+<li>crontab -u &lt;用户名称&gt; 　指定要设定crontab的用户名称。</li>
+<li>crontab –v 显示上一次编辑的时间（只在某些操作系统上可用）</li>
+</ul>
+<p>作为一个新用户，首先需要的操作是，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ crontab -e</div></pre></td></tr></table></figure>
+<p>在linux系统中，不同的用户打开的crontab文件是不同的。当你打开你用户所属的crontab,第一次用这个命令，会让你选择文本编辑器。<br>我的电脑上显示4中编辑器，如下，我选择是vim.basic。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. /bin/ed         </div><div class="line">2. /bin/nano      </div><div class="line">3. /usr/bin/vim.basic              </div><div class="line">4. /usr/bin/vim.tiny</div></pre></td></tr></table></figure>
+<p>如果你编辑时，选择错了编辑器，或者是想更改，可以使用下面的命令进行重新选择：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ select-editor</div></pre></td></tr></table></figure>
+<p>打开后的crontab内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># m h  dom mon dow   command      </div><div class="line">*/2 * * * * date &gt;&gt; ~/time.log</div></pre></td></tr></table></figure>
+<p>第二行是我为了测试写的一个定期任务，它的意思是，每隔两分钟就执行 date &gt;&gt; ~/time.log 命令（记录当前时间到time.log文件）。<br>你可以把它加入你的crontab中，然后保存退出。</p>
+<p>保存了crontab之后，我们还需要重启cron来应用这个计划任务。使用以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo service cron restart</div></pre></td></tr></table></figure>
+<h2 id="开启日志功能"><a href="#开启日志功能" class="headerlink" title="开启日志功能"></a>开启日志功能</h2><p>修改配置文件：/etc/rsyslog.d/50-default.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/rsyslog.d/50-default.conf</div></pre></td></tr></table></figure>
+<p>在配置文件中，把</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#cron.*       /var/log/cron.log</div></pre></td></tr></table></figure>
+<p>前面的注释#号去掉就OK了。</p>
+<p>重启rsyslog服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rsyslog restart</div></pre></td></tr></table></figure>
+<p>再次查看cron日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /var/log/cron.log</div></pre></td></tr></table></figure>
+<p>备注：这里就有了 crontab 日志。</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>crontab</code> 有一个坏毛病,就是它总是不会缺省的从用户 <code>profile</code> 文件中读取环境变量参数,<br>经常导致在手工执行某个脚本时是成功的,但是到 <code>crontab</code> 中试图让它定期执行时就是会出错.<br>看了这个就知道怎么修改脚本了,脚本的头上用缺省的 <code>#!/bin/sh</code> 就可以,然后然后第一个部分先写这些:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">. /etc/profile</div><div class="line">. ~/.bash_profile</div></pre></td></tr></table></figure>
+<h2 id="奇怪"><a href="#奇怪" class="headerlink" title="奇怪"></a>奇怪</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
+          
+            <a href="/tags/Crontab/" rel="tag">#Crontab</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/30/Ubuntu/Ubuntu-启动定时任务Crontab-篇/" rel="next" title="Ubuntu 启动定时任务Crontab 篇">
+                <i class="fa fa-chevron-left"></i> Ubuntu 启动定时任务Crontab 篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/21/git/Git的10种撤销操作详解/" rel="prev" title="Git的10种撤销操作详解">
+                Git的10种撤销操作详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12947276?v=3&u=b5243b88f15147a53dc05609982089fc63da9412&s=400"
+               alt="Julian" />
+          <p class="site-author-name" itemprop="name">Julian</p>
+          <p class="site-description motion-element" itemprop="description">一米阳光下，一本书，一个人，思念昉~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab入门命令"><span class="nav-number">1.</span> <span class="nav-text">crontab入门命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启日志功能"><span class="nav-number">2.</span> <span class="nav-text">开启日志功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">3.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪"><span class="nav-number">4.</span> <span class="nav-text">奇怪</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julian</span>
+   <a href="http://www.miitbeian.gov.cn/">沪ICP备15000369号-2</a>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+     
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+ 
+</body>
+</html>

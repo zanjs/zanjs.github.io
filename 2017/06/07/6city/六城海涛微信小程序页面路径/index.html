@@ -1,0 +1,658 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="weapp,微信小程序," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="微信小程序页面路径一键海淘page/scanCode/scanCodepage/index/index 新版  商品详情页参数 code = 商品 url 地址 page/scanCode/detail/detail?code=url  购物车page/cart/cart  订单page/order/list/list  我的page/my/my  收货地址列表page/address/list/">
+<meta name="keywords" content="weapp,微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="六城海涛微信小程序页面路径">
+<meta property="og:url" content="http://zanjs.com/2017/06/07/6city/六城海涛微信小程序页面路径/index.html">
+<meta property="og:site_name" content="一点心怡 | 前端娃">
+<meta property="og:description" content="微信小程序页面路径一键海淘page/scanCode/scanCodepage/index/index 新版  商品详情页参数 code = 商品 url 地址 page/scanCode/detail/detail?code=url  购物车page/cart/cart  订单page/order/list/list  我的page/my/my  收货地址列表page/address/list/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T09:12:48.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="六城海涛微信小程序页面路径">
+<meta name="twitter:description" content="微信小程序页面路径一键海淘page/scanCode/scanCodepage/index/index 新版  商品详情页参数 code = 商品 url 地址 page/scanCode/detail/detail?code=url  购物车page/cart/cart  订单page/order/list/list  我的page/my/my  收货地址列表page/address/list/">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zanjs.com/2017/06/07/6city/六城海涛微信小程序页面路径/"/>
+
+  <title> 六城海涛微信小程序页面路径 | 一点心怡 | 前端娃 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一点心怡 | 前端娃</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">精于心, 简于形, 说前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                六城海涛微信小程序页面路径
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-07T18:31:24+08:00" content="2017-06-07">
+              2017-06-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/weapp/" itemprop="url" rel="index">
+                    <span itemprop="name">weapp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="微信小程序页面路径"><a href="#微信小程序页面路径" class="headerlink" title="微信小程序页面路径"></a>微信小程序页面路径</h2><h3 id="一键海淘"><a href="#一键海淘" class="headerlink" title="一键海淘"></a>一键海淘</h3><p><code>page/scanCode/scanCode</code><br><code>page/index/index</code> 新版</p>
+<hr>
+<h3 id="商品详情页"><a href="#商品详情页" class="headerlink" title="商品详情页"></a>商品详情页</h3><p>参数 <code>code</code> = 商品 <code>url</code> 地址</p>
+<p><code>page/scanCode/detail/detail?code=url</code></p>
+<hr>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><code>page/cart/cart</code></p>
+<hr>
+<h3 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h3><p><code>page/order/list/list</code></p>
+<hr>
+<h3 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h3><p><code>page/my/my</code></p>
+<hr>
+<h3 id="收货地址列表"><a href="#收货地址列表" class="headerlink" title="收货地址列表"></a>收货地址列表</h3><p><code>page/address/list/list</code></p>
+<hr>
+<h3 id="添加地址"><a href="#添加地址" class="headerlink" title="添加地址"></a>添加地址</h3><p><code>page/address/add/add</code></p>
+<hr>
+<h3 id="编辑地址"><a href="#编辑地址" class="headerlink" title="编辑地址"></a>编辑地址</h3><p>参数 <code>id</code> = 地址 <code>id</code> 号</p>
+<p><code>page/address/edit/edit?id=1</code></p>
+<hr>
+<h3 id="订单列表"><a href="#订单列表" class="headerlink" title="订单列表"></a>订单列表</h3><p><code>page/order/list/list</code></p>
+<hr>
+<h3 id="订单详情"><a href="#订单详情" class="headerlink" title="订单详情"></a>订单详情</h3><p>参数 <code>orderid</code> = 订单 <code>id</code> 号</p>
+<p><code>page/order/detail/detail?orderid=1</code></p>
+<hr>
+<h3 id="包裹详情"><a href="#包裹详情" class="headerlink" title="包裹详情"></a>包裹详情</h3><p>参数 <code>id</code> = 包裹 <code>id</code> 号</p>
+<p><code>page/packages/packages?id=1</code></p>
+<hr>
+<h3 id="提交转运"><a href="#提交转运" class="headerlink" title="提交转运"></a>提交转运</h3><p>参数 <code>id</code> = 包裹 <code>id</code> 号</p>
+<p><code>page/packages/pay/pay?id=1</code></p>
+<hr>
+<h3 id="转运详情"><a href="#转运详情" class="headerlink" title="转运详情"></a>转运详情</h3><p>参数 <code>id</code> = 转运 <code>id</code>  号</p>
+<p><code>page/transitdetail/transitdetail?id=1</code></p>
+<hr>
+<h3 id="All-pages"><a href="#All-pages" class="headerlink" title="All pages"></a>All pages</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"page/scanCode/scanCode",</div><div class="line">"page/scanCode/detail/detail",</div><div class="line">"page/cart/cart",</div><div class="line">"page/shipInstruction/shipInstruction",</div><div class="line">"page/my/my",</div><div class="line">"page/packages/pay/pay",</div><div class="line">"page/transitdetail/transitdetail",</div><div class="line">"page/order/list/list",</div><div class="line">"page/order/pay/pay",</div><div class="line">"page/order/transport/transport",</div><div class="line">"page/order/transport/changecompany/changecompany",</div><div class="line">"page/declareValue/declareValue",</div><div class="line">"page/tax/tax",</div><div class="line">"page/address/add/add",</div><div class="line">"page/logisticstracking/logisticstracking",</div><div class="line">"page/statement/statement",</div><div class="line">"page/order/transport/companydetail/companydetail",</div><div class="line">"page/address/list/list",</div><div class="line">"page/faq/faq",</div><div class="line">"page/address/edit/edit",</div><div class="line">"page/packages/company/company",</div><div class="line">"page/address/select/select",</div><div class="line">"page/address/idcard/idcard",</div><div class="line">"page/packages/packages",</div><div class="line"><span class="string">"page/order/detail/detail"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/weapp/" rel="tag">#weapp</a>
+          
+            <a href="/tags/微信小程序/" rel="tag">#微信小程序</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/05/UTF-8/常用的UTF-8编码及编码范围/" rel="next" title="常用的UTF-8编码及编码范围">
+                <i class="fa fa-chevron-left"></i> 常用的UTF-8编码及编码范围
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/20/selenium/Selenium-3-python-2-判断元素是否存在/" rel="prev" title="Selenium 3 python 2 判断元素是否存在">
+                Selenium 3 python 2 判断元素是否存在 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12947276?v=3&u=b5243b88f15147a53dc05609982089fc63da9412&s=400"
+               alt="Julian" />
+          <p class="site-author-name" itemprop="name">Julian</p>
+          <p class="site-description motion-element" itemprop="description">一米阳光下，一本书，一个人，思念昉~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#微信小程序页面路径"><span class="nav-number">1.</span> <span class="nav-text">微信小程序页面路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一键海淘"><span class="nav-number">1.1.</span> <span class="nav-text">一键海淘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#商品详情页"><span class="nav-number">1.2.</span> <span class="nav-text">商品详情页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#购物车"><span class="nav-number">1.3.</span> <span class="nav-text">购物车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订单"><span class="nav-number">1.4.</span> <span class="nav-text">订单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的"><span class="nav-number">1.5.</span> <span class="nav-text">我的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收货地址列表"><span class="nav-number">1.6.</span> <span class="nav-text">收货地址列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加地址"><span class="nav-number">1.7.</span> <span class="nav-text">添加地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑地址"><span class="nav-number">1.8.</span> <span class="nav-text">编辑地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订单列表"><span class="nav-number">1.9.</span> <span class="nav-text">订单列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订单详情"><span class="nav-number">1.10.</span> <span class="nav-text">订单详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包裹详情"><span class="nav-number">1.11.</span> <span class="nav-text">包裹详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交转运"><span class="nav-number">1.12.</span> <span class="nav-text">提交转运</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转运详情"><span class="nav-number">1.13.</span> <span class="nav-text">转运详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#All-pages"><span class="nav-number">1.14.</span> <span class="nav-text">All pages</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julian</span>
+   <a href="http://www.miitbeian.gov.cn/">沪ICP备15000369号-2</a>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+     
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+ 
+</body>
+</html>
