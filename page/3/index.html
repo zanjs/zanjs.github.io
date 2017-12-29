@@ -269,6 +269,140 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/01/java/spring/spring-boot-使用idea调试-热部署/" itemprop="url">
+                  spring-boot 使用idea调试，热部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T11:14:06+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/spring/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="spring-boot-热部署功能"><a href="#spring-boot-热部署功能" class="headerlink" title="spring-boot 热部署功能"></a>spring-boot 热部署功能</h2><p>加 maven 依赖 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>开启热部署</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="IDEA-自动编译"><a href="#IDEA-自动编译" class="headerlink" title="IDEA 自动编译"></a>IDEA 自动编译</h2><ol>
+<li><p><code>CTRL + SHIFT + A</code>  –&gt; 查找 <code>make project automatically</code> –&gt; 选中</p>
+</li>
+<li><p><code>CTRL + SHIFT + A</code> –&gt; 查找 <code>Registry</code> –&gt; 找到并勾选 <code>compiler.automake.allow.when.app.running</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/01/java/spring/Spring-Boot-属性配置和使用/" itemprop="url">
                   Spring Boot 属性配置和使用
                 </a>
@@ -1660,136 +1794,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/11/react/React-组件之间如何交流/" itemprop="url">
-                  React 组件之间如何交流
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-11T17:42:23+08:00" content="2016-06-11">
-              2016-06-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>原著序</p>
-<p>处理 React 组件之间的交流方式，主要取决于组件之间的关系，然而这些关系的约定人就是你。</p>
-<p>我不会讲太多关于 data-stores、data-adapters 或者 data-helpers 之类的话题。<br>我下面只专注于 React 组件本身的交流方式的讲解。</p>
-<p>React 组件之间交流的方式，可以分为以下 3 种：</p>
-<ul>
-<li>【父组件】向【子组件】传值；</li>
-<li>【子组件】向【父组件】传值；</li>
-<li>没有任何嵌套关系的组件之间传值（PS：比如：兄弟组件之间传值）</li>
-</ul>
-<h2 id="【父组件】向【子组件】传值"><a href="#【父组件】向【子组件】传值" class="headerlink" title="【父组件】向【子组件】传值"></a>【父组件】向【子组件】传值</h2><p>初步使用</p>
-<p>这个是相当容易的，在使用 React 开发的过程中经常会使用到，主要是利用 props 来进行交流。例子如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 父组件</span></div><div class="line"><span class="keyword">var</span> MyContainer = React.createClass(&#123;</div><div class="line">  getInitialState: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      checked: <span class="literal">true</span></div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;ToggleButton text=<span class="string">"Toggle me"</span> checked=&#123;<span class="keyword">this</span>.state.checked&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 子组件</span></div><div class="line"><span class="keyword">var</span> ToggleButton = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 从【父组件】获取的值</span></div><div class="line">    <span class="keyword">var</span> checked = <span class="keyword">this</span>.props.checked,</div><div class="line">        text = <span class="keyword">this</span>.props.text;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">        &lt;label&gt;&#123;text&#125;: <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span>=<span class="string">&#123;checked&#125;</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>进一步讨论</p>
-<p>如果组件嵌套层次太深，那么从外到内组件的交流成本就变得很高，通过 props 传递值的优势就不那么明显了。<br>（PS：所以我建议尽可能的减少组件的层次，就像写 HTML 一样，简单清晰的结构更惹人爱）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 父组件</span></div><div class="line"><span class="keyword">var</span> MyContainer = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Intermediate text=<span class="string">"where is my son?"</span> /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 子组件1：中间嵌套的组件</span></div><div class="line"><span class="keyword">var</span> Intermediate = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child text=&#123;<span class="keyword">this</span>.props.text&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 子组件2：子组件1的子组件</span></div><div class="line"><span class="keyword">var</span> Child = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;span&gt;&#123;<span class="keyword">this</span>.props.text&#125;&lt;<span class="regexp">/span&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;);</span></div></pre></td></tr></table></figure>
-<h2 id="【子组件】向【父组件】传值"><a href="#【子组件】向【父组件】传值" class="headerlink" title="【子组件】向【父组件】传值"></a>【子组件】向【父组件】传值</h2><p>接下来，我们介绍【子组件】控制自己的 state 然后告诉【父组件】的点击状态，<br>然后在【父组件】中展示出来。<br>因此，我们添加一个 change 事件来做交互。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">// 父组件</div><div class="line">var MyContainer = React.createClass(&#123;</div><div class="line">  getInitialState: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      checked: false</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  onChildChanged: function (newState) &#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      checked: newState</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  render: function() &#123;</div><div class="line">    var isChecked = this.state.checked ? &apos;yes&apos; : &apos;no&apos;;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;div&gt;Are you checked: &#123;isChecked&#125;&lt;/div&gt;</div><div class="line">        &lt;ToggleButton text=&quot;Toggle me&quot;</div><div class="line">          initialChecked=&#123;this.state.checked&#125;</div><div class="line">          callbackParent=&#123;this.onChildChanged&#125;</div><div class="line">          /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 子组件</div><div class="line">var ToggleButton = React.createClass(&#123;</div><div class="line">  getInitialState: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      checked: this.props.initialChecked</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  onTextChange: function () &#123;</div><div class="line">    var newState = !this.state.checked;</div><div class="line">    this.setState(&#123;</div><div class="line">      checked: newState</div><div class="line">    &#125;);</div><div class="line">    // 这里要注意：setState 是一个异步方法，所以需要操作缓存的当前值</div><div class="line">    this.props.callbackParent(newState);</div><div class="line">  &#125;,</div><div class="line">  render: function () &#123;</div><div class="line">    // 从【父组件】获取的值</div><div class="line">    var text = this.props.text;</div><div class="line">    // 组件自身的状态数据</div><div class="line">    var checked = this.state.checked;</div><div class="line"></div><div class="line">    return (</div><div class="line">        &lt;label&gt;&#123;text&#125;: &lt;input type=&quot;checkbox&quot; checked=&#123;checked&#125;                 onChange=&#123;this.onTextChange&#125; /&gt;&lt;/label&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p><a href="http://www.tuicool.com/articles/AzQzEbq" target="_blank" rel="external">更多</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1835,7 +1839,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1852,7 +1856,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
