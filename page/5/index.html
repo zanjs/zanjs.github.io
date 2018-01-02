@@ -269,6 +269,307 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/27/erlang/用-Elixir-的一周/" itemprop="url">
+                  用 Elixir 的一周
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-27T16:38:08+08:00" content="2015-12-27">
+              2015-12-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Elixir/" itemprop="url" rel="index">
+                    <span itemprop="name">Elixir</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>大约一周前我开始学习Elixir. 关于这个我也只是有些模糊的印象但还没有仔细去看。</p>
+<p>但在Dave Thomas 出版了 <a href="https://pragprog.com/book/elixir/programming-elixir" target="_blank" rel="external">Programming Elixir</a>之后一切都发生了改变.<br> Dave Thomas 帮我修订过Erlang这本书并且是Ruby的倡导者, 只要Dave对什么产生了兴趣那绝不是空穴来风.</p>
+<p> Dave 对Elixir很感兴趣, 在他的书里这样写道:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> I came across Ruby in 1998 because I was an avid </div><div class="line">reader of comp.lang.misc (ask your parents). I </div><div class="line">downloaded it, compiled it, and fell in love. </div><div class="line">As with any time you fall in love,</div><div class="line">it’s difficult to explain why. </div><div class="line">It just worked the way I work, </div><div class="line">and it had enough depth to keep me interested.</div><div class="line"></div><div class="line">Fast forward 15 years. All that time I’d been </div><div class="line">looking for something new that gave me the same feeling.</div><div class="line"></div><div class="line">I came across Elixir a while back, but for some </div><div class="line">reason never got stuck in. But a few months ago I </div><div class="line">was chatting with Corey Haines. I was</div><div class="line">bemoaning the fact that I wanted to find a </div><div class="line">way to show people functional programming concepts </div><div class="line">without the kind of academic trappings those books </div><div class="line">seem to attract. He told me to look again at Elixir. I</div><div class="line">did, and I felt the same way I felt when I first saw Ruby.</div></pre></td></tr></table></figure>
+<p> 我能体会.纯粹的感官体验. 就像我知道一件事是对的但还不知道原因，<br> 几周甚至几年后这个问题总能回答出来. Malcolm Gladwell在Blink:<br> The Power of Thinking Without Thinking一书中曾探讨过这个问题.<br> 某些领域专家们总能凭直觉判断事情的正确与否，但却给不出具体原因.</p>
+<p>但我发现Dave 的描述后，我很想知道为什么他会这样.</p>
+<p>无独有偶, Simon St. Laurent也出了本Elixir的书.<br>Simon的 Introducing Erlang… 一书表现不俗，我和他还通过邮件沟通过几次，还有有些熟悉的.<br>从Pragmatic Press 和O’Reilly 出版社都在争着出版Elixir可见一斑。关于Erlang VM, 我确实一窍不通。</p>
+<p>我给Dave和Simon 发了封邮件，之后他们借给我了样书，现在可以开始阅读了 …  谢了 …</p>
+<h3 id="上周我下载了elixir-开始学习…"><a href="#上周我下载了elixir-开始学习…" class="headerlink" title="上周我下载了elixir 开始学习…"></a>上周我下载了elixir 开始学习…</h3><p>没多久我觉得就上手了. 确实好东西. 有趣的是Erlang和Elixir 实际上是同源的.<br>事实上也确实这样，他们都会被EVM (Erlang Virtual Machine)编译 -<br>大家管这个EVM 叫 “Beam” VM 但为了和JVM区别就管他叫EVM 吧.</p>
+<p>Erlang和Elixir为啥有相同的“语意”? 这得从底层谈起.<br>垃圾回收, 独立并发机制, 错误处理和代码装载机制都是一样的.<br> 还有: 他们都运行在相同的VM里. 这也是Scala 和 Akka区别于 Erlang的原因.<br>Scala和Akka是运行在JVM 上的, 垃圾回收和代码装载机制从本质上就不同.</p>
+<p>Elixir最明显的特点就是语法的表示，和Ruby很像.  简单易懂，还有很多外部资源。</p>
+<p>Erlang’s 的语法源自 Prolog 还受到smalltalk, CSP 和功能性编程语言的影响.<br> Elixir 受到Erlang 和Ruby的影响. 类型匹配, 功能优先级错误处理机制都是从Erlang来的.sigils,<br> 语法简写从Ruby 来。 当然也有自己的创新,  |&gt; 管道操作, Prologs DCGs 和Haskell monads<br> (简化了一些类似于Unix的管道操作) 宏引用,是从lisp quasiquote得来，还有逗号操作符.</p>
+<p>Elixir更新了AST机制 , 和Erlang AST独有展示的模式不同,<br> Elixir AST 统一了模式这使得meta-programming 更简单.</p>
+<p> 实现起来也中规中矩，只是有几处需要注意. 字符串插入 (主意不错) ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IO.puts &quot;...#&#123;x&#125;...&quot;</div></pre></td></tr></table></figure>
+<p>获取x并按格式打印出来. 但只对简单模式的x起作用.</p>
+<p> 这可以通过从Elixir调用Erlang的方法来弥补</p>
+<p> IO.puts “…#{pp(x)}…” 就可以. 只是需要把 pp(x) 改成</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> def pp(x) do </div><div class="line">    :io_lib.format(&quot;~p&quot;, [x])</div><div class="line">    |&gt; :lists.flatten</div><div class="line">    |&gt; :erlang.list_to_binary</div><div class="line">end</div></pre></td></tr></table></figure>
+<p> Erlang 描述如下:</p>
+ <figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">pp</span><span class="params">(X)</span> -&gt;</span></div><div class="line"> list_to_binary(lists_flatten(li_lib:format(<span class="string">"~p),[X])))</span></div></pre></td></tr></table></figure>
+<p> 这和Elixir的描述一样. Elixir的写法也更容易阅读. |&gt; 操作符用来把io_lib:format 的结果输入到<br> lists:flatten 然后再到list_to_binary. 跟unix的管道符|一样</p>
+<p> Elixir区别与Erlang在 - 变量可复用.<br>  结果集始终可以表示为static-single-assignment (SSA) .<br>  但在循环结构里千万别这么做.好在 Elixir只用了递归而没有循环结构.<br>  如果循环结构里引用了可变的参数，那远端EVM就没法编译了.<br>  当在SSA顺序结构中使用变量时, EVM 就知道如何处理.循环结构Elixir就没办法了.<br>  其根源可追溯到LLVM汇编- 那就是另一个问题了.</p>
+<h2 id="编程语言设计的三定律"><a href="#编程语言设计的三定律" class="headerlink" title="编程语言设计的三定律"></a>编程语言设计的三定律</h2><ul>
+<li><p>你做对的，无人为你提。</p>
+</li>
+<li><p>你做错的，有人跟你急。</p>
+</li>
+<li><p>难点必须不断重复解释。</p>
+</li>
+</ul>
+<p>有些语言在一些方面做得很好，它们正确，优雅，易于理解，但没人不辞麻烦地提及这些。</p>
+<p>错误的地方非常糟糕。你成了笨蛋，如果好处比重大于坏处，你可能被原谅。那些你想在以后消除的坏处，<br>却因为向后兼容性或者是有些傻子（或曰你的狂粉）已经用所有那些坏处写了无数行代码等原因，而不能动。</p>
+<p>难以理解的内容是真正倒霉的事情。你必须一遍又一遍地解释，直到你吐血，可还是有些人永远不懂，<br>你必须写上百邮件和数千文字来一遍又一遍地解释这些内容是什么意思以及它们为什么会如此。<br>对于一个语言的设计者或作者来说，这是一个痛苦的深渊。</p>
+<p>我将要提到的几件事就是我认为落入这三类情况中的。</p>
+<p>在我开始前，我要说 Elixir 做对了好多好多的事情，好处远远大于坏处。</p>
+<p>关于 Elixir 的好处是，及时改正它的坏处还不算晚。<br>这只能在无数代码行被写下和众多程序员开始使用它之前才能做到——所以只有少数时间来解决这些问题了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/12/nginx/MAC使用brew安装nginx-php-mysql环境/" itemprop="url">
+                  MAC使用brew安装nginx+php+mysql环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-12T15:31:01+08:00" content="2015-12-12">
+              2015-12-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装-homebrew"><a href="#安装-homebrew" class="headerlink" title="安装 homebrew"></a>安装 homebrew</h2><blockquote>
+<p>参考资料：<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">http://brew.sh/index_zh-cn.html</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;</div></pre></td></tr></table></figure>
+<h2 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div></pre></td></tr></table></figure>
+<h3 id="nginx-的操作命令："><a href="#nginx-的操作命令：" class="headerlink" title="nginx 的操作命令："></a>nginx 的操作命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$打开 nginx</div><div class="line">sudo nginx</div><div class="line">$重新加载配置|重启|停止|退出 nginx</div><div class="line">nginx -s reload|reopen|stop|quit</div><div class="line">$测试配置是否有语法错误</div><div class="line">nginx -t</div></pre></td></tr></table></figure>
+<p>启动 nginx 后，默认的开启的是8080端口，可以通过修改配置文件来设置端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /usr/local/etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
+<p>默认访问的目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/Cellar/nginx/1.8.0/html</div></pre></td></tr></table></figure>
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/Library/LaunchAgents</div><div class="line">cp /usr/local/Cellar/nginx/1.8.0/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/</div><div class="line">launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist</div></pre></td></tr></table></figure>
+<p>设置权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chown root:wheel /usr/local/Cellar/nginx/1.8.0/bin/nginx</div><div class="line">sudo chmod u+s /usr/local/Cellar/nginx/1.8.0/bin/nginx</div></pre></td></tr></table></figure>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mysql</div></pre></td></tr></table></figure>
+<h3 id="配置mysql数据库："><a href="#配置mysql数据库：" class="headerlink" title="配置mysql数据库："></a>配置mysql数据库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql_install_db --verbose --user=`whoami` --basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp</div></pre></td></tr></table></figure>
+<p>执行完成后就可以在终端中运行 mysql 命令了。</p>
+<p>这里需要注意一下，我们可以不需要密码就可以进入 mysql，可以通过一些安全设置、设置用户密码来保证安全性。</p>
+<p>设置 mysql 开机启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/Library/LaunchAgents/</div><div class="line">cp /usr/local/Cellar/mysql/5.6.17/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/</div><div class="line">launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</div></pre></td></tr></table></figure>
+<p>mysql 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/Cellar/mysql/5.6.17/my.cnf</div></pre></td></tr></table></figure>
+<h2 id="安装-php"><a href="#安装-php" class="headerlink" title="安装 php"></a>安装 php</h2><p>MAC本来就自带了 php，但是很多扩展没有安装，所以选择了重新安装php。</p>
+<p>首先，我们需要安装第三方程序包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew tap homebrew/dupes</div><div class="line">brew tap josegonzalez/homebrew-php</div></pre></td></tr></table></figure>
+<p>我们可以查看下 brew 下有那些 php 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew search php</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install php55 --with-imap --with-tidy --with-debug --with-pgsql --with-mysql --with-fpm</div></pre></td></tr></table></figure>
+<p>更多的php选项可以通过以下命令查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew options php55</div></pre></td></tr></table></figure>
+<p>由于是重装php，之前系统预装的php还没卸载，因此在终端调用php时，还是以之前系统的php版本做解析，<br>所以这里需要修改path，指定 php 的解析路径。在~/.bashrc（没有则创建）最后加入一行：</p>
+<p>export PATH=”$(brew –prefix php55)/bin:$PATH”</p>
+<p>执行一下 source 使之生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ./.profile</div></pre></td></tr></table></figure>
+<p>php 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/etc/php/5.5/php.ini</div></pre></td></tr></table></figure>
+<p>php-fpm 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/etc/php/5.5/php-fpm.conf</div></pre></td></tr></table></figure>
+<p>启动 php-fpm 的话就直接在终端里执行 “php-fpm”，默认打开 php-fpm 会显示一个状态 shell 出来，<br>也可以把 php-fpm 的配置文件里的 “daemonize = no” 改为 “daemonize = yes”，就会以后台守护进程的方式启动，<br>对于刚修改的配置文件，可以执行 “php-fpm -t” 来检测配置有没有问题。</p>
+<p>开机启动php-fpm:</p>
+<p>mkdir -p ~/Library/LaunchAgents<br>cp /usr/local/Cellar/php55/5.5.26/homebrew-php.josegonzalez.php55.plist ~/Library/LaunchAgents/<br>launchctl load -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/22/webpack/设置webpack实现React项目的hot-load/" itemprop="url">
                   设置webpack实现React项目的hot load
                 </a>
@@ -849,7 +1150,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjbre6jwd000918w04rwprn6w"
+                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjbx29rma000avsw0yf478s14"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" itemprop="contentUrl"/>
               </a>
@@ -983,7 +1284,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjbre6jvq000118w0hxan2fgj"
+                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjbx29rlh0001vsw02prgl8u7"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" itemprop="contentUrl"/>
               </a>
@@ -1244,7 +1545,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" rel="gallery_cjbre6jvx000318w0iupmuovj"
+                 href="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" rel="gallery_cjbx29rm20007vsw0bfc5f5j3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" itemprop="contentUrl"/>
               </a>
@@ -1338,7 +1639,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1346,7 +1647,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1355,7 +1656,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1392,7 +1693,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
