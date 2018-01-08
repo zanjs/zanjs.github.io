@@ -269,6 +269,201 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/10/javascript/JavaScript-数组常用方法介绍/" itemprop="url">
+                  JavaScript 数组常用方法介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-10T19:59:09+08:00" content="2016-01-10">
+              2016-01-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="修改数组"><a href="#修改数组" class="headerlink" title="修改数组"></a>修改数组</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank" rel="external">array.pop</a> - 删除数组最后一位元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.pop();<span class="comment">// 返回 3</span></div><div class="line">arr;<span class="comment">// [1,2]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.shift - 删除数组第一位元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.shift();<span class="comment">// 返回 1</span></div><div class="line">arr;<span class="comment">// [2,3]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.push - 往数组的末尾新增一个或多个元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line">arr.push(<span class="number">1</span>);<span class="comment">// 返回数组长度 1</span></div><div class="line">arr;<span class="comment">// [1]</span></div><div class="line">arr.push(<span class="number">2</span>,<span class="number">3</span>);</div><div class="line">arr;<span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.unshift - 往数组的开头新增一个或多个元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.unshift(<span class="number">0</span>);</div><div class="line">arr.unshift(<span class="number">-1</span>, <span class="number">-2</span>);</div><div class="line">arr;<span class="comment">// [-1, -2, 0, 1, 2]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.reverse - 把数组元素顺序逆转。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.reverse();<span class="comment">// [3, 2, 1]</span></div><div class="line">arr;<span class="comment">// [3, 2, 1]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.sort - 数组排序。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span> ,<span class="number">-1</span>, <span class="number">2</span>];</div><div class="line">arr.sort();<span class="comment">// [-1, 1, 2]</span></div><div class="line">arr;<span class="comment">// [-1, 1, 2]</span></div><div class="line">arr = [&#123;</div><div class="line">  age: <span class="number">10</span>,</div><div class="line">&#125;,&#123;</div><div class="line">  age: <span class="number">1</span></div><div class="line">&#125;, &#123;</div><div class="line">  age: <span class="number">12</span></div><div class="line">&#125;];</div><div class="line"><span class="comment">// 按照 age 从小到大排序</span></div><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> a.age - b.age &gt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>array.splice - 给数组添加或者删除元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// splice(开始下标, 删除个数，插入元素(可以多个)）</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">arr.splice(<span class="number">1</span>, <span class="number">2</span>);<span class="comment">// [2,3]</span></div><div class="line">arr;<span class="comment">// [1,4]</span></div><div class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">arr.splice(<span class="number">1</span>, <span class="number">2</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>);<span class="comment">// [2,3]</span></div><div class="line">arr;<span class="comment">// [1, "a", "b", "c", 4]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：当数组执行上面的这些方法时，都会修改原数组。</p>
+</blockquote>
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><ul>
+<li>array.forEach - 遍历数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'a'</span> ,<span class="string">'b'</span> ,<span class="string">'c'</span>].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">each, index</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(each,index);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 输出 'a' 0  'b' 1 'c' 2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.filter - 从数组中找出所有符合指定条件的元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 找出所有正数</span></div><div class="line"><span class="keyword">var</span> res = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].filter(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">res; <span class="comment">//[3,4]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.every - 数组中是否每个元素都满足指定的条件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 是否都为正数</span></div><div class="line"><span class="keyword">var</span> isAllPositive = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isAllPositive; <span class="comment">// false;</span></div><div class="line">isAllPositive = [<span class="number">3</span>, <span class="number">4</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isAllPositive; <span class="comment">// true;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.some - 数组中是否有元素满足指定的条件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 是否有正数</span></div><div class="line"><span class="keyword">var</span> isSomePositive = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">-1</span>].some(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isSomePositive; <span class="comment">// true;</span></div><div class="line">isSomePositive = [<span class="number">-3</span>, <span class="number">-4</span>].every(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each &gt; <span class="number">0</span>;</div><div class="line">&#125;);</div><div class="line">isSomePositive; <span class="comment">// false;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.map - 将数组映射成另一个数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 内容 * 2</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> each * <span class="number">2</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 返回 [2, 4, 6]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.reduce - 将数组合成一个值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 数组内容求和。0 为初始值</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, each</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> prev + each;</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="comment">// 返回 6</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>当要使用迭代方法时，forEach 应该是最后被考虑的。<br>主要原因是：forEach 与其他迭代方法比，语义性是最差的。更详细的说明见 <a href="http://aeflash.com/2014-11/avoid-foreach.html" target="_blank" rel="external">avoid forEach</a>。</p>
+</blockquote>
+<p>注意 IE8 及以下版本不支持 every, some, map, reduce。<br>如果想在 IE 8 及以下版本用这几个方法，可以用 <a href="https://github.com/es-shims/es5-shim" target="_blank" rel="external">es5-shim</a> 或 <a href="https://lodash.com/" target="_blank" rel="external">lodash</a>。</p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><ul>
+<li>Array.isArray - 是否是数组。IE9+ 支持该方法。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.isArray(<span class="number">3</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Array</span>.isArray(&#123;&#125;); <span class="comment">// false</span></div><div class="line"><span class="built_in">Array</span>.isArray([]); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.concat - 合并数组或合并数组的值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].concat(<span class="number">4</span>,<span class="number">5</span>); <span class="comment">// 输出 [1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.join - 合并数组所有元素拼接成字符串。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].join(); <span class="comment">// 输出 '1,2,3'</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].join(<span class="string">'@'</span>); <span class="comment">// 输出 '1@2@3'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.slice - 选择数组中的一部分元素。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// slice(开始下标, 结束下标（可选，默认为数组长度）)</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>);<span class="comment">// ["b", "c", "d"]</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>, <span class="number">2</span>);<span class="comment">// ["b"]</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].slice(<span class="number">1</span>, <span class="number">3</span>);<span class="comment">// ["b", "c"]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.indexOf - 查找数组中指定元素的下标。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].indexOf(<span class="string">'c'</span>); <span class="comment">// 2</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].indexOf(<span class="string">'g'</span>); <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<ul>
+<li>array.lastIndexOf - 查找数组中指定元素的下标。查找方向为从后往前。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'c'</span>].lastIndexOf(<span class="string">'c'</span>); <span class="comment">// 2</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>].lastIndexOf(<span class="string">'g'</span>); <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/27/erlang/用-Elixir-的一周/" itemprop="url">
                   用 Elixir 的一周
                 </a>
@@ -1150,7 +1345,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjbx29rma000avsw0yf478s14"
+                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjc5rfifp000azgw0qxyjrue4"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" itemprop="contentUrl"/>
               </a>
@@ -1284,7 +1479,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjbx29rlh0001vsw02prgl8u7"
+                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjc5rfif20001zgw0z0uwed36"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" itemprop="contentUrl"/>
               </a>
@@ -1460,145 +1655,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/25/writing/" itemprop="url">
-                  writing 写作帮助
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-25T15:57:45+08:00" content="2015-10-25">
-              2015-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/help/" itemprop="url" rel="index">
-                    <span itemprop="name">help</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" rel="gallery_cjbx29rm20007vsw0bfc5f5j3"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><p>接下来，我们要在网站中建立第一篇文章，您可以直接从现有的示例文章「Hello World」改写，但我们更建议您学习 new 指令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
-<p>您可以在命令中指定文章的布局<code>（layout）</code>，默认为 <code>post</code>，<br>可以通过修改 <code>_config.yml</code> 中的 <code>default_layout</code> 参数来指定默认布局。</p>
-<h2 id="布局（Layout）"><a href="#布局（Layout）" class="headerlink" title="布局（Layout）"></a>布局（Layout）</h2><p>Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径，<br>而您自定义的其他布局和 post 相同，都将储存到 <code>source/_posts</code> 文件夹。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/25/writing/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1639,7 +1700,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
