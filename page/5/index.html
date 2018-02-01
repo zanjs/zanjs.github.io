@@ -269,6 +269,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/31/mongodb/ubuntu-mongodb-卸载/" itemprop="url">
+                  ubuntu mongodb 卸载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-31T11:44:47+08:00" content="2016-01-31">
+              2016-01-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/mongodb/" itemprop="url" rel="index">
+                    <span itemprop="name">mongodb</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get remove mongodb</div></pre></td></tr></table></figure>
+<h3 id="彻底删除"><a href="#彻底删除" class="headerlink" title="彻底删除"></a>彻底删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get autoremove</div><div class="line">sudo apt-get autoclean</div><div class="line"></div><div class="line">dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |tr [&quot;\n&quot;] [&quot; &quot;]|sudo xargs dpkg -P -</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/23/javascript/Lo-Dash？引入惰性计算/" itemprop="url">
                   Lo-Dash？引入惰性计算
                 </a>
@@ -1471,7 +1597,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjch7zhf8000920w0u3qeb277"
+                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjd4874sj000ag0w0xnd4rua9"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" itemprop="contentUrl"/>
               </a>
@@ -1491,138 +1617,6 @@
 <p><img src="http://zanjs.b0.upaiyun.com/image/8/89/55a39bc2736a6f8d306d0c92e1df0.gif" alt="同步浏览"></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/26/浏览器同步测试工具Browsersync/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/25/atom使用帮助/" itemprop="url">
-                  atom使用帮助
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-25T18:30:37+08:00" content="2015-10-25">
-              2015-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开发工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjch7zheq000320w0cmje23f1"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><p>一款编辑器入门还是很简单的，学会怎么样创建，打开，编辑，保存文件就行。<br>剩下的就是慢慢熟悉，Atom 会不断带给你惊喜，如果你想简化或者加快平时工作中的某些任务或者动作，你就可以去搜索一下，Atom 要么本身就为你提供你需要的功能，没有的话，也可以通过现成的插件（Packages）或者自定义的方式解决。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>如果你顺着我们的路线走过来，你的电脑上应该已经安装好了系统的包管理工具，<br>Windows 上的 Chocolatey，Mac 上的 Homebrew，Atom 编辑器可以通过包管理工具来安装。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/25/atom使用帮助/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1697,7 +1691,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
