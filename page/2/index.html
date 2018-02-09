@@ -269,6 +269,141 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/29/windows/使用-nssm-把go程序-exe-加入window-服务进程/" itemprop="url">
+                  使用 nssm 把go程序 exe 加入window 服务进程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-29T11:29:39+08:00" content="2017-08-29">
+              2017-08-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/windows/" itemprop="url" rel="index">
+                    <span itemprop="name">windows</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="install-nssm"><a href="#install-nssm" class="headerlink" title="install nssm"></a>install nssm</h3><p>下载安装 nssm </p>
+<p><a href="http://nssm.cc/download" target="_blank" rel="external">nssm官网</a></p>
+<p>命令行安装 (管理员打开方式)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">choco install nssm</div></pre></td></tr></table></figure>
+<h2 id="nssm命令使用"><a href="#nssm命令使用" class="headerlink" title="nssm命令使用"></a>nssm命令使用</h2><ol>
+<li>安装服务命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nssm install &lt;servicename&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt; [&lt;arguments&gt;]</div><div class="line">nssm install AAAAA D:\2017\go\wechat-token.exe</div></pre></td></tr></table></figure>
+<ol>
+<li>删除服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm remove</div><div class="line">nssm remove &lt;servicename&gt;</div><div class="line">nssm remove &lt;servicename&gt; confirm</div></pre></td></tr></table></figure>
+<ol>
+<li>启动、停止服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm start &lt;servicename&gt;</div><div class="line">nssm stop &lt;servicename&gt;</div><div class="line">nssm restart &lt;servicename&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>查询服务状态</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nssm status &lt;servicename&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>服务控制命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm pause &lt;servicename&gt;</div><div class="line">nssm continue &lt;servicename&gt;</div><div class="line">nssm rotate &lt;servicename&gt;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/22/nodejs/sh-1-node-Permission-denied/" itemprop="url">
                   linux sh: 1: node: Permission denied
                 </a>
@@ -1474,132 +1609,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/05/UTF-8/常用的UTF-8编码及编码范围/" itemprop="url">
-                  常用的UTF-8编码及编码范围
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-05T09:59:42+08:00" content="2017-06-05">
-              2017-06-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编码/" itemprop="url" rel="index">
-                    <span itemprop="name">编码</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="UTF-8-Unicode"><a href="#UTF-8-Unicode" class="headerlink" title="UTF-8 (Unicode)"></a>UTF-8 (Unicode)</h2><ol>
-<li>u4e00-u9fa5 (中文)</li>
-<li>x3130-x318F (韩文)</li>
-<li>xAC00-xD7A3 (韩文)</li>
-<li>u0800-u4e00 (日文)</li>
-</ol>
-<blockquote>
-<p>ps: 韩文是大于[u9fa5]的字符</p>
-</blockquote>
-<h2 id="另外一些："><a href="#另外一些：" class="headerlink" title="另外一些："></a>另外一些：</h2><p>有时候我们也会用到全角英文、特殊符号等<br>全角英文的 <code>UTF8</code> 是: <code>uff21 – uff5a</code> ，是从大写 <code>A</code> 开始到小写的 <code>z</code>。</p>
-<p><code>utf8</code> 中的 <code>uff20</code> 是 <code>@</code></p>
-<p><code>utf8</code> 中的 <code>uff01</code> 到 <code>uff09</code> 是我们美式键盘上 <code>shift</code> + 从 1 到 9 键上的特殊符号。</p>
-<p>要注意的是因为 <code>@</code> 是 <code>uff20</code> ，所以 <code>uff02</code> 是双引号，<br>同时6的……是两个符号的组合，所以也不存在，正题提前一位（也就是说 <code>ff06</code>是 <code>＆</code> ， <code>ff09</code>是 <code>）</code> ）。</p>
-<p><code>utf8</code> 中的全角数字是 <code>uff10 – uff19</code> ，对应关系自然是　<code>０ – ９</code> 。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1645,7 +1654,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1662,7 +1671,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

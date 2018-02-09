@@ -269,6 +269,283 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/04/docker/1小时入门Docker精品文章/" itemprop="url">
+                  1小时入门Docker精品文章
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-04T13:00:31+08:00" content="2016-02-04">
+              2016-02-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Docker是什么<br>Docker是软件工业中的容器技术。Docker为容器引入了镜像，使得容器可以从预先定义好的模版（images）创建出来，并且Docker镜像还是分层的。</p>
+<h2 id="Docker经常被提起的特点："><a href="#Docker经常被提起的特点：" class="headerlink" title="Docker经常被提起的特点："></a>Docker经常被提起的特点：</h2><ul>
+<li><p>轻量，体现在内存占用小，高密度</p>
+</li>
+<li><p>快速，毫秒启动</p>
+</li>
+<li><p>隔离，沙盒技术更像虚拟机</p>
+</li>
+</ul>
+<h3 id="Docker技术的基础："><a href="#Docker技术的基础：" class="headerlink" title="Docker技术的基础："></a>Docker技术的基础：</h3><ul>
+<li><p>namespace，容器隔离的基础，保证A容器看不到B容器. 6个名空间：User,Mnt,Network,UTS,IPC,Pid</p>
+</li>
+<li><p>cgroups，容器资源统计和隔离。主要用到的cgroups子系统：cpu,blkio,device,freezer,memory</p>
+</li>
+<li><p>unionfs，典型：aufs/overlayfs，分层镜像实现的基础</p>
+</li>
+</ul>
+<h3 id="Docker组件："><a href="#Docker组件：" class="headerlink" title="Docker组件："></a>Docker组件：</h3><ul>
+<li><p>docker Client客户端————&gt;向docker服务器进程发起请求，如:创建、停止、销毁容器等操作</p>
+</li>
+<li><p>docker Server服务器进程—–&gt;处理所有docker的请求，管理所有容器</p>
+</li>
+<li><p>docker Registry镜像仓库——&gt;镜像存放的中央仓库，可看作是存放二进制的scm</p>
+</li>
+</ul>
+<h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>Docker的安装非常简单，支持目前所有主流操作系统，从Mac到Windows到各种Linux发行版</p>
+<p>具体参考： <a href="https://docs.docker.com/installation/" target="_blank" rel="external">docker安装</a></p>
+<h3 id="Docker常见命令"><a href="#Docker常见命令" class="headerlink" title="Docker常见命令"></a>Docker常见命令</h3><p>容器相关操作</p>
+<ul>
+<li><p>docker create # 创建一个容器但是不启动它</p>
+</li>
+<li><p>docker run # 创建并启动一个容器</p>
+</li>
+<li><p>docker stop # 停止容器运行，发送信号SIGTERM</p>
+</li>
+<li><p>docker start # 启动一个停止状态的容器</p>
+</li>
+<li><p>docker restart # 重启一个容器</p>
+</li>
+<li><p>docker rm # 删除一个容器</p>
+</li>
+<li><p>docker kill # 发送信号给容器，默认SIGKILL</p>
+</li>
+<li><p>docker attach # 连接(进入)到一个正在运行的容器</p>
+</li>
+<li><p>docker wait # 阻塞到一个容器，直到容器停止运行</p>
+</li>
+</ul>
+<p>获取容器相关信息</p>
+<ul>
+<li><p>docker ps # 显示状态为运行（Up）的容器</p>
+</li>
+<li><p>docker ps -a # 显示所有容器,包括运行中（Up）的和退出的(Exited)</p>
+</li>
+<li><p>docker inspect # 深入容器内部获取容器所有信息</p>
+</li>
+<li><p>docker logs # 查看容器的日志(stdout/stderr)</p>
+</li>
+<li><p>docker events # 得到docker服务器的实时的事件</p>
+</li>
+<li><p>docker port # 显示容器的端口映射</p>
+</li>
+<li><p>docker top # 显示容器的进程信息</p>
+</li>
+<li><p>docker diff # 显示容器文件系统的前后变化</p>
+</li>
+</ul>
+<h3 id="导出容器"><a href="#导出容器" class="headerlink" title="导出容器"></a>导出容器</h3><ul>
+<li><p>docker cp # 从容器里向外拷贝文件或目录</p>
+</li>
+<li><p>docker export # 将容器整个文件系统导出为一个tar包，不带layers、tag等信息</p>
+</li>
+</ul>
+<h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p>docker exec # 在容器里执行一个命令，可以执行bash进入交互式</p>
+<h3 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h3><ul>
+<li><p>docker images # 显示本地所有的镜像列表</p>
+</li>
+<li><p>docker import # 从一个tar包创建一个镜像，往往和export结合使用</p>
+</li>
+<li><p>docker build # 使用Dockerfile创建镜像（推荐）</p>
+</li>
+<li><p>docker commit # 从容器创建镜像</p>
+</li>
+<li><p>docker rmi # 删除一个镜像</p>
+</li>
+<li><p>docker load # 从一个tar包创建一个镜像，和save配合使用</p>
+</li>
+<li><p>docker save # 将一个镜像保存为一个tar包，带layers和tag信息</p>
+</li>
+<li><p>docker history # 显示生成一个镜像的历史命令</p>
+</li>
+<li><p>docker tag # 为镜像起一个别名</p>
+</li>
+</ul>
+<h3 id="镜像仓库-registry-操作"><a href="#镜像仓库-registry-操作" class="headerlink" title="镜像仓库(registry)操作"></a>镜像仓库(registry)操作</h3><ul>
+<li><p>docker login # 登录到一个registry</p>
+</li>
+<li><p>docker search # 从registry仓库搜索镜像</p>
+</li>
+<li><p>docker pull # 从仓库下载镜像到本地</p>
+</li>
+<li><p>docker push # 将一个镜像push到registry仓库中</p>
+</li>
+</ul>
+<h3 id="获取Container-IP地址（Container状态必须是Up）"><a href="#获取Container-IP地址（Container状态必须是Up）" class="headerlink" title="获取Container IP地址（Container状态必须是Up）"></a>获取Container IP地址（Container状态必须是Up）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect id | grep IPAddress | cut -d '"' -f 4</div></pre></td></tr></table></figure>
+<h3 id="获取端口映射"><a href="#获取端口映射" class="headerlink" title="获取端口映射"></a>获取端口映射</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect -f &apos;&#123;&#123;range $p, $conf := .NetworkSettings.Ports&#125;&#125; &#123;&#123;$p&#125;&#125; -&gt; &#123;&#123;(index $conf 0).HostPort&#125;&#125; &#123;&#123;end&#125;&#125;&apos; id</div></pre></td></tr></table></figure>
+<h3 id="获取环境变量"><a href="#获取环境变量" class="headerlink" title="获取环境变量"></a>获取环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec container_id env</div></pre></td></tr></table></figure>
+<h3 id="杀掉所有正在运行的容器"><a href="#杀掉所有正在运行的容器" class="headerlink" title="杀掉所有正在运行的容器"></a>杀掉所有正在运行的容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker kill $(docker ps -q)</div></pre></td></tr></table></figure>
+<h3 id="删除老的-一周前创建-容器"><a href="#删除老的-一周前创建-容器" class="headerlink" title="删除老的(一周前创建)容器"></a>删除老的(一周前创建)容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a | grep &apos;weeks ago&apos; | awk &apos;&#123;print $1&#125;&apos; | xargs docker rm</div></pre></td></tr></table></figure>
+<h3 id="删除已经停止的容器"><a href="#删除已经停止的容器" class="headerlink" title="删除已经停止的容器"></a>删除已经停止的容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm `docker ps -a -q`</div></pre></td></tr></table></figure>
+<h3 id="删除所有镜像，小心"><a href="#删除所有镜像，小心" class="headerlink" title="删除所有镜像，小心"></a>删除所有镜像，小心</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rmi $(docker images -q)</div></pre></td></tr></table></figure>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>Dockerfile是自动构建Docker镜像的配置文件。也是Docker区别于其他容器的重要特征，正是有了Dockerfile，Docker的自动化和可移植性才成为可能。</p>
+<p>不论是开发还是运维，学会编写Dockerfile几乎是必备的，这有助于你理解整个容器的运行。</p>
+<h3 id="FROM-从一个基础镜像构建新的镜像"><a href="#FROM-从一个基础镜像构建新的镜像" class="headerlink" title="FROM , 从一个基础镜像构建新的镜像"></a><strong>FROM</strong> , 从一个基础镜像构建新的镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FROM ubuntu</div></pre></td></tr></table></figure>
+<h3 id="MAINTAINER-维护者信息"><a href="#MAINTAINER-维护者信息" class="headerlink" title="MAINTAINER , 维护者信息"></a>MAINTAINER , 维护者信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MAINTAINER julian &lt;julaudme@gmail.com&gt;</div></pre></td></tr></table></figure>
+<h3 id="ENV-设置环境变量"><a href="#ENV-设置环境变量" class="headerlink" title="ENV , 设置环境变量"></a>ENV , 设置环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENV TEST 1</div></pre></td></tr></table></figure>
+<h3 id="RUN-非交互式运行shell命令"><a href="#RUN-非交互式运行shell命令" class="headerlink" title="RUN , 非交互式运行shell命令"></a>RUN , 非交互式运行shell命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RUN apt-get -y update </div><div class="line"></div><div class="line">RUN apt-get -y install nginx</div></pre></td></tr></table></figure>
+<h3 id="ADD-将外部文件拷贝到镜像里-src可以为url"><a href="#ADD-将外部文件拷贝到镜像里-src可以为url" class="headerlink" title="ADD , 将外部文件拷贝到镜像里,src可以为url"></a>ADD , 将外部文件拷贝到镜像里,src可以为url</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ADD http://zanjs.com/  /data/zanjs.tgz</div></pre></td></tr></table></figure>
+<h3 id="WORKDIR-path-to-workdir-设置工作目录"><a href="#WORKDIR-path-to-workdir-设置工作目录" class="headerlink" title="WORKDIR /path/to/workdir, 设置工作目录"></a>WORKDIR /path/to/workdir, 设置工作目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WORKDIR /var/www</div></pre></td></tr></table></figure>
+<h3 id="USER-设置用户ID"><a href="#USER-设置用户ID" class="headerlink" title="USER , 设置用户ID"></a>USER , 设置用户ID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">USER nginx</div></pre></td></tr></table></figure>
+<h3 id="VULUME-lt-dir-gt-设置volume"><a href="#VULUME-lt-dir-gt-设置volume" class="headerlink" title="VULUME &lt;dir&gt;, 设置volume"></a><code>VULUME &lt;dir&gt;, 设置volume</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">VOLUME [‘/data’]</div></pre></td></tr></table></figure>
+<h3 id="EXPOSE-暴露哪些端口"><a href="#EXPOSE-暴露哪些端口" class="headerlink" title="EXPOSE , 暴露哪些端口"></a>EXPOSE , 暴露哪些端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EXPOSE 80 443</div></pre></td></tr></table></figure>
+<h3 id="ENTRYPOINT-‘executable’-‘param1’-’param2’-执行命令"><a href="#ENTRYPOINT-‘executable’-‘param1’-’param2’-执行命令" class="headerlink" title="ENTRYPOINT [‘executable’, ‘param1’,’param2’]执行命令"></a>ENTRYPOINT [‘executable’, ‘param1’,’param2’]执行命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [&quot;/usr/sbin/nginx&quot;]</div></pre></td></tr></table></figure>
+<h3 id="CMD-“param1”-”param2”"><a href="#CMD-“param1”-”param2”" class="headerlink" title="CMD [“param1”,”param2”]"></a>CMD [“param1”,”param2”]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CMD [&quot;start&quot;]</div></pre></td></tr></table></figure>
+<p>docker创建、启动container时执行的命令，如果设置了ENTRYPOINT，则CMD将作为参数</p>
+<h3 id="Dockerfile最佳实践"><a href="#Dockerfile最佳实践" class="headerlink" title="Dockerfile最佳实践"></a>Dockerfile最佳实践</h3><ul>
+<li>尽量将一些常用不变的指令放到前面</li>
+<li>CMD和ENTRYPOINT尽量使用json数组方式</li>
+</ul>
+<h3 id="通过Dockerfile构建image"><a href="#通过Dockerfile构建image" class="headerlink" title="通过Dockerfile构建image"></a>通过Dockerfile构建image</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build csphere/nginx:1.7 .</div></pre></td></tr></table></figure>
+<h3 id="镜像仓库Registry"><a href="#镜像仓库Registry" class="headerlink" title="镜像仓库Registry"></a>镜像仓库Registry</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">镜像从Dockerfile build生成后，需要将镜像推送(push)到镜像仓库。</div><div class="line">企业内部都需要构建一个私有docker registry，这个registry可以看作二进制的scm，CI/CD也需要围绕registry进行。</div></pre></td></tr></table></figure>
+<h3 id="部署registry"><a href="#部署registry" class="headerlink" title="部署registry"></a>部署registry</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir /registry</div><div class="line">docker run  -p 80:5000  -e STORAGE_PATH=/registry  -v /registry:/registry  registry:2.0</div></pre></td></tr></table></figure>
+<h3 id="推送镜像保存到仓库"><a href="#推送镜像保存到仓库" class="headerlink" title="推送镜像保存到仓库"></a>推送镜像保存到仓库</h3><blockquote>
+<p>假设192.168.1.2是registry仓库的地址</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker tag  csphere/nginx:1.7 192.168.1.2/csphere/nginx:1.7</div><div class="line">docker push 192.168.1.2/csphere/nginx:1.7</div></pre></td></tr></table></figure>
+<h2 id="几个简单小例子"><a href="#几个简单小例子" class="headerlink" title="几个简单小例子"></a>几个简单小例子</h2><h3 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h3><ul>
+<li>创建并拉取busybox</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># docker run -it --name con01 busybox:latest</div><div class="line">/ # ip addr    #容器里执行</div><div class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default </div><div class="line">link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</div><div class="line">inet 127.0.0.1/8 scope host lo</div><div class="line">   valid_lft forever preferred_lft forever</div><div class="line">Segmentation fault (core dumped)</div><div class="line">/ # ping www.csphere.cn</div><div class="line">PING www.csphere.cn (117.121.26.243): 56 data bytes</div><div class="line">64 bytes from 117.121.26.243: seq=0 ttl=48 time=3.139 ms</div><div class="line">64 bytes from 117.121.26.243: seq=1 ttl=48 time=3.027 ms</div><div class="line">^C</div><div class="line">--- www.csphere.cn ping statistics ---</div><div class="line">2 packets transmitted, 2 packets received, 0% packet loss</div><div class="line">round-trip min/avg/max = 3.027/3.083/3.139 ms</div><div class="line">exit    #退出容器</div></pre></td></tr></table></figure>
+<ul>
+<li>创建测试容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker run -d --name con03 csphere/test:0.1</div><div class="line">efc9bda4a2ff2f479b18e0fc4698e42c47c9583a24c93f5ce6b28a828a172709</div></pre></td></tr></table></figure>
+<ul>
+<li>登陆到con03中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># docker exec -it con03 /bin/bash</div><div class="line">[root@efc9bda4a2ff /]# exit</div></pre></td></tr></table></figure>
+<ul>
+<li>停止con03</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># docker stop con03</div><div class="line">con03</div></pre></td></tr></table></figure>
+<ul>
+<li>开启con03</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># docker start con03</div><div class="line">con03</div></pre></td></tr></table></figure>
+<ul>
+<li>删除con03</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># docker ps -a</div><div class="line">CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                      PORTS                                             NAMES</div><div class="line">efc9bda4a2ff        csphere/test:0.1         &quot;/usr/local/bin/run    4 minutes ago       Up 17 seconds                                                                 con03               </div><div class="line">99aa6ee25adc        busybox:latest           &quot;/bin/sh&quot;              14 minutes ago      Exited (0) 12 minutes ago                                                     con02               </div><div class="line">831c93de9b9f        busybox:latest           &quot;/bin/sh&quot;              2 hours ago         Up 27 minutes                                                                 con01</div><div class="line"># docker rm con02     #容器停止的状态</div><div class="line"># docker rm -f con03  #容器开启的状态</div></pre></td></tr></table></figure>
+<h2 id="镜像操作-1"><a href="#镜像操作-1" class="headerlink" title="镜像操作"></a>镜像操作</h2><h3 id="从docker-hub官方镜像仓库拉取镜像"><a href="#从docker-hub官方镜像仓库拉取镜像" class="headerlink" title="从docker hub官方镜像仓库拉取镜像"></a>从docker hub官方镜像仓库拉取镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># docker pull busybox:latest</div><div class="line">atest: Pulling from busybox</div><div class="line">cf2616975b4a: Pull complete </div><div class="line">6ce2e90b0bc7: Pull complete </div><div class="line">8c2e06607696: Already exists </div><div class="line">busybox:latest: The image you are pulling has been verified. Important: image verification is a tech preview feature and should not be relied on to provide security.</div><div class="line">Digest: sha256:38a203e1986cf79639cfb9b2e1d6e773de84002feea2d4eb006b52004ee8502d</div><div class="line">Status: Downloaded newer image for busybox:latest</div></pre></td></tr></table></figure>
+<h3 id="从本地上传镜像到镜像仓库"><a href="#从本地上传镜像到镜像仓库" class="headerlink" title="从本地上传镜像到镜像仓库"></a>从本地上传镜像到镜像仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ker push 192.168.1.2/csphere/nginx:1.7</div></pre></td></tr></table></figure>
+<h3 id="查找镜像仓库的某个镜像"><a href="#查找镜像仓库的某个镜像" class="headerlink" title="查找镜像仓库的某个镜像"></a>查找镜像仓库的某个镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># docker search centos/nginx</div><div class="line">NAME                                     DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</div><div class="line">johnnyzheng/centos-nginx-php-wordpress                                                   1                    [OK]</div><div class="line">sergeyzh/centos6-nginx                                                                   1                    [OK]</div><div class="line">hzhang/centos-nginx                                                                      1                    [OK]</div></pre></td></tr></table></figure>
+<h3 id="查看本地镜像列表"><a href="#查看本地镜像列表" class="headerlink" title="查看本地镜像列表"></a>查看本地镜像列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># docker images</div><div class="line">TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</div><div class="line">docker.io/csphere/csphere   0.10.3              604c03bf0c9e        3 days ago          62.72 MB</div><div class="line">docker.io/csphere/csphere   latest              604c03bf0c9e        3 days ago          62.72 MB</div><div class="line">csphere/csphere             0.10.3              604c03bf0c9e        3 days ago          62.72 MB</div><div class="line">registry                    2.0                 2971b6ce766c        7 days ago          548.1 MB</div><div class="line">busybox                     latest              8c2e06607696        3 weeks ago         2.43 MB</div></pre></td></tr></table></figure>
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker rmi busybox:latest        #没有容器使用此镜像创建，如果有容器在使用此镜像会报错：Error response from daemon: Conflict, cannot delete 8c2e06607696 because the running container 831c93de9b9f is using it, stop it and use -f to force</div><div class="line">FATA[0000] Error: failed to remove one or more images</div><div class="line">docker rmi -f busybox:latest     #容器使用此镜像创建，此容器状态为Exited</div></pre></td></tr></table></figure>
+<h3 id="查看构建镜像所用过的命令"><a href="#查看构建镜像所用过的命令" class="headerlink" title="查看构建镜像所用过的命令"></a>查看构建镜像所用过的命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># docker history busybox:latest</div><div class="line">IMAGE               CREATED             CREATED BY                                      SIZE</div><div class="line">8c2e06607696        3 weeks ago         /bin/sh -c #(nop) CMD [&quot;/bin/sh&quot;]               0 B</div><div class="line">6ce2e90b0bc7        3 weeks ago         /bin/sh -c #(nop) ADD file:8cf517d90fe79547c4   2.43 MB</div><div class="line">cf2616975b4a        3 weeks ago         /bin/sh -c #(nop) MAINTAINER Jérôme Petazzo     0 B</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/31/mongodb/ubuntu-mongodb-卸载/" itemprop="url">
                   ubuntu mongodb 卸载
                 </a>
@@ -1512,140 +1789,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/26/浏览器同步测试工具Browsersync/" itemprop="url">
-                  浏览器同步测试工具Browsersync | 前端开发神器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-26T20:39:40+08:00" content="2015-10-26">
-              2015-10-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开发工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjd4874sj000ag0w0xnd4rua9"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h2 id="省时的浏览器同步测试工具"><a href="#省时的浏览器同步测试工具" class="headerlink" title="省时的浏览器同步测试工具"></a>省时的浏览器同步测试工具</h2><blockquote>
-<p>Browsersync能让浏览器实时、快速响应您的文件更改（html、js、css、sass、less等）并自动刷新页面。<br>更重要的是Browsersync可以同时在PC、平板、手机等设备下进项调试。<br>您可以想象一下：“假设您的桌子上有pc、ipad、iphone、android等设备，同时打开了您需要调试的页面，<br>当您使用browsersync后，您的任何一次代码保存，以上的设备都会同时显示您的改动”。<br>无论您是前端还是后端工程师，使用它将提高您30%的工作效率。</p>
-</blockquote>
-<p><img src="http://zanjs.b0.upaiyun.com/image/8/89/55a39bc2736a6f8d306d0c92e1df0.gif" alt="同步浏览"></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/26/浏览器同步测试工具Browsersync/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1691,7 +1834,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1708,7 +1851,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

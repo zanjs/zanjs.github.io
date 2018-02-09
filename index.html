@@ -269,6 +269,135 @@
             
               
                 
+                <a class="post-title-link" href="/2018/02/09/golang/linux-install-nsq-golang/" itemprop="url">
+                  linux install nsq golang 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-09T17:02:27+08:00" content="2018-02-09">
+              2018-02-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>down</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget   https://s3.amazonaws.com/bitly-downloads/nsq/nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h2><p>nsqlookupd.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqlookupd]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqlookupd</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqlookupd/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqlookupd/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
+<p>nsqd.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqd]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqd --lookupd-tcp-address=127.0.0.1:4160</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqd/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqd/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
+<p>nsqadmin.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqadmin]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqadmin --lookupd-http-address=127.0.0.1:4161</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqadmin/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqadmin/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
+<li><p>nsqlookupd: 管理nsqd节点拓扑信息并提供最终一致性的发现服务的守护进程</p>
+</li>
+<li><p>nsqd: 负责接收、排队、转发消息到客户端的守护进程，并且定时向nsqlookupd服务发送心跳</p>
+</li>
+<li><p>nsqadmin：nsqd的web统计界面，可实时查看集群的统计数据和执行一些管理任务</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/02/01/javascript/JS函数节流和函数防抖/" itemprop="url">
                   JS函数节流和函数防抖
                 </a>
@@ -1394,141 +1523,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/29/windows/使用-nssm-把go程序-exe-加入window-服务进程/" itemprop="url">
-                  使用 nssm 把go程序 exe 加入window 服务进程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-29T11:29:39+08:00" content="2017-08-29">
-              2017-08-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/windows/" itemprop="url" rel="index">
-                    <span itemprop="name">windows</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="install-nssm"><a href="#install-nssm" class="headerlink" title="install nssm"></a>install nssm</h3><p>下载安装 nssm </p>
-<p><a href="http://nssm.cc/download" target="_blank" rel="external">nssm官网</a></p>
-<p>命令行安装 (管理员打开方式)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">choco install nssm</div></pre></td></tr></table></figure>
-<h2 id="nssm命令使用"><a href="#nssm命令使用" class="headerlink" title="nssm命令使用"></a>nssm命令使用</h2><ol>
-<li>安装服务命令</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nssm install &lt;servicename&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt; [&lt;arguments&gt;]</div><div class="line">nssm install AAAAA D:\2017\go\wechat-token.exe</div></pre></td></tr></table></figure>
-<ol>
-<li>删除服务</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm remove</div><div class="line">nssm remove &lt;servicename&gt;</div><div class="line">nssm remove &lt;servicename&gt; confirm</div></pre></td></tr></table></figure>
-<ol>
-<li>启动、停止服务</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm start &lt;servicename&gt;</div><div class="line">nssm stop &lt;servicename&gt;</div><div class="line">nssm restart &lt;servicename&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>查询服务状态</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nssm status &lt;servicename&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>服务控制命令</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm pause &lt;servicename&gt;</div><div class="line">nssm continue &lt;servicename&gt;</div><div class="line">nssm rotate &lt;servicename&gt;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1574,7 +1568,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1591,7 +1585,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
