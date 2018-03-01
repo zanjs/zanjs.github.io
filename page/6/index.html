@@ -269,6 +269,129 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/31/mongodb/Mac-OX上安装MongoDb/" itemprop="url">
+                  Mac OX上安装MongoDb
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-31T08:53:53+08:00" content="2015-10-31">
+              2015-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="install-MongoDb"><a href="#install-MongoDb" class="headerlink" title="install MongoDb"></a>install MongoDb</h2><blockquote>
+<p>更新Homebrew的package数据库，在Mac的终端中输入：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew update</div></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install mongodb</div></pre></td></tr></table></figure>
+<p>等待MongoDb下载完成。这个比较贴心了，有下载进度百分比。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">julauddeMacBook-Pro:/ julaud$ brew install mongodb</div><div class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/mongodb-3.0.7.yosemite.bott</div><div class="line">Already downloaded: /Library/Caches/Homebrew/mongodb-3.0.7.yosemite.bottle.tar.gz</div><div class="line">==&gt; Pouring mongodb-3.0.7.yosemite.bottle.tar.gz</div><div class="line">==&gt; Caveats</div><div class="line">To have launchd start mongodb at login:</div><div class="line">  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents</div><div class="line">Then to load mongodb now:</div><div class="line">  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</div><div class="line">Or, if you don&apos;t want/need launchctl, you can just run:</div><div class="line">  mongod --config /usr/local/etc/mongod.conf</div><div class="line">==&gt; Summary</div><div class="line">🍺  /usr/local/Cellar/mongodb/3.0.7: 17 files, 158M</div></pre></td></tr></table></figure>
+<h2 id="启动MongoDb"><a href="#启动MongoDb" class="headerlink" title="启动MongoDb"></a>启动MongoDb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">🍺  /usr/local/Cellar/mongodb/3.0.7: 17 files, 158M</div><div class="line">julauddeMacBook-Pro:/ julaud$ mongod --config /usr/local/etc/mongod.conf</div></pre></td></tr></table></figure>
+<p>运行mongodb执行 mongod命令就可以<br>mongod –dbpath=/data/db</p>
+<h2 id="连接MongoDb"><a href="#连接MongoDb" class="headerlink" title="连接MongoDb"></a>连接MongoDb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Last login: Thu Oct 29 20:36:01 on ttys000</div><div class="line">julauddeMacBook-Pro:~ julaud$ mongo</div><div class="line">MongoDB shell version: 3.0.7</div><div class="line">connecting to: test</div><div class="line">Welcome to the MongoDB shell.</div><div class="line">For interactive help, type &quot;help&quot;.</div><div class="line">For more comprehensive documentation, see</div><div class="line">	http://docs.mongodb.org/</div><div class="line">Questions? Try the support group</div><div class="line">	http://groups.google.com/group/mongodb-user</div><div class="line">Server has startup warnings:</div><div class="line">2015-10-30T22:55:29.874+0800 I CONTROL  [initandlisten]</div><div class="line">2015-10-30T22:55:29.874+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000</div><div class="line">&gt; show dbs</div><div class="line">local  0.078GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/26/浏览器同步测试工具Browsersync/" itemprop="url">
                   浏览器同步测试工具Browsersync | 前端开发神器
                 </a>
@@ -333,7 +456,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cjdfpp15y000978w0k0ht92md"
+                 href="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" rel="gallery_cje7wcdcc000a0kw0ncfm0tox"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/f/75/e7f9489cd69d1625e5326665f247b.jpg" itemprop="contentUrl"/>
               </a>
@@ -467,7 +590,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cjdfpp15a000378w0nc12kdn8"
+                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cje7wcdbw00030kw03o8lwi02"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" itemprop="contentUrl"/>
               </a>
@@ -728,7 +851,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" rel="gallery_cjdfpp162000a78w08yo5nm43"
+                 href="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" rel="gallery_cje7wcdc700070kw01qu0mkzv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/9/13/5a67e2c2b32a76fd89d4fa8fdc4f6.gif" itemprop="contentUrl"/>
               </a>
@@ -822,7 +945,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -269,6 +269,173 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/07/angularjs/翻译-angularjs-2-0官方新手入门教程-1/" itemprop="url">
+                   翻译 angularjs 2.0官方新手入门教程(1) 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-07T12:28:36+08:00" content="2016-02-07">
+              2016-02-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/angularjs/" itemprop="url" rel="index">
+                    <span itemprop="name">angularjs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>前些日子在公司同事的提议下接触了一下angular 2.0，跟着angularjs 2.0官方网站的上手教程做了一遍，<br>感觉这教程还是不错的，步骤清晰且没有冗余的内容，非常适合新手入门。<br>但是后来在网上看见不止一个人说跟着官方教程跑都跑不起来，所以怀疑是不是他们英语阅读有问题，<br>就打算把原教程实现的步骤翻译过来，并在过程中提供一些注意事项。<br>这次翻译的教程是一个五分钟的hello world教程，官网后面还有一些复杂一点的，以后有空再陆续翻译。<br>当然，我还是强烈建议去阅读官方原教程，因为里面除了实现以外对每一步都有非常详尽的解释，这是我这次翻译做不到的。<br>不过如果有问题也可以在评论里留言，我会尽量解答我能解答的，当然也欢迎指出里面毛病。</p>
+<h2 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h2><p>做前端并不需要你去下载和配置很多东西，甚至angularjs 2.0的库文件都不需要你亲手去下载（事实上，你在他们官网也找不到下载的地方）。<br>你需要做的只是找个代码编辑器，把npm装好，写好包依赖的json文件，之后npm会自动帮你把需要的东西下载下来（这也是目前前端领域的惯用做法，具体怎么做后面会说）。</p>
+<p>所以，要完成这个教程你第一步要干的是弄好以下两样东西：</p>
+<ul>
+<li><p>npm，官网教程：<a href="https://docs.npmjs.com/getting-started/installing-node。注意：安装过程中碰到npm" target="_blank" rel="external">https://docs.npmjs.com/getting-started/installing-node。注意：安装过程中碰到npm</a> WARN无视就好，<br>如果在安装的最后碰到npm ERR则表明失败，失败的原因可能是npm没装好，也可能是因为伟大的GFW，所以你可能需要翻墙，请务必自备VPN。<br>（多说一句，不翻墙，就别写代码，因为你解决问题的效率将是翻墙的十分之一都不到。）</p>
+</li>
+<li><p>一个顺手的代码编辑器，比如微软的visual studio code，或者sublime，或者随便什么。</p>
+</li>
+<li><p>Chrome，做前端调试网页必备浏览器。</p>
+</li>
+</ul>
+<p>如果配置npm出问题，请到谷歌或者stackoverflow（不要用百度）搜索命令行里提示给你们的错误信息，去找解决方法。</p>
+<p>以上三项准备好了以后，可以正式开始写代码了。</p>
+<h3 id="第一步：写包依赖json文件，并下载所有的包"><a href="#第一步：写包依赖json文件，并下载所有的包" class="headerlink" title="第一步：写包依赖json文件，并下载所有的包"></a>第一步：写包依赖json文件，并下载所有的包</h3><ul>
+<li><p>随便找个什么地方，建一个文件夹，文件夹名叫angular2-quickstart</p>
+</li>
+<li><p>在angular2-quickstart文件夹里建一个文件叫package.json</p>
+</li>
+<li><p>复制以下内容到package.json</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;angular2-quickstart&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;tsc&quot;: &quot;tsc&quot;,</div><div class="line">    &quot;tsc:w&quot;: &quot;tsc -w&quot;,</div><div class="line">    &quot;lite&quot;: &quot;lite-server&quot;,</div><div class="line">    &quot;start&quot;: &quot;concurrent \&quot;npm run tsc:w\&quot; \&quot;npm run lite\&quot; &quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;angular2&quot;: &quot;2.0.0-beta.3&quot;,</div><div class="line">    &quot;systemjs&quot;: &quot;0.19.6&quot;,</div><div class="line">    &quot;es6-promise&quot;: &quot;^3.0.2&quot;,</div><div class="line">    &quot;es6-shim&quot;: &quot;^0.33.3&quot;,</div><div class="line">    &quot;reflect-metadata&quot;: &quot;0.1.2&quot;,</div><div class="line">    &quot;rxjs&quot;: &quot;5.0.0-beta.0&quot;,</div><div class="line">    &quot;zone.js&quot;: &quot;0.5.11&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;concurrently&quot;: &quot;^1.0.0&quot;,</div><div class="line">    &quot;lite-server&quot;: &quot;^2.0.1&quot;,</div><div class="line">    &quot;typescript&quot;: &quot;^1.7.5&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>打开命令行，angular2-quickstart目录下输入 <code>npm install</code>，然后等着就行了（此步骤如果失败可能需要翻墙）。</p>
+</blockquote>
+<h4 id="配置Typescript（以下简称ts）"><a href="#配置Typescript（以下简称ts）" class="headerlink" title="配置Typescript（以下简称ts）"></a>配置Typescript（以下简称ts）</h4><p>首先说一下，Typescript是一门语言，是JavaScript（以下简称js）的超集，<br>至于为什么要用这个语言，问angularjs的官网吧（官网提供了三种语言版本的教程：js/ts/dart。其中只有ts这个语言的教程是比较全的，<br>不仅包含五分钟上手教程，还包含了后面比较复杂的教程）。好消息是这个语言看着比js还要简洁，而且很容易上手。</p>
+<p>好，那么配置他也是很简单的事情，你需要做的事情和(2)是类似的，<br>首先在angular2-quickstart文件夹里建一个文件叫 <code>tsconfig.json</code>，并复制以下内容到 <code>tsconfig.json</code>里就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;compilerOptions&quot;: &#123;</div><div class="line">    &quot;target&quot;: &quot;es5&quot;,</div><div class="line">    &quot;module&quot;: &quot;system&quot;,</div><div class="line">    &quot;moduleResolution&quot;: &quot;node&quot;,</div><div class="line">    &quot;sourceMap&quot;: true,</div><div class="line">    &quot;emitDecoratorMetadata&quot;: true,</div><div class="line">    &quot;experimentalDecorators&quot;: true,</div><div class="line">    &quot;removeComments&quot;: false,</div><div class="line">    &quot;noImplicitAny&quot;: false</div><div class="line">  &#125;,</div><div class="line">  &quot;exclude&quot;: [</div><div class="line">    &quot;node_modules&quot;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="第二步：写ts源码"><a href="#第二步：写ts源码" class="headerlink" title="第二步：写ts源码"></a>第二步：写ts源码</h3><ul>
+<li><p>在angular2-quickstart目录下建一个文件夹app，并在app文件夹里建一个文件叫app.component.ts</p>
+</li>
+<li><p>复制以下内容到app.component.ts</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import &#123;Component&#125; from &apos;angular2/core&apos;;</div><div class="line"></div><div class="line">@Component(&#123;</div><div class="line">    selector: &apos;my-app&apos;,</div><div class="line">    template: &apos;&lt;h1&gt;My First Angular 2 App&lt;/h1&gt;&apos;</div><div class="line">&#125;)</div><div class="line">export class AppComponent &#123; &#125;</div></pre></td></tr></table></figure>
+<p>简单说一下，angularjs 2.0这个框架走的是组件化路线（前端大趋势），所以其实这里我们是建立了一个可视化的组件，<br>我们可以看出来一个组件大概是由两部分组成的，一个是@Component，在我们这个教程里，Component定义了他在html上的标签名以及html代码（他是什么样子），<br>当然Component里还有一些其他的功能，比如定义CSS和route等等。而另一部分是class，里面定义了他的业务逻辑（他要干什么），<br>但目前我们也不需要在里面写什么东西，毕竟只是个hello world。</p>
+<p>这里我们可以看到他的class前面有个export关键词，根据官方的解释，<br>export这个动作把这个ts文件变成了一个组件，这样一来别的地方就可以import并使用他了，<br>就像第一行里我们 import {Component} from ‘angular2/core’ 一样。</p>
+<ul>
+<li><p>在app目录下建一个文件叫main.ts</p>
+</li>
+<li><p>复制以下内容到main.ts</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import &#123;bootstrap&#125;    from &apos;angular2/platform/browser&apos;</div><div class="line">import &#123;AppComponent&#125; from &apos;./app.component&apos;</div><div class="line"></div><div class="line">bootstrap(AppComponent);</div></pre></td></tr></table></figure>
+<p>看，我们刚才写的AppComponent就被import到这个main.ts里了。而整个网页代码的入口也就是AppComponent。</p>
+<h3 id="第三步：写html"><a href="#第三步：写html" class="headerlink" title="第三步：写html"></a>第三步：写html</h3><ul>
+<li><p>在angular2-quickstart目录下建一个html文件叫index.html</p>
+</li>
+<li><p>复制以下内容到index.html</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;Angular 2 QuickStart&lt;/title&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;    </div><div class="line"></div><div class="line">    &lt;!-- 1. Load libraries --&gt;</div><div class="line">    &lt;!-- IE required polyfills, in this exact order --&gt;</div><div class="line">    &lt;script src=&quot;node_modules/es6-shim/es6-shim.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;node_modules/systemjs/dist/system-polyfills.js&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">    &lt;script src=&quot;node_modules/angular2/bundles/angular2-polyfills.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;node_modules/systemjs/dist/system.src.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;node_modules/rxjs/bundles/Rx.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;node_modules/angular2/bundles/angular2.dev.js&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">    &lt;!-- 2. Configure SystemJS --&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">      System.config(&#123;</div><div class="line">        packages: &#123;        </div><div class="line">          app: &#123;</div><div class="line">            format: &apos;register&apos;,</div><div class="line">            defaultExtension: &apos;js&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">      System.import(&apos;app/main&apos;)</div><div class="line">            .then(null, console.error.bind(console));</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line"></div><div class="line">  &lt;!-- 3. Display the application --&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;my-app&gt;Loading...&lt;/my-app&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<hr>
+<p>我们可以看出来，这个index.html分为三块。第一块引入了必要的js文件，他们都存在npm下载好的目录下。<br>第二块配置了 <code>SystemJS</code>，并在里面 <code>import</code> 了我们刚才写好的 <code>main.ts</code>，<code>main.ts</code>里提供了代码的入口即<code>bootstrap</code>。<br>第三块就是显示出来我们最开始写的app.component.ts，你应该还有印象，在 <code>app.component.ts</code> 的代码里有一句是 <code>selector: &#39;my-app&#39;</code>，<br>所以在html里这个组件就用 <code>&lt;my-app&gt;&lt;/my-app&gt;</code>表示，<br>这个标签显示的内容就是  <code>template: &#39;&lt;h1&gt;My First Angular 2 App&lt;/h1&gt;&#39;</code> 中的  <code>&lt;h1&gt;My First Angular 2 App&lt;/h1&gt;&#39;</code>，<br>而那个Loading…则会显示在js文件加载完之前，加载之后就会被template里的内容替代。</p>
+<h3 id="第四步：编译运行"><a href="#第四步：编译运行" class="headerlink" title="第四步：编译运行"></a>第四步：编译运行</h3><p>很简单就一步，<code>angular2-quickstart</code> 目录下在命令行里输入 <code>npm start</code>，之后不要关闭命令行，等待一会儿会有个网页自动打开就可以看到结果了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/04/docker/1小时入门Docker精品文章/" itemprop="url">
                   1小时入门Docker精品文章
                 </a>
@@ -1666,129 +1833,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/31/mongodb/Mac-OX上安装MongoDb/" itemprop="url">
-                  Mac OX上安装MongoDb
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-31T08:53:53+08:00" content="2015-10-31">
-              2015-10-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="install-MongoDb"><a href="#install-MongoDb" class="headerlink" title="install MongoDb"></a>install MongoDb</h2><blockquote>
-<p>更新Homebrew的package数据库，在Mac的终端中输入：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew update</div></pre></td></tr></table></figure>
-<p>然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install mongodb</div></pre></td></tr></table></figure>
-<p>等待MongoDb下载完成。这个比较贴心了，有下载进度百分比。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">julauddeMacBook-Pro:/ julaud$ brew install mongodb</div><div class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/mongodb-3.0.7.yosemite.bott</div><div class="line">Already downloaded: /Library/Caches/Homebrew/mongodb-3.0.7.yosemite.bottle.tar.gz</div><div class="line">==&gt; Pouring mongodb-3.0.7.yosemite.bottle.tar.gz</div><div class="line">==&gt; Caveats</div><div class="line">To have launchd start mongodb at login:</div><div class="line">  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents</div><div class="line">Then to load mongodb now:</div><div class="line">  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</div><div class="line">Or, if you don&apos;t want/need launchctl, you can just run:</div><div class="line">  mongod --config /usr/local/etc/mongod.conf</div><div class="line">==&gt; Summary</div><div class="line">🍺  /usr/local/Cellar/mongodb/3.0.7: 17 files, 158M</div></pre></td></tr></table></figure>
-<h2 id="启动MongoDb"><a href="#启动MongoDb" class="headerlink" title="启动MongoDb"></a>启动MongoDb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">🍺  /usr/local/Cellar/mongodb/3.0.7: 17 files, 158M</div><div class="line">julauddeMacBook-Pro:/ julaud$ mongod --config /usr/local/etc/mongod.conf</div></pre></td></tr></table></figure>
-<p>运行mongodb执行 mongod命令就可以<br>mongod –dbpath=/data/db</p>
-<h2 id="连接MongoDb"><a href="#连接MongoDb" class="headerlink" title="连接MongoDb"></a>连接MongoDb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Last login: Thu Oct 29 20:36:01 on ttys000</div><div class="line">julauddeMacBook-Pro:~ julaud$ mongo</div><div class="line">MongoDB shell version: 3.0.7</div><div class="line">connecting to: test</div><div class="line">Welcome to the MongoDB shell.</div><div class="line">For interactive help, type &quot;help&quot;.</div><div class="line">For more comprehensive documentation, see</div><div class="line">	http://docs.mongodb.org/</div><div class="line">Questions? Try the support group</div><div class="line">	http://groups.google.com/group/mongodb-user</div><div class="line">Server has startup warnings:</div><div class="line">2015-10-30T22:55:29.874+0800 I CONTROL  [initandlisten]</div><div class="line">2015-10-30T22:55:29.874+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000</div><div class="line">&gt; show dbs</div><div class="line">local  0.078GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1834,7 +1878,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

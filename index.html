@@ -269,6 +269,127 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/01/git/git-仓库地址修改-ssh与-https-转换/" itemprop="url">
+                  git 仓库地址修改 ssh与 https 转换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-01T10:22:42+08:00" content="2018-03-01">
+              2018-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="添加仓库地址"><a href="#添加仓库地址" class="headerlink" title="添加仓库地址"></a>添加仓库地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add github git@github.com:zanjs/frontend-interview.git</div></pre></td></tr></table></figure>
+<p>原本是 <code>origin</code>, 这里我改成了  <code>github</code> ， 然后提交 <code>git push github</code> , 就会提交到新的 <code>github</code> 地址上</p>
+<h2 id="直接修改"><a href="#直接修改" class="headerlink" title="直接修改"></a>直接修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin 仓库地址</div></pre></td></tr></table></figure>
+<p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url git@github.com:zanjs/frontend-interview.git</div></pre></td></tr></table></figure>
+<h2 id="http-免输入密码"><a href="#http-免输入密码" class="headerlink" title="http 免输入密码"></a>http 免输入密码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ touch ~/.git-credentials</div><div class="line">$ vim ~/.git-credentials</div></pre></td></tr></table></figure>
+<p>添加内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://&#123;username&#125;:&#123;passwd&#125;@github.com</div></pre></td></tr></table></figure>
+<p>添加 <code>git</code> 配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/02/09/golang/linux-install-nsq-golang/" itemprop="url">
                   linux install nsq golang 
                 </a>
@@ -1407,122 +1528,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/15/php/windows-10-ImageMagick-安装配置/" itemprop="url">
-                  windows 10 ImageMagick 安装配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-15T13:13:04+08:00" content="2017-09-15">
-              2017-09-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>下载 <a href="http://ftp.icm.edu.pl/packages/ImageMagick/binaries/" target="_blank" rel="external">ImageMagick</a> 版本是 <code>ImageMagick 6.9.3-7 Q16 x86</code></p>
-<p>下载 PHP扩展 <a href="https://pecl.php.net/package/imagick/3.4.3/windows" target="_blank" rel="external">imagick/3.4.3</a></p>
-<p>下载 PECL <a href="http://windows.php.net/downloads/pecl/deps/" target="_blank" rel="external">6.9.3-7 Q16 x86 v11 和 v14 看你PHP版本</a></p>
-<p><code>php.ini</code> 加入 <code>extension=php_imagick.dll</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1568,7 +1573,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
