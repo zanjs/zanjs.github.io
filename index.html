@@ -269,6 +269,124 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/14/nginx/nginx-代理-nodejs-的-websocket-服务/" itemprop="url">
+                  nginx 代理 nodejs 的 websocket 服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-14T11:32:23+08:00" content="2018-03-14">
+              2018-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用 <code>nodejs</code> 做  <code>websocket</code> 服务的时候， 用了 <code>nginx</code> 做代理, 发现 浏览器报错了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">websocket.js:111 WebSocket connection to &apos;wss://api.gg/socket.io/?EIO=3&amp;transport=websocket&amp;sid=Wa-r7QOs37OgwtToAAAD&apos; failed: Error during WebSocket handshake: Unexpected response code: 400</div></pre></td></tr></table></figure>
+<p>解决方案是  修改 <code>nginx</code> 配置 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">  proxy_pass http://localhost:3001;</div><div class="line">  proxy_set_header host $host;</div><div class="line">  proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">  proxy_pass_request_headers      on;</div><div class="line">  proxy_set_header Upgrade $http_upgrade;</div><div class="line">  proxy_set_header Connection &quot;upgrade&quot;;</div><div class="line">  client_max_body_size  2048m;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>主要是 设置 <code>proxy_set_header Upgrade $http_upgrade;</code>  和 <code>proxy_set_header Connection &quot;upgrade&quot;;</code></p>
+<p>至此完成了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/01/git/git-仓库地址修改-ssh与-https-转换/" itemprop="url">
                   git 仓库地址修改 ssh与 https 转换
                 </a>
@@ -1416,118 +1534,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/24/6city/拼单行路由/" itemprop="url">
-                  拼单行路由
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-24T17:27:46+08:00" content="2017-10-24">
-              2017-10-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/weapp/" itemprop="url" rel="index">
-                    <span itemprop="name">weapp</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 路由管理</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  index: <span class="string">'/page/index/index'</span>, <span class="comment">// 首页</span></div><div class="line">  income: <span class="string">'/page/income/income'</span>, <span class="comment">// 我的收入</span></div><div class="line">  email: <span class="string">'/page/email/email?id='</span>, <span class="comment">// 导出到邮箱</span></div><div class="line">  incomeDetail: <span class="string">'/page/incomeDetail/incomeDetail'</span>,  <span class="comment">// 收支明细详情</span></div><div class="line">  groupCreate: <span class="string">'/page/groupCreate/groupCreate'</span>, <span class="comment">// 发起拼单团</span></div><div class="line">  groupHeadRead: <span class="string">'/page/groupHeadRead/groupHeadRead'</span>, <span class="comment">// 拼长须知</span></div><div class="line">  groupCreateHelp: <span class="string">'/page/groupCreateHelp/groupCreateHelp'</span>, <span class="comment">// 发起拼单攻略</span></div><div class="line">  groupSuccess: <span class="string">'/page/groupSuccess/groupSuccess'</span>, <span class="comment">// 发起拼单成功</span></div><div class="line">  groupDetaill: <span class="string">'/page/groupDetail/groupDetail?id='</span>, <span class="comment">// 拼单详情</span></div><div class="line">  groupEdit: <span class="string">'/page/groupEdit/groupEdit?id='</span>, <span class="comment">// 拼单详情</span></div><div class="line">  orderSuccess: <span class="string">'/page/orderSuccess/orderSuccess?id='</span>, <span class="comment">// 发起订单成功</span></div><div class="line">  help: <span class="string">'/page/help/index'</span>, <span class="comment">// 常见问题风险须知</span></div><div class="line">  my: <span class="string">'/page/my/my'</span>, <span class="comment">// 我的</span></div><div class="line">  establish: <span class="string">'/page/establish/establish'</span>,  <span class="comment">// 我发布的</span></div><div class="line">  orderDetail: <span class="string">'/page/orderDetail/orderDetail?mergeId='</span>,  <span class="comment">// 团长查看拼单详情</span></div><div class="line">  certification: <span class="string">'/page/certification/certification'</span>,  <span class="comment">// 团长认证信息</span></div><div class="line">  followOrderList: <span class="string">'/page/followList/followList'</span>, <span class="comment">//  我的跟单</span></div><div class="line">  followDetail: <span class="string">'/page/followDetail/followDetail?followId='</span>,  <span class="comment">// 团员查看跟单详情</span></div><div class="line">  cartPay: <span class="string">'/page/cartPay/cartPay?id='</span>,</div><div class="line">  withdraw: <span class="string">'/page/withdraw/withdraw'</span>, <span class="comment">// 申请提现</span></div><div class="line">  transaction: <span class="string">'/page/transaction/transaction'</span>, <span class="comment">// 交易中</span></div><div class="line">  withdrawDone: <span class="string">'/page/withdrawDone/withdrawDone'</span>, <span class="comment">// 已提现</span></div><div class="line">  incomeList: <span class="string">'/page/incomeList/incomeList'</span>, <span class="comment">// 收支明细列表</span></div><div class="line">  withdrawDetail: <span class="string">'/page/withdrawDetail/withdrawDetail'</span>, <span class="comment">// 提现详情</span></div><div class="line">  processDetail: <span class="string">'/page/processDetail/processDetail'</span>, <span class="comment">// 进度跟踪详情</span></div><div class="line">  transDetail: <span class="string">'/page/transDetail/transDetail'</span>, <span class="comment">// 交易详情</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1573,7 +1579,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1590,7 +1596,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

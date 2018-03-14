@@ -269,6 +269,118 @@
             
               
                 
+                <a class="post-title-link" href="/2017/10/24/6city/拼单行路由/" itemprop="url">
+                  拼单行路由
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-24T17:27:46+08:00" content="2017-10-24">
+              2017-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/weapp/" itemprop="url" rel="index">
+                    <span itemprop="name">weapp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 路由管理</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  index: <span class="string">'/page/index/index'</span>, <span class="comment">// 首页</span></div><div class="line">  income: <span class="string">'/page/income/income'</span>, <span class="comment">// 我的收入</span></div><div class="line">  email: <span class="string">'/page/email/email?id='</span>, <span class="comment">// 导出到邮箱</span></div><div class="line">  incomeDetail: <span class="string">'/page/incomeDetail/incomeDetail'</span>,  <span class="comment">// 收支明细详情</span></div><div class="line">  groupCreate: <span class="string">'/page/groupCreate/groupCreate'</span>, <span class="comment">// 发起拼单团</span></div><div class="line">  groupHeadRead: <span class="string">'/page/groupHeadRead/groupHeadRead'</span>, <span class="comment">// 拼长须知</span></div><div class="line">  groupCreateHelp: <span class="string">'/page/groupCreateHelp/groupCreateHelp'</span>, <span class="comment">// 发起拼单攻略</span></div><div class="line">  groupSuccess: <span class="string">'/page/groupSuccess/groupSuccess'</span>, <span class="comment">// 发起拼单成功</span></div><div class="line">  groupDetaill: <span class="string">'/page/groupDetail/groupDetail?id='</span>, <span class="comment">// 拼单详情</span></div><div class="line">  groupEdit: <span class="string">'/page/groupEdit/groupEdit?id='</span>, <span class="comment">// 拼单详情</span></div><div class="line">  orderSuccess: <span class="string">'/page/orderSuccess/orderSuccess?id='</span>, <span class="comment">// 发起订单成功</span></div><div class="line">  help: <span class="string">'/page/help/index'</span>, <span class="comment">// 常见问题风险须知</span></div><div class="line">  my: <span class="string">'/page/my/my'</span>, <span class="comment">// 我的</span></div><div class="line">  establish: <span class="string">'/page/establish/establish'</span>,  <span class="comment">// 我发布的</span></div><div class="line">  orderDetail: <span class="string">'/page/orderDetail/orderDetail?mergeId='</span>,  <span class="comment">// 团长查看拼单详情</span></div><div class="line">  certification: <span class="string">'/page/certification/certification'</span>,  <span class="comment">// 团长认证信息</span></div><div class="line">  followOrderList: <span class="string">'/page/followList/followList'</span>, <span class="comment">//  我的跟单</span></div><div class="line">  followDetail: <span class="string">'/page/followDetail/followDetail?followId='</span>,  <span class="comment">// 团员查看跟单详情</span></div><div class="line">  cartPay: <span class="string">'/page/cartPay/cartPay?id='</span>,</div><div class="line">  withdraw: <span class="string">'/page/withdraw/withdraw'</span>, <span class="comment">// 申请提现</span></div><div class="line">  transaction: <span class="string">'/page/transaction/transaction'</span>, <span class="comment">// 交易中</span></div><div class="line">  withdrawDone: <span class="string">'/page/withdrawDone/withdrawDone'</span>, <span class="comment">// 已提现</span></div><div class="line">  incomeList: <span class="string">'/page/incomeList/incomeList'</span>, <span class="comment">// 收支明细列表</span></div><div class="line">  withdrawDetail: <span class="string">'/page/withdrawDetail/withdrawDetail'</span>, <span class="comment">// 提现详情</span></div><div class="line">  processDetail: <span class="string">'/page/processDetail/processDetail'</span>, <span class="comment">// 进度跟踪详情</span></div><div class="line">  transDetail: <span class="string">'/page/transDetail/transDetail'</span>, <span class="comment">// 交易详情</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/15/php/windows-10-ImageMagick-安装配置/" itemprop="url">
                   windows 10 ImageMagick 安装配置
                 </a>
@@ -1459,127 +1571,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/20/selenium/Selenium-3-python-2-判断元素是否存在/" itemprop="url">
-                  Selenium 3 python 2 判断元素是否存在
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-20T12:05:53+08:00" content="2017-06-20">
-              2017-06-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/selenium/" itemprop="url" rel="index">
-                    <span itemprop="name">selenium</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="捕获异常方法"><a href="#捕获异常方法" class="headerlink" title="捕获异常方法"></a>捕获异常方法</h2><ol>
-<li><p>如果没找到元素会抛异常，返回False</p>
-</li>
-<li><p>如果找到元素就返回Ture</p>
-</li>
-<li><p>但是这个方法有个弊端，如果页面上存在多个一样元素，也会返回Ture的（也就是说只要页面上有元素就返回Ture，不管几个）</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    driver.find_elements_by_css_selector(<span class="string">'css'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"><span class="keyword">except</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"></div><div class="line">driver = webdriver.Firefox()</div><div class="line">driver.implicitly_wait(<span class="number">10</span>)</div><div class="line">driver.get(<span class="string">"https://www.baidu.com"</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_element_exist</span><span class="params">(css)</span>:</span></div><div class="line">    s = driver.find_elements_by_css_selector(css_selector=css)</div><div class="line">    <span class="keyword">if</span> len(s) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"元素未找到:%s"</span>%css</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(s) == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"找到%s个元素：%s"</span>%(len(s),css)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># 判断页面上有无id为kw的元素</span></div><div class="line"><span class="keyword">if</span> is_element_exist(<span class="string">"#kw"</span>):</div><div class="line">    driver.find_element_by_id(<span class="string">"kw"</span>).send_keys(<span class="string">"zanjs"</span>)</div><div class="line"><span class="comment"># 判断页面有无标签为input元素</span></div><div class="line"><span class="keyword">if</span> is_element_exist(<span class="string">"input"</span>):</div><div class="line">    driver.find_element_by_tag_name(<span class="string">"input"</span>).send_keys(<span class="string">"zanjs"</span>)</div><div class="line"><span class="comment"># 判断页面有无id为xxx的元素</span></div><div class="line"><span class="keyword">if</span> is_element_exist(<span class="string">"xxx"</span>):</div><div class="line">    driver.find_element_by_id(<span class="string">"xxx"</span>).send_keys(<span class="string">"zanjs"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isElementExist</span><span class="params">(css)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        driver.find_element_by_css_selector(css)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> isElementExist(<span class="string">"#xxx"</span>)</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1625,7 +1616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1642,7 +1633,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
