@@ -269,6 +269,124 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/20/android/react-native-android-开发手记/" itemprop="url">
+                  react-native android 开发手记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-20T10:54:14+08:00" content="2018-03-20">
+              2018-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="错误如下"><a href="#错误如下" class="headerlink" title="错误如下"></a>错误如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Error:Execution failed for task &apos;:app:processDebugManifest&apos;.</div><div class="line">&gt; Manifest merger failed : Attribute application@allowBackup value=(false) from AndroidManifest.xml:11:7-34</div><div class="line">  	is also present at [:react-native-splash-screen] AndroidManifest.xml:12:9-35 value=(true).</div><div class="line">  	Suggestion: add &apos;tools:replace=&quot;android:allowBackup&quot;&apos; to &lt;application&gt; element at AndroidManifest.xml:7:5-31:19 to override.</div></pre></td></tr></table></figure>
+<p>找到 <code>AndroidManifest.xml</code></p>
+<p><code>application</code> 加入 <code>tools:replace=&quot;android:allowBackup&quot;</code></p>
+<p>这个时候 <code>tools</code> 属性会爆红</p>
+<p>在 <code>manifest</code> 根标签上加入 <code>xmlns:tools=&quot;http://schemas.android.com/tools&quot;</code></p>
+<p><a href="https://developer.android.com/studio/build/manifest-merge.html" target="_blank" rel="external">参考官方文档</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/14/nginx/nginx-代理-nodejs-的-websocket-服务/" itemprop="url">
                   nginx 代理 nodejs 的 websocket 服务
                 </a>
@@ -1393,147 +1511,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/19/nginx/实现nginx-rtmp-module多频道输入输出与权限控制/" itemprop="url">
-                  直播方案 多频道输入输出与权限控制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-12-19T17:26:20+08:00" content="2017-12-19">
-              2017-12-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这里使用得是 <code>nginx-rtmp-module</code></p>
-<h1 id="权限控制方面"><a href="#权限控制方面" class="headerlink" title="权限控制方面"></a>权限控制方面</h1><ol>
-<li>live配置的publish_notify部分 <a href="https://github.com/arut/nginx-rtmp-module/wiki/Directives#publish_notify" target="_blank" rel="external">link</a></li>
-</ol>
-<ol>
-<li>publish_notify中Notify的配置部分 <a href="https://github.com/arut/nginx-rtmp-module/wiki/Directives#notify" target="_blank" rel="external">link</a></li>
-</ol>
-<h2 id="live的publish-notify"><a href="#live的publish-notify" class="headerlink" title="live的publish_notify"></a>live的publish_notify</h2><p> 所谓的 <code>publish_notify是涉及publish_notify</code> 默认是 <code>off</code> 的，</p>
-<p> 主要涉及推送的过程中一些事件。</p>
-<p>开启 <code>publish_notify</code> 即可进行 <code>Notify</code> 的配置操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">publish_notify on;</div></pre></td></tr></table></figure>
-<h2 id="Notify的配置"><a href="#Notify的配置" class="headerlink" title="Notify的配置"></a>Notify的配置</h2><p><code>Notify</code> 的配置相关是涉及直播的事件并执行回调代码。</p>
-<blockquote>
-<p>比如：推流链接、直播开启、直播结束状态，然后异步调用http的链接，进行一些逻辑的处理。</p>
-</blockquote>
-<p>主要的配置参数有下面这些：</p>
-<ol>
-<li><code>on_connect</code></li>
-<li><code>on_play</code></li>
-<li><code>on_publish</code></li>
-<li><code>on_done</code></li>
-<li><code>on_play_done</code></li>
-<li><code>on_publish_done</code></li>
-<li><code>on_record_done</code></li>
-<li><code>on_update</code></li>
-<li>…</li>
-</ol>
-<p>从上面的配置参数可以看出，能够触发连接、直播、输出、直播结束等等，从而能够进行权限验证。</p>
-<p>比如，当触发推流的时候，通过 on_publish <a href="http://live.zanjs.com/uri" target="_blank" rel="external">http://live.zanjs.com/uri</a> 进行权限控制，接收相关参数并进行控制，如果用户不存在，则不允许推流。</p>
-<h1 id="多频道输入输出"><a href="#多频道输入输出" class="headerlink" title="多频道输入输出"></a>多频道输入输出</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1579,7 +1556,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-count">57</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

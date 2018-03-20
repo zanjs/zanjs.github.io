@@ -269,6 +269,147 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/19/nginx/实现nginx-rtmp-module多频道输入输出与权限控制/" itemprop="url">
+                  直播方案 多频道输入输出与权限控制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-19T17:26:20+08:00" content="2017-12-19">
+              2017-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里使用得是 <code>nginx-rtmp-module</code></p>
+<h1 id="权限控制方面"><a href="#权限控制方面" class="headerlink" title="权限控制方面"></a>权限控制方面</h1><ol>
+<li>live配置的publish_notify部分 <a href="https://github.com/arut/nginx-rtmp-module/wiki/Directives#publish_notify" target="_blank" rel="external">link</a></li>
+</ol>
+<ol>
+<li>publish_notify中Notify的配置部分 <a href="https://github.com/arut/nginx-rtmp-module/wiki/Directives#notify" target="_blank" rel="external">link</a></li>
+</ol>
+<h2 id="live的publish-notify"><a href="#live的publish-notify" class="headerlink" title="live的publish_notify"></a>live的publish_notify</h2><p> 所谓的 <code>publish_notify是涉及publish_notify</code> 默认是 <code>off</code> 的，</p>
+<p> 主要涉及推送的过程中一些事件。</p>
+<p>开启 <code>publish_notify</code> 即可进行 <code>Notify</code> 的配置操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">publish_notify on;</div></pre></td></tr></table></figure>
+<h2 id="Notify的配置"><a href="#Notify的配置" class="headerlink" title="Notify的配置"></a>Notify的配置</h2><p><code>Notify</code> 的配置相关是涉及直播的事件并执行回调代码。</p>
+<blockquote>
+<p>比如：推流链接、直播开启、直播结束状态，然后异步调用http的链接，进行一些逻辑的处理。</p>
+</blockquote>
+<p>主要的配置参数有下面这些：</p>
+<ol>
+<li><code>on_connect</code></li>
+<li><code>on_play</code></li>
+<li><code>on_publish</code></li>
+<li><code>on_done</code></li>
+<li><code>on_play_done</code></li>
+<li><code>on_publish_done</code></li>
+<li><code>on_record_done</code></li>
+<li><code>on_update</code></li>
+<li>…</li>
+</ol>
+<p>从上面的配置参数可以看出，能够触发连接、直播、输出、直播结束等等，从而能够进行权限验证。</p>
+<p>比如，当触发推流的时候，通过 on_publish <a href="http://live.zanjs.com/uri" target="_blank" rel="external">http://live.zanjs.com/uri</a> 进行权限控制，接收相关参数并进行控制，如果用户不存在，则不允许推流。</p>
+<h1 id="多频道输入输出"><a href="#多频道输入输出" class="headerlink" title="多频道输入输出"></a>多频道输入输出</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/10/24/6city/拼单行路由/" itemprop="url">
                   拼单行路由
                 </a>
@@ -1416,161 +1557,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/26/laravel/laravel-5-4-JWT-多用户认证/" itemprop="url">
-                  laravel 5.4 JWT 多用户认证
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-26T08:50:42+08:00" content="2017-06-26">
-              2017-06-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/laravel/" itemprop="url" rel="index">
-                    <span itemprop="name">laravel</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>在 composer.json 文件的 require 中添加如下行来引入 JWT-Auth</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;require&quot;: &#123;</div><div class="line">    ...</div><div class="line">    &quot;tymon/jwt-auth&quot;:&quot;1.0.0-beta.3&quot;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>执行 <code>composer update</code></p>
-<ol>
-<li>comfig/app.php 配置</li>
-</ol>
-<p><code>providers</code> 下添加</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Tymon\JWTAuth\Providers\LaravelServiceProvider::class,</div></pre></td></tr></table></figure>
-<p><code>aliases</code> 下添加</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'JWTAuth'</span> =&gt; Tymon\JWTAuth\Facades\JWTAuth::class,</div><div class="line"><span class="string">'JWTFactory'</span> =&gt; Tymon\JWTAuth\Facades\JWTFactory::class,</div></pre></td></tr></table></figure>
-<ol>
-<li>生成 <code>jwt.php</code> 文件</li>
-</ol>
-<p>在 cmd 窗口执行命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan vendor:publish --provider=<span class="string">"Tymon\JWTAuth\Providers\LaravelServiceProvider"</span></div></pre></td></tr></table></figure>
-<p>会在 <code>config</code> 文件夹下生成 <code>jwt.php</code>  配置文件</p>
-<p>接着生成 <code>jwt</code> 密钥</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan jwt:secret</div></pre></td></tr></table></figure>
-<ol>
-<li>config/auth.php 设置相关参数</li>
-</ol>
-<p>我这里需要添加一个微信用户表</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="string">'guards'</span> =&gt; [</div><div class="line">    ...</div><div class="line">    <span class="string">'api'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'jwt'</span>,</div><div class="line">            <span class="string">'provider'</span> =&gt; <span class="string">'we_users'</span>,</div><div class="line">        ],</div><div class="line">],</div><div class="line"></div><div class="line"><span class="string">'providers'</span> =&gt; [</div><div class="line">    ...</div><div class="line">    <span class="string">'we_users'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span> =&gt; <span class="string">'eloquent'</span>,</div><div class="line">        <span class="string">'model'</span> =&gt; App\WeUser::class,</div><div class="line">    ],</div><div class="line">],</div></pre></td></tr></table></figure>
-<ol>
-<li>创建 WeUser 模型</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model WeUser -m</div></pre></td></tr></table></figure>
-<p>编辑 WeUser.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Notifications</span>\<span class="title">Notifiable</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Auth</span>\<span class="title">User</span> <span class="title">as</span> <span class="title">Authenticatable</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Contracts</span>\<span class="title">JWTSubject</span> <span class="title">as</span> <span class="title">AuthenticatableUserContract</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeUser</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span> <span class="keyword">implements</span> <span class="title">AuthenticatableUserContract</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">use</span> <span class="title">Notifiable</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * The attributes that are mass assignable.</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@var</span> array</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">protected</span> $fillable = [</div><div class="line">        <span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'password'</span>,</div><div class="line">    ];</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * The attributes that should be hidden for arrays.</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@var</span> array</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">protected</span> $hidden = [</div><div class="line">        <span class="string">'password'</span>, <span class="string">'remember_token'</span>,</div><div class="line">    ];</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> mixed</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTIdentifier</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getKey(); <span class="comment">// Eloquent model method</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> array</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTCustomClaims</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>route.php 中添加登录路由</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Route::post(<span class="string">'/login'</span>,<span class="string">'WeUserController@login'</span>);</div></pre></td></tr></table></figure>
-<ol>
-<li>创建 <code>WeUser</code> 控制器</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:controller WeUserController</div></pre></td></tr></table></figure>
-<ol>
-<li>编辑微信用户控制器 WeUserController.php</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 微信用户自动登陆</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> Request $request</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span> \Illuminate\Http\JsonResponse</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">(Request $request)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    $hasUser = WeUser::Where(<span class="string">'email'</span>, $request-&gt;email)-&gt;first();</div><div class="line">    <span class="keyword">if</span>(!$hasUser)&#123;</div><div class="line">        WeUser::create([</div><div class="line">            <span class="string">'name'</span> =&gt; $request-&gt;name,</div><div class="line">            <span class="string">'email'</span> =&gt; $request-&gt;email,</div><div class="line">            <span class="string">'password'</span> =&gt; bcrypt($request-&gt;password),</div><div class="line">        ]);</div><div class="line">    &#125;</div><div class="line">    $credentials=[</div><div class="line">        <span class="string">'email'</span> =&gt; $request-&gt;email,</div><div class="line">        <span class="string">'password'</span>  =&gt; $request-&gt;password,</div><div class="line">    ];</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">if</span> (! $token = Auth::guard(<span class="keyword">$this</span>-&gt;guard)-&gt;attempt($credentials)) &#123;</div><div class="line">            <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'invalid_credentials'</span>], <span class="number">401</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (JWTException $e) &#123;</div><div class="line">        <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'could_not_create_token'</span>], <span class="number">500</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> response()-&gt;json(compact(<span class="string">'token'</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1616,7 +1602,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-count">57</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
