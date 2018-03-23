@@ -269,6 +269,149 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/21/iis/iis-搞个代理转发是什么概念/" itemprop="url">
+                  iis 搞个服务代理转发是什么概念
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-21T13:21:10+08:00" content="2017-07-21">
+              2017-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iis/" itemprop="url" rel="index">
+                    <span itemprop="name">iis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>习惯了 <code>nginx</code> 的 <code>web</code> 网关层，遇到 <code>iis</code> 服务，给跪了,啥也不说，上去填坑吧!</p>
+<p>我们使用 <code>go</code> 开发了 一套 短链接服务, 然后目前只能配置在 iis 服务器上 , 所以只好折腾 iis 的代理了</p>
+<p>我这次使用 <code>iis</code> 的插件 来做 请求转发, 需要下载 <code>2</code> 个 微软的东西</p>
+<p><a href="https://www.iis.net/downloads/microsoft/application-request-routing#additionalDownloads" target="_blank" rel="external">请求代理转发下载</a></p>
+<p><a href="https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads" target="_blank" rel="external">url 重写下载</a></p>
+<p>下载好后 一直下一步就好了, 都安装完后 重启下 iis</p>
+<h3 id="打开-iis-服务管理后会看到如下界面-记得-双击-Application-Request-Routing-Cache"><a href="#打开-iis-服务管理后会看到如下界面-记得-双击-Application-Request-Routing-Cache" class="headerlink" title="打开 iis 服务管理后会看到如下界面 记得 双击 Application Request Routing Cache"></a>打开 iis 服务管理后会看到如下界面 记得 双击 <code>Application Request Routing Cache</code></h3><p><img src="/imgs/2017-07-21/approute.jpg" alt=""></p>
+<h3 id="双击右边的-Server-Proxy-Setting"><a href="#双击右边的-Server-Proxy-Setting" class="headerlink" title="双击右边的 Server Proxy Setting"></a>双击右边的 Server Proxy Setting</h3><p><img src="/imgs/2017-07-21/Server-Proxy-Settings.png" alt=""></p>
+<h3 id="勾上-Enable-proxy"><a href="#勾上-Enable-proxy" class="headerlink" title="勾上 Enable proxy"></a>勾上 <code>Enable proxy</code></h3><p><img src="/imgs/2017-07-21/Enable.jpg" alt=""></p>
+<p>然后点击应用</p>
+<p>到此 iis 的代理转发就开启了, 但还没完，开启是开启了 但还没配置转发的规则呢。</p>
+<h3 id="建立站点配置规则"><a href="#建立站点配置规则" class="headerlink" title="建立站点配置规则"></a>建立站点配置规则</h3><p><img src="/imgs/2017-07-21/1.png" alt=""></p>
+<p>双击空白规则 进入配置</p>
+<p><img src="/imgs/2017-07-21/2.png" alt=""></p>
+<h3 id="入站规则如下"><a href="#入站规则如下" class="headerlink" title="入站规则如下"></a>入站规则如下</h3><p>请求URL(Requested URL) 选择 与模式匹配(Matches the Pattern )</p>
+<p>使用(Using) 选择 正则表达式(Regular Expressions)</p>
+<p>模式(Pattern)： 填写 <code>^(.*)</code></p>
+<p>勾选 忽略大小写(Ignore case)</p>
+<ol>
+<li><p><img src="/imgs/2017-07-21/3.png" alt=""></p>
+</li>
+<li><p><img src="/imgs/2017-07-21/4.png" alt=""></p>
+</li>
+</ol>
+<h3 id="展开-条件-Conditions"><a href="#展开-条件-Conditions" class="headerlink" title="展开 条件(Conditions)"></a>展开 条件(Conditions)</h3><p>逻辑分组(Logical grouping) 选择 任意匹配(Match Any)</p>
+<p>点击添加(add)</p>
+<p>条件输入(Condition input) 填写  <code>{HTTP_HOST}</code> ， <code>HTTP_HOST</code> 代表请求头里的 <code>host</code></p>
+<p>模式(Pattern) 输入  <code>^iis.dev$</code></p>
+<h3 id="展开-操作-Action"><a href="#展开-操作-Action" class="headerlink" title="展开 操作(Action)"></a>展开 操作(Action)</h3><p>重写 URL 输入 <code>https://cn.bing.com/{R:1}</code></p>
+<p>到此配置结束，保存这个规则</p>
+<p>然后访问 <code>iis.dev</code> 就可以看到微软 <code>bing</code> 的首页啦</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/26/laravel/laravel-5-4-JWT-多用户认证/" itemprop="url">
                   laravel 5.4 JWT 多用户认证
                 </a>
@@ -1416,140 +1559,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/01/java/spring/spring-boot-使用idea调试-热部署/" itemprop="url">
-                  spring-boot 使用idea调试，热部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-01T11:14:06+08:00" content="2017-03-01">
-              2017-03-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/spring/" itemprop="url" rel="index">
-                    <span itemprop="name">spring</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/spring/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="spring-boot-热部署功能"><a href="#spring-boot-热部署功能" class="headerlink" title="spring-boot 热部署功能"></a>spring-boot 热部署功能</h2><p>加 maven 依赖 </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>开启热部署</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="IDEA-自动编译"><a href="#IDEA-自动编译" class="headerlink" title="IDEA 自动编译"></a>IDEA 自动编译</h2><ol>
-<li><p><code>CTRL + SHIFT + A</code>  –&gt; 查找 <code>make project automatically</code> –&gt; 选中</p>
-</li>
-<li><p><code>CTRL + SHIFT + A</code> –&gt; 查找 <code>Registry</code> –&gt; 找到并勾选 <code>compiler.automake.allow.when.app.running</code></p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1595,7 +1604,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1612,7 +1621,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
