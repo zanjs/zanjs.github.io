@@ -269,6 +269,140 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/01/java/spring/Intellij-IDEA-SpringBoot项目热部署解决方案/" itemprop="url">
+                  Intellij IDEA SpringBoot项目热部署解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T11:29:31+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/spring/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>在项目pom文件中导入依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--Spring 官方提供的热部署插件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>修改 Intellij IDEA 的配置</li>
+</ol>
+<p><code>CTRL + SHIFT + A</code> 查找 <code>make project automatically</code> 并选中</p>
+<p><code>CTRL + SHIFT + A</code> 查找 <code>Registry</code> 找到选项 <code>compile.automake.allow.when.app.running</code></p>
+<p>重启<code>IDEA</code> 后启动项目就可以在 <code>IDEA</code> 中修改代码和静态页面模板，无需再重启 <code>SpringBoot</code> 项目了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/01/java/spring/spring-boot-使用idea调试-热部署/" itemprop="url">
                   spring-boot 使用idea调试，热部署
                 </a>
@@ -1661,139 +1795,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/12/react/es6-es7-更优雅的书写React/" itemprop="url">
-                  es6 es7 更优雅的书写React
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-12T13:19:49+08:00" content="2016-06-12">
-              2016-06-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>目前我们想使用 es6 编写 React 应用时，常用到Babel这个编译工具，<br>在项目根目录下 建立 <code>.babelrc</code> ,内容如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;presets&quot;: [</div><div class="line">      &quot;es2015&quot;,</div><div class="line">      &quot;react&quot;,</div><div class="line">      &quot;stage-0&quot;</div><div class="line">    ],</div><div class="line">    &quot;plugins&quot;: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们现在来说明下这个配置文件是什么意思。<br>首先，这个配置文件是针对babel 6的。<br>Babel 6做了一系列模块化，不像Babel 5一样把所有的内容都加载。<br>比如需要编译ES6，我们需要设置presets为”es2015”，也就是预先加载es6编译的相关模块，<br>如果需要编译jsx，需要预先加载”react”这个模块。<br>那问题来了，这个”stage-0”又代表什么呢？ 有了”react-0”，是否又有诸如”stage-1”, “stage-2”等等呢？</p>
-<p>事实上， ”stage-0”是对ES7一些提案的支持，Babel通过插件的方式引入，让Babel可以编译ES7代码。<br>当然由于ES7没有定下来，所以这些功能随时肯能被废弃掉的。现在我们来一一分析里面都有什么。</p>
-<h2 id="法力无边的stage-0"><a href="#法力无边的stage-0" class="headerlink" title="法力无边的stage-0"></a>法力无边的stage-0</h2><p>为什么说“stage-0” 法力无边呢，因为它包含stage-1, stage-2以及stage-3的所有功能，<br>同时还另外支持如下两个功能插件：</p>
-<ul>
-<li><p><a href="https://babeljs.io/docs/plugins/transform-do-expressions" target="_blank" rel="external">transform-do-expressions</a></p>
-</li>
-<li><p><a href="https://babeljs.io/docs/plugins/transform-function-bind" target="_blank" rel="external">transform-function-bind</a></p>
-</li>
-</ul>
-<p>用过React的同学可能知道，jsx对条件表达式支持的不是太好，<br>你不能很方便的使用if/else表达式，要么你使用三元表达，要么用函数。<br>例如你不能写如下的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> App = React.createClass(&#123;</div><div class="line"></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">let</span> &#123; color &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;div className=<span class="string">"parents"</span>&gt;</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span>(color == <span class="string">'blue'</span>) &#123; </div><div class="line">                        &lt;BlueComponent/&gt;; </div><div class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(color == <span class="string">'red'</span>) &#123; </div><div class="line">                        &lt;RedComponent/&gt;; </div><div class="line">                    &#125;<span class="keyword">else</span> &#123; </div><div class="line">                        &lt;GreenComponent/&gt;; &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">        )</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&#125;)</span></div></pre></td></tr></table></figure>
-<p>在React中你只能写成这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> App = React.createClass(&#123;</div><div class="line"></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">let</span> &#123; color &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">const</span> getColoredComponent = <span class="function"><span class="params">color</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span>(color === <span class="string">'blue'</span>) &#123; <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">BlueComponent</span>/&gt;</span></span>; &#125;</div><div class="line">            <span class="keyword">if</span>(color === <span class="string">'red'</span>) &#123; <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">RedComponent</span>/&gt;</span></span>; &#125;</div><div class="line">            <span class="keyword">if</span>(color === <span class="string">'green'</span>) &#123; <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">GreenComponent</span>/&gt;</span></span>; &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;div className=<span class="string">"parents"</span>&gt;</div><div class="line">                &#123; getColoredComponent(color) &#125;</div><div class="line">            &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">        )</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&#125;)</span></div></pre></td></tr></table></figure>
-<p><a href="https://babeljs.io/docs/plugins/transform-do-expressions" target="_blank" rel="external">transform-do-expressions</a><br>这个插件就是为了方便在 jsx写if/else表达式而提出的，我们可以重写下代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> App = React.createClass(&#123;</div><div class="line"></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">let</span> &#123; color &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;div className=<span class="string">"parents"</span>&gt;</div><div class="line">                &#123;<span class="keyword">do</span> &#123;</div><div class="line">                    <span class="keyword">if</span>(color == <span class="string">'blue'</span>) &#123; </div><div class="line">                        &lt;BlueComponent/&gt;; </div><div class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(color == <span class="string">'red'</span>) &#123; </div><div class="line">                        &lt;RedComponent/&gt;; </div><div class="line">                    &#125;<span class="keyword">else</span> &#123; </div><div class="line">                        &lt;GreenComponent/&gt;; &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;&#125;</div><div class="line">            &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">        )</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&#125;)</span></div></pre></td></tr></table></figure>
-<p>再说说 <a href="http://babeljs.io/docs/plugins/transform-function-bind/" target="_blank" rel="external">transform-function-bind</a>,<br>这个插件其实就是提供过 :: 这个操作符来方便快速切换上下文， 如下面的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">obj::func</div><div class="line"><span class="comment">// is equivalent to:</span></div><div class="line">func.bind(obj)</div><div class="line"></div><div class="line">obj::func(val)</div><div class="line"><span class="comment">// is equivalent to:</span></div><div class="line">func.call(obj, val)</div><div class="line"></div><div class="line">::obj.func(val)</div><div class="line"><span class="comment">// is equivalent to:</span></div><div class="line">func.call(obj, val)</div><div class="line"></div><div class="line"><span class="comment">// 再来一个复杂点的样例</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> box = &#123;</div><div class="line">  weight: <span class="number">2</span>,</div><div class="line">  getWeight() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.weight; &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> &#123; getWeight &#125; = box;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(box.getWeight()); <span class="comment">// prints '2'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> bigBox = &#123; <span class="attr">weight</span>: <span class="number">10</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(bigBox::getWeight()); <span class="comment">// prints '10'</span></div><div class="line"></div><div class="line"><span class="comment">// Can be chained:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">val</span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span> + val; &#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(bigBox::getWeight()::add(<span class="number">5</span>)); <span class="comment">// prints '15'</span></div></pre></td></tr></table></figure>
-<p>如果想更屌点，还可以写出更牛逼的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; map, filter &#125; = <span class="built_in">Array</span>.prototype;</div><div class="line"></div><div class="line"><span class="keyword">let</span> sslUrls = <span class="built_in">document</span>.querySelectorAll(<span class="string">'a'</span>)</div><div class="line">                ::map(<span class="function"><span class="params">node</span> =&gt;</span> node.href)</div><div class="line">                ::filter(<span class="function"><span class="params">href</span> =&gt;</span> href.substring(<span class="number">0</span>, <span class="number">5</span>) === <span class="string">'https'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sslUrls);</div></pre></td></tr></table></figure>
-<h2 id="包罗万象的stage-1"><a href="#包罗万象的stage-1" class="headerlink" title="包罗万象的stage-1"></a>包罗万象的stage-1</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1839,7 +1840,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1856,7 +1857,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">79</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

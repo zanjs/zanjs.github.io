@@ -1,0 +1,669 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,fdisk," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="分区 运行 fdisk -l 命令查看实例是否有数据盘。如果执行命令后，没有发现 /dev/vdb ，表示您的实例没有数据盘，无需格式化数据盘，请忽略本文后续内容。  如果您的数据盘显示的是 dev/xvd?，表示您使用的是非 I/O 优化实例。 其中 ? 是 a−z 的任一个字母。   创建一个单分区数据盘，依次执行以下命令：  运行 fdisk /dev/vdb ：对数据盘进行分区。 输入 n">
+<meta name="keywords" content="linux,fdisk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 格式化和挂载数据盘">
+<meta property="og:url" content="http://zanjs.com/2018/04/09/linux/Linux-格式化和挂载数据盘/index.html">
+<meta property="og:site_name" content="一点心怡 | 前端娃">
+<meta property="og:description" content="分区 运行 fdisk -l 命令查看实例是否有数据盘。如果执行命令后，没有发现 /dev/vdb ，表示您的实例没有数据盘，无需格式化数据盘，请忽略本文后续内容。  如果您的数据盘显示的是 dev/xvd?，表示您使用的是非 I/O 优化实例。 其中 ? 是 a−z 的任一个字母。   创建一个单分区数据盘，依次执行以下命令：  运行 fdisk /dev/vdb ：对数据盘进行分区。 输入 n">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-09T02:22:36.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 格式化和挂载数据盘">
+<meta name="twitter:description" content="分区 运行 fdisk -l 命令查看实例是否有数据盘。如果执行命令后，没有发现 /dev/vdb ，表示您的实例没有数据盘，无需格式化数据盘，请忽略本文后续内容。  如果您的数据盘显示的是 dev/xvd?，表示您使用的是非 I/O 优化实例。 其中 ? 是 a−z 的任一个字母。   创建一个单分区数据盘，依次执行以下命令：  运行 fdisk /dev/vdb ：对数据盘进行分区。 输入 n">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zanjs.com/2018/04/09/linux/Linux-格式化和挂载数据盘/"/>
+
+  <title> Linux 格式化和挂载数据盘 | 一点心怡 | 前端娃 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一点心怡 | 前端娃</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">精于心, 简于形, 说前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux 格式化和挂载数据盘
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-09T09:56:32+08:00" content="2018-04-09">
+              2018-04-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><ol>
+<li><p>运行 <code>fdisk -l</code> 命令查看实例是否有数据盘。如果执行命令后，没有发现 <code>/dev/vdb</code> ，表示您的实例没有数据盘，无需格式化数据盘，请忽略本文后续内容。</p>
+<ul>
+<li>如果您的数据盘显示的是 <code>dev/xvd?</code>，表示您使用的是非 <code>I/O</code> 优化实例。</li>
+<li>其中 ? 是 <code>a−z</code> 的任一个字母。</li>
+</ul>
+</li>
+<li><p>创建一个单分区数据盘，依次执行以下命令：</p>
+<ul>
+<li>运行 <code>fdisk /dev/vdb</code> ：对数据盘进行分区。</li>
+<li>输入 <code>n</code>  并按回车键：创建一个新分区。</li>
+<li>输入 <code>p</code>  并按回车键：选择主分区。因为创建的是一个单分区数据盘，所以只需要创建主分区。<ul>
+<li>如果要创建 4 个以上的分区，您应该创建至少一个扩展分区，即选择 <code>e</code>。</li>
+</ul>
+</li>
+<li>输入分区编号并按回车键。因为这里仅创建一个分区，可以输入 <code>1</code>。</li>
+<li>输入第一个可用的扇区编号：按回车键采用默认值 <code>1</code>。</li>
+<li>输入最后一个扇区编号：因为这里仅创建一个分区，所以按回车键采用默认值。</li>
+<li>输入 <code>wq</code> 并按回车键，开始分区。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[root@iZuf6eksh7dbr9g67v6cc7Z /]<span class="comment"># fdisk /dev/vdb</span></div><div class="line">Welcome to fdisk (util-linux 2.23.2).</div><div class="line"></div><div class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</div><div class="line">Be careful before using the write <span class="built_in">command</span>.</div><div class="line"></div><div class="line">Device does not contain a recognized partition table</div><div class="line">Building a new DOS disklabel with disk identifier 0xb20a5f02.</div><div class="line"></div><div class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</div><div class="line">Partition <span class="built_in">type</span>:</div><div class="line">   p   primary (0 primary, 0 extended, 4 free)</div><div class="line">   e   extended</div><div class="line">Select (default p): </div><div class="line">Using default response p</div><div class="line">Partition number (1-4, default 1): 1</div><div class="line">First sector (2048-419430399, default 2048): </div><div class="line">Using default value 2048</div><div class="line">Last sector, +sectors or +size&#123;K,M,G&#125; (2048-419430399, default 419430399): </div><div class="line">Using default value 419430399</div><div class="line">Partition 1 of <span class="built_in">type</span> Linux and of size 200 GiB is <span class="built_in">set</span></div><div class="line"></div><div class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): wq</div><div class="line">The partition table has been altered!</div><div class="line"></div><div class="line">Calling ioctl() to re-read partition table.</div><div class="line">Syncing disks.</div></pre></td></tr></table></figure>
+<p>查看新的分区：运行命令 <code>fdisk -l</code> 。如果出现以下信息，说明已经成功创建了新分区 /dev/vdb1。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@iZuf6eksh7dbr9g67v6cc7Z /]<span class="comment"># fdisk -l</span></div><div class="line"></div><div class="line">Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors</div><div class="line">Units = sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk label <span class="built_in">type</span>: dos</div><div class="line">Disk identifier: 0x0008d73a</div><div class="line"></div><div class="line">   Device Boot      Start         End      Blocks   Id  System</div><div class="line">/dev/vda1   *        2048    83884031    41940992   83  Linux</div><div class="line"></div><div class="line">Disk /dev/vdb: 214.7 GB, 214748364800 bytes, 419430400 sectors</div><div class="line">Units = sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk label <span class="built_in">type</span>: dos</div><div class="line">Disk identifier: 0xb20a5f02</div><div class="line"></div><div class="line">   Device Boot      Start         End      Blocks   Id  System</div><div class="line">/dev/vdb1            2048   419430399   209714176   83  Linux</div></pre></td></tr></table></figure>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在新分区上创建一个文件系统：运行命令 <code>mkfs.ext3 /dev/vdb1</code> 。</p>
+<ul>
+<li><p>本示例要创建一个 <code>ext3</code> 文件系统。您也可以根据自己的需要，选择创建其他文件系统，例如，如果需要在 <code>Linux</code>、<code>Windows</code> 和 <code>Mac</code> 系统之间共享文件，您可以使用 <code>mkfs.vfat</code> 创建 <code>VFAT</code> 文件系统。</p>
+</li>
+<li><p>创建文件系统所需时间取决于数据盘大小</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[root@iZuf6eksh7dbr9g67v6cc7Z /]<span class="comment"># mkfs.ext3 /dev/vdb1</span></div><div class="line">mke2fs 1.42.9 (28-Dec-2013)</div><div class="line">Filesystem label=</div><div class="line">OS <span class="built_in">type</span>: Linux</div><div class="line">Block size=4096 (<span class="built_in">log</span>=2)</div><div class="line">Fragment size=4096 (<span class="built_in">log</span>=2)</div><div class="line">Stride=0 blocks, Stripe width=0 blocks</div><div class="line">13107200 inodes, 52428544 blocks</div><div class="line">2621427 blocks (5.00%) reserved <span class="keyword">for</span> the super user</div><div class="line">First data block=0</div><div class="line">Maximum filesystem blocks=4294967296</div><div class="line">1600 block groups</div><div class="line">32768 blocks per group, 32768 fragments per group</div><div class="line">8192 inodes per group</div><div class="line">Superblock backups stored on blocks: </div><div class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, </div><div class="line">	4096000, 7962624, 11239424, 20480000, 23887872</div><div class="line"></div><div class="line">Allocating group tables: <span class="keyword">done</span>                            </div><div class="line">Writing inode tables: <span class="keyword">done</span>                            </div><div class="line">Creating journal (32768 blocks): <span class="keyword">done</span></div><div class="line">Writing superblocks and filesystem accounting information: <span class="keyword">done</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>（建议）备份 <code>etc/fstab</code>：运行命令 <code>cp /etc/fstab /etc/fstab.bak</code></p>
+</li>
+<li><p>向 <code>/etc/fstab</code> 写入新分区信息：运行命令 <code>echo /dev/vdb1 /fdata ext3 defaults 0 0 &gt;&gt; /etc/fstab</code></p>
+</li>
+</ul>
+<p>如果需要把数据盘单独挂载到某个文件夹，比如单独用来存放网页，请将以上命令 <code>/fdata</code> 替换成所需的挂载点路径。</p>
+<ul>
+<li>查看 <code>/etc/fstab</code> 中的新分区信息, 运行命令 <code>cat /etc/fstab</code></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@iZuf6eksh7dbr9g67v6cc7Z /]<span class="comment"># cat /etc/fstab</span></div><div class="line"></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># /etc/fstab</span></div><div class="line"><span class="comment"># Created by anaconda on Sun Oct 15 15:19:00 2017</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Accessible filesystems, by reference, are maintained under '/dev/disk'</span></div><div class="line"><span class="comment"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span></div><div class="line"><span class="comment">#</span></div><div class="line">UUID=eb448abb-3012-4d8d-bcde-94434d586a31 /                       ext4    defaults        1 1</div><div class="line">/dev/vdb1 /fdata ext3 defaults 0 0</div></pre></td></tr></table></figure>
+<ul>
+<li>挂载文件系统：运行命令 <code>mount /dev/vdb1 /mnt</code> 。</li>
+</ul>
+<p>查看目前磁盘空间和使用情况：运行命令 <code>df -h</code>。<br>如果出现新建文件系统的信息，说明挂载成功，可以使用新的文件系统了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@iZuf6eksh7dbr9g67v6cc7Z /]<span class="comment"># df -h</span></div><div class="line">Filesystem      Size  Used Avail Use% Mounted on</div><div class="line">/dev/vda1        40G  6.9G   31G  19% /</div><div class="line">devtmpfs        3.9G     0  3.9G   0% /dev</div><div class="line">tmpfs           3.9G     0  3.9G   0% /dev/shm</div><div class="line">tmpfs           3.9G   62M  3.8G   2% /run</div><div class="line">tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup</div><div class="line">tmpfs           783M     0  783M   0% /run/user/0</div><div class="line">overlay          40G  6.9G   31G  19% /var/lib/docker/overlay2/7c73ef02aa155cb0106db23938309119e5ec8820e55ddccc8dc24f0bb4f0cd90/merged</div><div class="line">shm              64M     0   64M   0% /var/lib/docker/containers/d82300097547f9657e0700a1f9bd48081beb9597e1aee00582c625f3947c66bb/shm</div><div class="line">overlay          40G  6.9G   31G  19% /var/lib/docker/overlay2/24bd611663e7da9ee8b9628c02d40931f11fa90b78b59ef2905536e3f42692e7/merged</div><div class="line">shm              64M     0   64M   0% /var/lib/docker/containers/bb827a281e5db495f2350318f6a04b0b3a429d0aabfbe27bb1c78557ba5f2400/shm</div><div class="line">overlay          40G  6.9G   31G  19% /var/lib/docker/overlay2/ab34d0522164f53e0eb053346b33de271c654651308d30482713592c11657c53/merged</div><div class="line">shm              64M     0   64M   0% /var/lib/docker/containers/4fad0235b222042d460ba7c1c0e54547ffbe4762d97a7167edcd0d40bdf85866/shm</div><div class="line">overlay          40G  6.9G   31G  19% /var/lib/docker/overlay2/d4bc93bc057c04471e7fe5e378f9405acb9b2c93a915dc4e44bc1e0710182397/merged</div><div class="line">shm              64M     0   64M   0% /var/lib/docker/containers/3838d0849069dcb2897925277e02531755d3a247e3e7b958a15757651afc21c7/shm</div><div class="line">/dev/vdb1       197G   60M  187G   1% /mnt</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/fdisk/" rel="tag">#fdisk</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/23/javascript/常用的前端设计模式，让你写出更优雅的代码/" rel="next" title="常用的前端设计模式，让你写出更优雅的代码">
+                <i class="fa fa-chevron-left"></i> 常用的前端设计模式，让你写出更优雅的代码
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12947276?v=3&u=b5243b88f15147a53dc05609982089fc63da9412&s=400"
+               alt="Julian" />
+          <p class="site-author-name" itemprop="name">Julian</p>
+          <p class="site-description motion-element" itemprop="description">一米阳光下，一本书，一个人，思念昉~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分区"><span class="nav-number">1.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">2.</span> <span class="nav-text">文件系统</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julian</span>
+   <a href="http://www.miitbeian.gov.cn/">沪ICP备15000369号-2</a>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+     
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+ 
+</body>
+</html>

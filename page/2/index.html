@@ -269,6 +269,127 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/30/android/mac-adb开启安卓调试模式/" itemprop="url">
+                  mac adb开启安卓调试模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-30T21:39:59+08:00" content="2017-12-30">
+              2017-12-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mac查看设备信息"><a href="#mac查看设备信息" class="headerlink" title="mac查看设备信息"></a>mac查看设备信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ system_profiler SPUSBDataType</div></pre></td></tr></table></figure>
+<p>找到自己对应的 设备信息，其中 <code>Vendor ID</code> 中的信息复制下来, 需要保留 。</p>
+<h3 id="创建-adb-usb"><a href="#创建-adb-usb" class="headerlink" title="创建 adb_usb"></a>创建 adb_usb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi ~/.android/adb_usb.ini</div></pre></td></tr></table></figure>
+<p>黏贴 刚才复制的 <code>Vendor ID</code> </p>
+<h3 id="关闭并重新启动-adb"><a href="#关闭并重新启动-adb" class="headerlink" title="关闭并重新启动 adb"></a>关闭并重新启动 <code>adb</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ adb kill-server</div><div class="line">$ adb start-server</div></pre></td></tr></table></figure>
+<h3 id="开启安卓手机"><a href="#开启安卓手机" class="headerlink" title="开启安卓手机"></a>开启安卓手机</h3><p>开启手机上开发者选项中的 <code>usb</code> 调试功能</p>
+<p>我的手机是锤子，方法是:进入“设置”——“关于手机(或设备)”——“版本号”或“内核版本”,连续快速点击“版本号”或“内核版本”多次,就可看见“开发者选项”了</p>
+<h3 id="adb-命令"><a href="#adb-命令" class="headerlink" title="adb 命令"></a><code>adb</code> 命令</h3><p>查看当前PC端连接有多少设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb devices</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/29/golang/为你的Go-加上守护/" itemprop="url">
                   为你的Go 加上守护
                 </a>
@@ -1446,122 +1567,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/24/docker/最简单的docker-安装姿势/" itemprop="url">
-                  最简单的docker 安装姿势
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-24T16:44:02+08:00" content="2017-07-24">
-              2017-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.docker.com/ | sh</div></pre></td></tr></table></figure>
-<p><a href="https://docs.docker.com/engine/installation/#supported-platforms" target="_blank" rel="external">更多</a></p>
-<h3 id="第三方加速"><a href="#第三方加速" class="headerlink" title="第三方加速"></a>第三方加速</h3><h4 id="daocloud"><a href="#daocloud" class="headerlink" title="daocloud"></a>daocloud</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.daocloud.io/docker | sh</div></pre></td></tr></table></figure>
-<p>更多 <a href="http://get.daocloud.io/#install-docker" target="_blank" rel="external">http://get.daocloud.io/#install-docker</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1607,7 +1612,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1624,7 +1629,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">79</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
