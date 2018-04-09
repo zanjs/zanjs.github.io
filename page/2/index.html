@@ -269,6 +269,124 @@
             
               
                 
+                <a class="post-title-link" href="/2018/01/08/docker/CentOS-7上安装Docker/" itemprop="url">
+                  CentOS 7上安装Docker
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-08T12:47:00+08:00" content="2018-01-08">
+              2018-01-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h2><ol>
+<li>使用root权限登陆系统。</li>
+<li>更新系统包到最新。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y update</div></pre></td></tr></table></figure>
+<ol>
+<li>执行Docker安装脚本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.docker.com/ | sh</div><div class="line">yum install -y docker-selinux</div></pre></td></tr></table></figure>
+<ol>
+<li>启动 <code>Docker</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start docker.service</div></pre></td></tr></table></figure>
+<ol>
+<li>验证 <code>docker</code> 已经正常安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run hello-world</div></pre></td></tr></table></figure>
+<h2 id="yum-安装"><a href="#yum-安装" class="headerlink" title="yum 安装"></a>yum 安装</h2><ol>
+<li>添加 <code>yum</code> 仓库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">cat &gt;/etc/yum.repos.d/docker.repo &lt;&lt;-EOF</div><div class="line">[dockerrepo]</div><div class="line">name=Docker Repository</div><div class="line">baseurl=https://yum.dockerproject.org/repo/main/centos/7</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://yum.dockerproject.org/gpg</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<ol>
+<li>安装 <code>Docker</code> 包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y docker-engine</div></pre></td></tr></table></figure>
+<h2 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable docker.service</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/02/summary/小小码农的2017年度总结与2018人生规划/" itemprop="url">
                   小小码农的2017年度总结与2018人生规划
                 </a>
@@ -1416,179 +1534,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/11/linux/Linux上iptables防火墙/" itemprop="url">
-                  Linux上iptables防火墙
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-11T08:56:21+08:00" content="2017-08-11">
-              2017-08-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="查看已有的iptables规则，以序号显示"><a href="#查看已有的iptables规则，以序号显示" class="headerlink" title="查看已有的iptables规则，以序号显示"></a>查看已有的iptables规则，以序号显示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -L -n --line-numbers</div></pre></td></tr></table></figure>
-<h2 id="开放指定的端口"><a href="#开放指定的端口" class="headerlink" title="开放指定的端口"></a>开放指定的端口</h2><ol>
-<li>允许本地回环接口(即运行本机访问本机)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -i lo -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许已建立的或相关连的通行</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许所有本机向外的访问</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A OUTPUT -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许访问22端口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许访问80端口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许访问443端口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>允许FTP服务的21和20端口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp --dport 20 -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li><p>如果有其他端口的话，规则也类似，稍微修改上述语句就行</p>
-</li>
-<li><p>允许ping</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT</div></pre></td></tr></table></figure>
-<ol>
-<li>禁止其他未允许的规则访问</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -j REJECT  #（注意：如果22端口未加入允许规则，SSH链接会直接断开。）</div><div class="line">iptables -A FORWARD -j REJEC</div></pre></td></tr></table></figure>
-<h2 id="屏蔽IP"><a href="#屏蔽IP" class="headerlink" title="屏蔽IP"></a>屏蔽IP</h2><ol>
-<li>屏蔽单个IP的命令是</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -s 123.45.6.7 -j DROP</div></pre></td></tr></table></figure>
-<ol>
-<li>封整个段即从123.0.0.1到123.255.255.254的命令</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -s 123.0.0.0/8 -j DROP</div></pre></td></tr></table></figure>
-<ol>
-<li>封IP段即从123.45.0.1到123.45.255.254的命令</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -s 124.45.0.0/16 -j DROP</div></pre></td></tr></table></figure>
-<ol>
-<li>封IP段即从123.45.6.1到123.45.6.254的命令是</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -s 123.45.6.0/24 -j DROP</div></pre></td></tr></table></figure>
-<h2 id="删除对应的DROP规则"><a href="#删除对应的DROP规则" class="headerlink" title="删除对应的DROP规则"></a>删除对应的DROP规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -D INPUT 5</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1629,7 +1579,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1637,7 +1587,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
