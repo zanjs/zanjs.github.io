@@ -269,6 +269,144 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/30/Ubuntu/Ubuntu-启动定时任务Crontab-篇/" itemprop="url">
+                  Ubuntu 启动定时任务Crontab 篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-30T10:09:34+08:00" content="2016-06-30">
+              2016-06-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ubuntu 下如何设置定时任务</p>
+<h2 id="Ubuntu启用Crontab"><a href="#Ubuntu启用Crontab" class="headerlink" title="Ubuntu启用Crontab"></a>Ubuntu启用Crontab</h2><p>启动cron服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service cron start</div></pre></td></tr></table></figure>
+<p>如果需要设置为开机时自动启动，则执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysv-rc-conf --level 35 cron on</div></pre></td></tr></table></figure>
+<p>另外，ubuntu默认没有开启cron执行的日志的，需要做如下3步：</p>
+<pre><code>- 修改rsyslog文件，将/etc/rsyslog.d/50-default.conf 文件中的#cron.*前的#删掉
+
+- 重启rsyslog服务service rsyslog restart
+
+- 重启cron服务service cron restart
+</code></pre><h2 id="Ubuntu-14-04-版本的cron中使用notify-send"><a href="#Ubuntu-14-04-版本的cron中使用notify-send" class="headerlink" title="Ubuntu 14.04 + 版本的cron中使用notify-send"></a>Ubuntu 14.04 + 版本的cron中使用notify-send</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">eval &quot;export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)&quot;</div><div class="line">notify-send $1</div></pre></td></tr></table></figure>
+<p><a href="http://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab/346580#346580" target="_blank" rel="external">具体参见</a></p>
+<p>然后编辑cron配置： crontab -e</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 * * * 1-5 sh /home/ronry/bin/cron-notice.sh 休息一下</div></pre></td></tr></table></figure>
+<h2 id="cron文件语法"><a href="#cron文件语法" class="headerlink" title="cron文件语法"></a>cron文件语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> 分     小时    日       月       星期     命令</div><div class="line"></div><div class="line">0-59    0-23    1-31    1-12     0-6     command     (取值范围,0表示周日一般一行对应一个任务)</div></pre></td></tr></table></figure>
+<p>记住几个特殊符号的含义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">“*”代表取值范围内的数字,</div><div class="line">“/”代表”每”,</div><div class="line">“-”代表从某个数字到某个数字,</div><div class="line">“,”分开几个离散的数字</div></pre></td></tr></table></figure>
+<h2 id="cron-任务-demo"><a href="#cron-任务-demo" class="headerlink" title="cron 任务 demo"></a>cron 任务 demo</h2><blockquote>
+<p>**</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">5      *       *         *     *     ls             指定每小时的第5分钟执行一次ls命令</div><div class="line">30     5       *         *     *     ls             指定每天的 5:30 执行ls命令</div><div class="line">30     7       8         *     *     ls             指定每月8号的7：30分执行ls命令</div><div class="line">30     5       8         6     *     ls             指定每年的6月8日5：30执行ls命令</div><div class="line">30     6       *         *     0     ls             指定每星期日的6:30执行ls命令[注：0表示星期天，1表示星期1，</div></pre></td></tr></table></figure>
+<blockquote>
+<p>-/</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">30     3        10,20     *     *     ls     每月10号及20号的3：30执行ls命令[注：“，”用来连接多个不连续的时段]</div><div class="line"></div><div class="line">25     8-11     *         *     *     ls     每天8-11点的第25分钟执行ls命令[注：“-”用来连接连续的时段]</div><div class="line"></div><div class="line">*/15   *        *         *     *     ls     每15分钟执行一次ls命令 [即每个小时的第0 15 30 45 60分钟执行ls命令 ]</div><div class="line"></div><div class="line">30      6       */10      *     *     ls     每个月中，每隔10天6:30执行一次ls命令[即每月的1、11、21、31日是的6：30执行一次ls 命令。 ]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/29/css/less-笔记/" itemprop="url">
                   less 笔记
                 </a>
@@ -1739,132 +1877,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/23/javascript/Lo-Dash？引入惰性计算/" itemprop="url">
-                  Lo-Dash？引入惰性计算
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-23T17:36:42+08:00" content="2016-01-23">
-              2016-01-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我一直以为像 Lo-Dash 这样的库已经不能再快了，毕竟它们已经足够快了。<br> Lo-Dash 几乎完全混合了各种 JavaScript 奇技淫巧（YouTube）来压榨出最好的性能。</p>
-<h2 id="惰性计算"><a href="#惰性计算" class="headerlink" title="惰性计算"></a>惰性计算</h2><p> 但似乎我错了 - 其实 Lo-Dash 可以运行的更快。<br> 你需要做的是，停止思考那些细微的优化，并开始找出更加适用的算法。<br> 例如，在一个典型的循环中，我们往往倾向于去优化单次迭代的时间</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> len = getLength();</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">    operation(); <span class="comment">// &lt;- 10毫秒 - 如何优化到9毫秒?!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>代码说明：取得数组的长度，然后重复执行 N 遍 operation() 函数。译注 by @justjavac</p>
-<p>但是，这（优化 operation() 执行时间）往往很难，而且对性能提升也非常有限。</p>
-<p> 相反，在某些情况下，我们可以优化 getLength() 函数。 它返回的数字越小，则每个 10 毫秒循环的执行次数就越少。</p>
-<p>这就是 Lo-Dash 使用惰性计算的思想。 这是减少周期数，而不是减少每个周期的执行时间。 让我们看看下面的例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">priceLt</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123; <span class="keyword">return</span> item.price &lt; x; &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gems = [</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Sunstone'</span>, <span class="attr">price</span>: <span class="number">4</span>  &#125;,</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Amethyst'</span>, <span class="attr">price</span>: <span class="number">15</span> &#125;,</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Prehnite'</span>, <span class="attr">price</span>: <span class="number">20</span> &#125;,</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Sugilite'</span>, <span class="attr">price</span>: <span class="number">7</span>  &#125;,</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Diopside'</span>, <span class="attr">price</span>: <span class="number">3</span>  &#125;, </div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Feldspar'</span>, <span class="attr">price</span>: <span class="number">13</span> &#125;,</div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Dioptase'</span>, <span class="attr">price</span>: <span class="number">2</span>  &#125;, </div><div class="line">   &#123; <span class="attr">name</span>: <span class="string">'Sapphire'</span>, <span class="attr">price</span>: <span class="number">20</span> &#125;</div><div class="line">];</div><div class="line"></div><div class="line"><span class="keyword">var</span> chosen = _(gems).filter(priceLt(<span class="number">10</span>)).take(<span class="number">3</span>).value();</div></pre></td></tr></table></figure>
-<p>代码说明：gems 保存了 8 个对象，名字和价格。priceLt(x) 函数返回价格低于 x 的所有元素。译注 by @justjavac</p>
-<p>我们把价格低于 10 美元的前 3 个 gems 找出来。 常规 Lo-Dash 方法（严格计算）是过滤所有 8 个 gems，然后返回过滤结果的前 3 个。</p>
-<p><img src="http://justjavac.com/assets/images/lodash-naive.gif" alt=""></p>
-<p>不难看出来，这种算法是不明智的。 它处理了所有的 8 个元素，而实际上我们只需要读取其中的 5 个元素就能得到我们想要的结果。<br> 与此相反，使用惰性计算算法，只需要处理能得到结果的最少数量就可以了。 如图所示：</p>
-<p> <img src="http://justjavac.com/assets/images/grafika.gif" alt=""></p>
-<p> 我们轻而易举就获得了 37.5％ 的性能提升。<br>  但是这还不是全部，其实很容易找到能获得 1000 倍以上性能提升的例子。 让我们一起来看看：</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">// 99,999 张照片</span></div><div class="line"><span class="keyword">var</span> phoneNumbers = [<span class="number">5554445555</span>, <span class="number">1424445656</span>, <span class="number">5554443333</span>, … ×<span class="number">99</span>,<span class="number">999</span>];</div><div class="line"></div><div class="line"><span class="comment">// 返回包含 "55" 的照片</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">contains55</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.contains(<span class="string">"55"</span>); </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 取 100 张包含 "55" 的照片</span></div><div class="line"><span class="keyword">var</span> r = _(phoneNumbers).map(<span class="built_in">String</span>).filter(contains55).take(<span class="number">100</span>);</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1910,7 +1922,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

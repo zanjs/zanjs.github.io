@@ -269,6 +269,136 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/11/mysql/mysql-允许远程连接/" itemprop="url">
+                  mysql 允许远程连接
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-11T09:15:30+08:00" content="2017-08-11">
+              2017-08-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Mysqsl/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysqsl</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="登陆-mysql"><a href="#登陆-mysql" class="headerlink" title="登陆 mysql"></a>登陆 <code>mysql</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shell&gt;mysql --user=root -p</div></pre></td></tr></table></figure>
+<h2 id="设置远程登陆权限"><a href="#设置远程登陆权限" class="headerlink" title="设置远程登陆权限"></a>设置远程登陆权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grant all PRIVILEGES on db_test.* to root@&apos;192.168.1.199&apos;  identified by &apos;123&apos;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>db_test</p>
+</blockquote>
+<p>表示上面的权限是针对于哪个表的，<code>db_test</code> 指的是数据库，后面的 <em> 表示对于所有的表，由此可以推理出：对于全部数据库的全部表授权为“</em>.<em>”，对于某一数据库的全部表授权为“数据库名.</em>”，对于某一数据库的某一表授权为“数据库名.表名”。</p>
+<blockquote>
+<p>root </p>
+</blockquote>
+<p>表示你要给哪个用户授权，这个用户可以是存在的用户，也可以是不存在的用户</p>
+<blockquote>
+<p>192.168.1.199</p>
+</blockquote>
+<p>表示允许远程连接的 IP 地址，如果想不限制链接的 IP 则设置为“%”即可</p>
+<blockquote>
+<p>123 </p>
+</blockquote>
+<p>为用户的密码</p>
+<h2 id="执行生效"><a href="#执行生效" class="headerlink" title="执行生效"></a>执行生效</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush privileges</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/11/linux/Linux上iptables防火墙/" itemprop="url">
                   Linux上iptables防火墙
                 </a>
@@ -1164,39 +1294,39 @@
       
         
           
-            <h2 id="微信小程序页面路径"><a href="#微信小程序页面路径" class="headerlink" title="微信小程序页面路径"></a>微信小程序页面路径</h2><h3 id="一键海淘"><a href="#一键海淘" class="headerlink" title="一键海淘"></a>一键海淘</h3><p><code>page/scanCode/scanCode</code><br><code>page/index/index</code> 新版</p>
+            <h2 id="微信小程序页面路径"><a href="#微信小程序页面路径" class="headerlink" title="微信小程序页面路径"></a>微信小程序页面路径</h2><h3 id="一键海淘"><a href="#一键海淘" class="headerlink" title="一键海淘"></a>一键海淘</h3><p><code>p/scanCode/scanCode</code><br><code>p/index/index</code> 新版</p>
 <hr>
 <h3 id="商品详情页"><a href="#商品详情页" class="headerlink" title="商品详情页"></a>商品详情页</h3><p>参数 <code>code</code> = 商品 <code>url</code> 地址</p>
-<p><code>page/scanCode/detail/detail?code=url</code></p>
+<p><code>p/detail/detail?code=url</code></p>
 <hr>
-<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><code>page/cart/cart</code></p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p><code>p/cart/cart</code></p>
 <hr>
-<h3 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h3><p><code>page/order/list/list</code></p>
+<h3 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h3><p><code>p/order/list/list</code></p>
 <hr>
-<h3 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h3><p><code>page/my/my</code></p>
+<h3 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h3><p><code>p/my/my</code></p>
 <hr>
-<h3 id="收货地址列表"><a href="#收货地址列表" class="headerlink" title="收货地址列表"></a>收货地址列表</h3><p><code>page/address/list/list</code></p>
+<h3 id="收货地址列表"><a href="#收货地址列表" class="headerlink" title="收货地址列表"></a>收货地址列表</h3><p><code>p/address/list/list</code></p>
 <hr>
-<h3 id="添加地址"><a href="#添加地址" class="headerlink" title="添加地址"></a>添加地址</h3><p><code>page/address/add/add</code></p>
+<h3 id="添加地址"><a href="#添加地址" class="headerlink" title="添加地址"></a>添加地址</h3><p><code>p/address/add/add</code></p>
 <hr>
 <h3 id="编辑地址"><a href="#编辑地址" class="headerlink" title="编辑地址"></a>编辑地址</h3><p>参数 <code>id</code> = 地址 <code>id</code> 号</p>
-<p><code>page/address/edit/edit?id=1</code></p>
+<p><code>p/address/edit/edit?id=1</code></p>
 <hr>
-<h3 id="订单列表"><a href="#订单列表" class="headerlink" title="订单列表"></a>订单列表</h3><p><code>page/order/list/list</code></p>
+<h3 id="订单列表"><a href="#订单列表" class="headerlink" title="订单列表"></a>订单列表</h3><p><code>p/order/list/list</code></p>
 <hr>
 <h3 id="订单详情"><a href="#订单详情" class="headerlink" title="订单详情"></a>订单详情</h3><p>参数 <code>orderid</code> = 订单 <code>id</code> 号</p>
-<p><code>page/order/detail/detail?orderid=1</code></p>
+<p><code>p/order/detail/detail?orderid=1</code></p>
 <hr>
 <h3 id="包裹详情"><a href="#包裹详情" class="headerlink" title="包裹详情"></a>包裹详情</h3><p>参数 <code>id</code> = 包裹 <code>id</code> 号</p>
-<p><code>page/packages/packages?id=1</code></p>
+<p><code>p/packages/packages?id=1</code></p>
 <hr>
 <h3 id="提交转运"><a href="#提交转运" class="headerlink" title="提交转运"></a>提交转运</h3><p>参数 <code>id</code> = 包裹 <code>id</code> 号</p>
-<p><code>page/packages/pay/pay?id=1</code></p>
+<p><code>p/packages/pay/pay?id=1</code></p>
 <hr>
 <h3 id="转运详情"><a href="#转运详情" class="headerlink" title="转运详情"></a>转运详情</h3><p>参数 <code>id</code> = 转运 <code>id</code>  号</p>
-<p><code>page/transitdetail/transitdetail?id=1</code></p>
+<p><code>p/transitdetail/transitdetail?id=1</code></p>
 <hr>
-<h3 id="All-pages"><a href="#All-pages" class="headerlink" title="All pages"></a>All pages</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"page/scanCode/scanCode",</div><div class="line">"page/scanCode/detail/detail",</div><div class="line">"page/cart/cart",</div><div class="line">"page/shipInstruction/shipInstruction",</div><div class="line">"page/my/my",</div><div class="line">"page/packages/pay/pay",</div><div class="line">"page/transitdetail/transitdetail",</div><div class="line">"page/order/list/list",</div><div class="line">"page/order/pay/pay",</div><div class="line">"page/order/transport/transport",</div><div class="line">"page/order/transport/changecompany/changecompany",</div><div class="line">"page/declareValue/declareValue",</div><div class="line">"page/tax/tax",</div><div class="line">"page/address/add/add",</div><div class="line">"page/logisticstracking/logisticstracking",</div><div class="line">"page/statement/statement",</div><div class="line">"page/order/transport/companydetail/companydetail",</div><div class="line">"page/address/list/list",</div><div class="line">"page/faq/faq",</div><div class="line">"page/address/edit/edit",</div><div class="line">"page/packages/company/company",</div><div class="line">"page/address/select/select",</div><div class="line">"page/address/idcard/idcard",</div><div class="line">"page/packages/packages",</div><div class="line"><span class="string">"page/order/detail/detail"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="All-pages"><a href="#All-pages" class="headerlink" title="All pages"></a>All pages</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"p/scanCode/scanCode",</div><div class="line">"p/scanCode/detail/detail",</div><div class="line">"p/cart/cart",</div><div class="line">"p/shipInstruction/shipInstruction",</div><div class="line">"p/my/my",</div><div class="line">"p/packages/pay/pay",</div><div class="line">"p/transitdetail/transitdetail",</div><div class="line">"p/order/list/list",</div><div class="line">"p/order/pay/pay",</div><div class="line">"p/order/transport/transport",</div><div class="line">"p/order/transport/changecompany/changecompany",</div><div class="line">"p/declareValue/declareValue",</div><div class="line">"p/tax/tax",</div><div class="line">"p/address/add/add",</div><div class="line">"p/logisticstracking/logisticstracking",</div><div class="line">"p/statement/statement",</div><div class="line">"p/order/transport/companydetail/companydetail",</div><div class="line">"p/address/list/list",</div><div class="line">"p/faq/faq",</div><div class="line">"p/address/edit/edit",</div><div class="line">"p/packages/company/company",</div><div class="line">"p/address/select/select",</div><div class="line">"p/address/idcard/idcard",</div><div class="line">"p/packages/packages",</div><div class="line"><span class="string">"p/order/detail/detail"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1474,139 +1604,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/24/javascript/react-page-render-improve/" itemprop="url">
-                  React 单页面初始化渲染优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-24T17:39:36+08:00" content="2017-05-24">
-              2017-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>由于项目使用 React, React-Router, Redux 来开发项目，采取了前端渲染的方式（如果采用 ssr 就不会有这个问题）。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>所以每到一个页面，需要发一个初始化的请求来获取页面数据，然后重新渲染页面，所以之前一个页面从请求到加载完毕的流程是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Route match -&gt; ComponentWillMount -&gt;  </div><div class="line">render -&gt; ComponentDidMount -&gt; </div><div class="line">dispatch(init())-&gt;  </div><div class="line">render -&gt; componentDidUpdate</div></pre></td></tr></table></figure>
-<p>首先是路由匹配，然后准备加载组件，<br>使用通过 <code>Reducer</code> 里面的初始化 <code>state</code> 进行 <code>render</code>,<br>然后触发 <code>ComponentDidMount</code> 事件，<br>在这个事件里面去 <code>dispatch</code> 一个执行页面初始化的请求的 <code>Action</code>，<br>请求成功过以后触发组件的重新渲染。</p>
-<p>可以看到，展示最终的页面需要组件重新渲染两次。<br>一次是使用写死在前端的 <code>reducer</code> 里面的 <code>initialState</code> 数据来渲染，<br>一次是在拿到后端数据进行的渲染。</p>
-<p>所以有的时候会出现闪屏的情况，用户体验很不好。</p>
-<p>我们的要求是进页面以后就是用从后台获取的最新数据渲染的页面，<br>整个页面只会 <code>render</code> 一次。</p>
-<p>那么怎么解决这个问题呢？</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要解决这个问题，那么必然是加载好数据后，再去挂载页面组件，<br>那么加载数据的时机就显得尤为重要。</p>
-<p>借鉴传统服务端渲染页面的方式，这个时机肯定是放在路由里面去做比较合适。</p>
-<p>具体到项目里面，就是在 <code>react-route</code></p>
-<p>里面的 <code>onEnter</code> 事件里面去做页面的初始化请求，<br>当所有数据请求成功以后，在去加载这个页面。</p>
-<p>整个页面加载的流程就变成了这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route match -&gt; dispatch(init()) -&gt;</div><div class="line">ComponentWillMount -&gt;  </div><div class="line">render -&gt; ComponentDidMount</div></pre></td></tr></table></figure>
-<h3 id="具体代码如下："><a href="#具体代码如下：" class="headerlink" title="具体代码如下："></a>具体代码如下：</h3><p>HomeAction.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;createAction&#125; <span class="keyword">from</span> <span class="string">'redux-actions'</span></div><div class="line"><span class="keyword">import</span> &#123;HOME_INDEX&#125; <span class="keyword">from</span> <span class="string">'../../config/apis.js'</span></div><div class="line"><span class="keyword">import</span> initAPI <span class="keyword">from</span> <span class="string">'../../utils/initAPI.js'</span></div><div class="line"><span class="keyword">import</span> createAsyncAction <span class="keyword">from</span> <span class="string">'../../utils/createAsyncAction.js'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> InitActionList = createAsyncAction(<span class="string">'home/init'</span>)</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> FormChange = <span class="string">'home/formChange'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> FormFieldChange = <span class="string">'home/formFieldChange'</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> initAPI(InitActionList, HOME_INDEX, <span class="string">'get'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>HomeReducer.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; InitActionList &#125; <span class="keyword">from</span> <span class="string">'./HomeAction.js'</span></div><div class="line"><span class="keyword">import</span> &#123; CreditStatus, BillStatus, InstallmentStatus &#125; <span class="keyword">from</span> <span class="string">'../../config/constant'</span></div><div class="line"><span class="keyword">const</span> initState = &#123;</div><div class="line">  foo: <span class="number">1</span>,</div><div class="line">  bar: <span class="number">10</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">state = initState, action</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> type = action.type</div><div class="line">  <span class="keyword">const</span> payload = action.payload</div><div class="line">  <span class="keyword">const</span> meta = action.meta</div><div class="line">  <span class="keyword">switch</span> (type) &#123;</div><div class="line">    <span class="keyword">case</span> InitActionList.start:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">    <span class="keyword">case</span> InitActionList.success:</div><div class="line">      <span class="keyword">const</span> currentStatus = getCurrentStatus(payload)</div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        ...state,</div><div class="line">        foo: currentStatus,</div><div class="line">      &#125;</div><div class="line">    <span class="keyword">case</span> InitActionList.failure:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Router.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;init <span class="keyword">as</span> initHome&#125; <span class="keyword">from</span> <span class="string">'./homeAction'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">createRoutes</span> (<span class="params">store</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">initHome</span> (<span class="params">store</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">nextState, replace, next</span>) =&gt;</span> &#123;</div><div class="line">      <span class="comment">// dispatch 页面加载的 Action，在数据加载完成后在执行 next() 以挂载组件</span></div><div class="line">      store.dispatch(homeInit())</div><div class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> next())</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    component: App,</div><div class="line">    path: <span class="string">'/'</span>,</div><div class="line">    childRoutes: [</div><div class="line">      <span class="built_in">require</span>(<span class="string">'./activate'</span>),</div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'test'</span>,</div><div class="line">        getComponent(nextState, cb) &#123;</div><div class="line">          <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">            cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Test'</span>).default)</div><div class="line">          &#125;, <span class="string">'Test'</span>)</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    indexRoute: &#123;</div><div class="line">      getComponent(nextState, cb) &#123;</div><div class="line">        <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">          cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Home'</span>).default)</div><div class="line">        &#125;, <span class="string">'Home'</span>)</div><div class="line">      &#125;,</div><div class="line">      onEnter: initHome(store)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Index.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, hashHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; syncHistoryWithStore &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; AppContainer &#125; <span class="keyword">from</span> <span class="string">'react-hot-loader'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'react-hot-loader/patch'</span></div><div class="line"><span class="keyword">import</span> createRoutes <span class="keyword">from</span> <span class="string">'./routes'</span></div><div class="line"><span class="keyword">import</span> configureStore <span class="keyword">from</span> <span class="string">'./store'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'./style/app.scss'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = configureStore(hashHistory, &#123;&#125;)</div><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(hashHistory, store)</div><div class="line"><span class="keyword">const</span> root = <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</div><div class="line"><span class="keyword">const</span> routers = createRoutes(store)</div><div class="line"><span class="keyword">const</span> renderRoot = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  render(</div><div class="line">    &lt;AppContainer&gt;</div><div class="line">      &lt;Provider store=&#123;store&#125; key=<span class="string">'provider'</span>&gt;</div><div class="line">        &lt;Router routes=&#123;routers&#125; history=&#123;history&#125; key=&#123;<span class="built_in">Math</span>.random()&#125; /&gt;</div><div class="line">      &lt;<span class="regexp">/Provider&gt;</span></div><div class="line"><span class="regexp">    &lt;/</span>AppContainer&gt;,</div><div class="line">    root</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">module</span>.hot) &#123;</div><div class="line">  <span class="built_in">module</span>.hot.accept(<span class="string">'./routes'</span>, () =&gt; &#123;</div><div class="line">    renderRoot()</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">renderRoot()</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1652,7 +1649,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

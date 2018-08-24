@@ -269,6 +269,139 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/24/javascript/react-page-render-improve/" itemprop="url">
+                  React 单页面初始化渲染优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-24T17:39:36+08:00" content="2017-05-24">
+              2017-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于项目使用 React, React-Router, Redux 来开发项目，采取了前端渲染的方式（如果采用 ssr 就不会有这个问题）。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>所以每到一个页面，需要发一个初始化的请求来获取页面数据，然后重新渲染页面，所以之前一个页面从请求到加载完毕的流程是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Route match -&gt; ComponentWillMount -&gt;  </div><div class="line">render -&gt; ComponentDidMount -&gt; </div><div class="line">dispatch(init())-&gt;  </div><div class="line">render -&gt; componentDidUpdate</div></pre></td></tr></table></figure>
+<p>首先是路由匹配，然后准备加载组件，<br>使用通过 <code>Reducer</code> 里面的初始化 <code>state</code> 进行 <code>render</code>,<br>然后触发 <code>ComponentDidMount</code> 事件，<br>在这个事件里面去 <code>dispatch</code> 一个执行页面初始化的请求的 <code>Action</code>，<br>请求成功过以后触发组件的重新渲染。</p>
+<p>可以看到，展示最终的页面需要组件重新渲染两次。<br>一次是使用写死在前端的 <code>reducer</code> 里面的 <code>initialState</code> 数据来渲染，<br>一次是在拿到后端数据进行的渲染。</p>
+<p>所以有的时候会出现闪屏的情况，用户体验很不好。</p>
+<p>我们的要求是进页面以后就是用从后台获取的最新数据渲染的页面，<br>整个页面只会 <code>render</code> 一次。</p>
+<p>那么怎么解决这个问题呢？</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要解决这个问题，那么必然是加载好数据后，再去挂载页面组件，<br>那么加载数据的时机就显得尤为重要。</p>
+<p>借鉴传统服务端渲染页面的方式，这个时机肯定是放在路由里面去做比较合适。</p>
+<p>具体到项目里面，就是在 <code>react-route</code></p>
+<p>里面的 <code>onEnter</code> 事件里面去做页面的初始化请求，<br>当所有数据请求成功以后，在去加载这个页面。</p>
+<p>整个页面加载的流程就变成了这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route match -&gt; dispatch(init()) -&gt;</div><div class="line">ComponentWillMount -&gt;  </div><div class="line">render -&gt; ComponentDidMount</div></pre></td></tr></table></figure>
+<h3 id="具体代码如下："><a href="#具体代码如下：" class="headerlink" title="具体代码如下："></a>具体代码如下：</h3><p>HomeAction.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;createAction&#125; <span class="keyword">from</span> <span class="string">'redux-actions'</span></div><div class="line"><span class="keyword">import</span> &#123;HOME_INDEX&#125; <span class="keyword">from</span> <span class="string">'../../config/apis.js'</span></div><div class="line"><span class="keyword">import</span> initAPI <span class="keyword">from</span> <span class="string">'../../utils/initAPI.js'</span></div><div class="line"><span class="keyword">import</span> createAsyncAction <span class="keyword">from</span> <span class="string">'../../utils/createAsyncAction.js'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> InitActionList = createAsyncAction(<span class="string">'home/init'</span>)</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> FormChange = <span class="string">'home/formChange'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> FormFieldChange = <span class="string">'home/formFieldChange'</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> initAPI(InitActionList, HOME_INDEX, <span class="string">'get'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HomeReducer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; InitActionList &#125; <span class="keyword">from</span> <span class="string">'./HomeAction.js'</span></div><div class="line"><span class="keyword">import</span> &#123; CreditStatus, BillStatus, InstallmentStatus &#125; <span class="keyword">from</span> <span class="string">'../../config/constant'</span></div><div class="line"><span class="keyword">const</span> initState = &#123;</div><div class="line">  foo: <span class="number">1</span>,</div><div class="line">  bar: <span class="number">10</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">state = initState, action</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> type = action.type</div><div class="line">  <span class="keyword">const</span> payload = action.payload</div><div class="line">  <span class="keyword">const</span> meta = action.meta</div><div class="line">  <span class="keyword">switch</span> (type) &#123;</div><div class="line">    <span class="keyword">case</span> InitActionList.start:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">    <span class="keyword">case</span> InitActionList.success:</div><div class="line">      <span class="keyword">const</span> currentStatus = getCurrentStatus(payload)</div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        ...state,</div><div class="line">        foo: currentStatus,</div><div class="line">      &#125;</div><div class="line">    <span class="keyword">case</span> InitActionList.failure:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Router.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;init <span class="keyword">as</span> initHome&#125; <span class="keyword">from</span> <span class="string">'./homeAction'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">createRoutes</span> (<span class="params">store</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">initHome</span> (<span class="params">store</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">nextState, replace, next</span>) =&gt;</span> &#123;</div><div class="line">      <span class="comment">// dispatch 页面加载的 Action，在数据加载完成后在执行 next() 以挂载组件</span></div><div class="line">      store.dispatch(homeInit())</div><div class="line">        .then(<span class="function"><span class="params">()</span> =&gt;</span> next())</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    component: App,</div><div class="line">    path: <span class="string">'/'</span>,</div><div class="line">    childRoutes: [</div><div class="line">      <span class="built_in">require</span>(<span class="string">'./activate'</span>),</div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'test'</span>,</div><div class="line">        getComponent(nextState, cb) &#123;</div><div class="line">          <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">            cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Test'</span>).default)</div><div class="line">          &#125;, <span class="string">'Test'</span>)</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    indexRoute: &#123;</div><div class="line">      getComponent(nextState, cb) &#123;</div><div class="line">        <span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</div><div class="line">          cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../views/Home'</span>).default)</div><div class="line">        &#125;, <span class="string">'Home'</span>)</div><div class="line">      &#125;,</div><div class="line">      onEnter: initHome(store)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, hashHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; syncHistoryWithStore &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; AppContainer &#125; <span class="keyword">from</span> <span class="string">'react-hot-loader'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'react-hot-loader/patch'</span></div><div class="line"><span class="keyword">import</span> createRoutes <span class="keyword">from</span> <span class="string">'./routes'</span></div><div class="line"><span class="keyword">import</span> configureStore <span class="keyword">from</span> <span class="string">'./store'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'./style/app.scss'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = configureStore(hashHistory, &#123;&#125;)</div><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(hashHistory, store)</div><div class="line"><span class="keyword">const</span> root = <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</div><div class="line"><span class="keyword">const</span> routers = createRoutes(store)</div><div class="line"><span class="keyword">const</span> renderRoot = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  render(</div><div class="line">    &lt;AppContainer&gt;</div><div class="line">      &lt;Provider store=&#123;store&#125; key=<span class="string">'provider'</span>&gt;</div><div class="line">        &lt;Router routes=&#123;routers&#125; history=&#123;history&#125; key=&#123;<span class="built_in">Math</span>.random()&#125; /&gt;</div><div class="line">      &lt;<span class="regexp">/Provider&gt;</span></div><div class="line"><span class="regexp">    &lt;/</span>AppContainer&gt;,</div><div class="line">    root</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">module</span>.hot) &#123;</div><div class="line">  <span class="built_in">module</span>.hot.accept(<span class="string">'./routes'</span>, () =&gt; &#123;</div><div class="line">    renderRoot()</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">renderRoot()</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/24/javascript/Javascript正则表达式整合/" itemprop="url">
                   Javascript正则表达式整合
                 </a>
@@ -1471,144 +1604,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/30/Ubuntu/Ubuntu-启动定时任务Crontab-篇/" itemprop="url">
-                  Ubuntu 启动定时任务Crontab 篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T10:09:34+08:00" content="2016-06-30">
-              2016-06-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">Ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Ubuntu 下如何设置定时任务</p>
-<h2 id="Ubuntu启用Crontab"><a href="#Ubuntu启用Crontab" class="headerlink" title="Ubuntu启用Crontab"></a>Ubuntu启用Crontab</h2><p>启动cron服务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service cron start</div></pre></td></tr></table></figure>
-<p>如果需要设置为开机时自动启动，则执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysv-rc-conf --level 35 cron on</div></pre></td></tr></table></figure>
-<p>另外，ubuntu默认没有开启cron执行的日志的，需要做如下3步：</p>
-<pre><code>- 修改rsyslog文件，将/etc/rsyslog.d/50-default.conf 文件中的#cron.*前的#删掉
-
-- 重启rsyslog服务service rsyslog restart
-
-- 重启cron服务service cron restart
-</code></pre><h2 id="Ubuntu-14-04-版本的cron中使用notify-send"><a href="#Ubuntu-14-04-版本的cron中使用notify-send" class="headerlink" title="Ubuntu 14.04 + 版本的cron中使用notify-send"></a>Ubuntu 14.04 + 版本的cron中使用notify-send</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">eval &quot;export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)&quot;</div><div class="line">notify-send $1</div></pre></td></tr></table></figure>
-<p><a href="http://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab/346580#346580" target="_blank" rel="external">具体参见</a></p>
-<p>然后编辑cron配置： crontab -e</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 * * * 1-5 sh /home/ronry/bin/cron-notice.sh 休息一下</div></pre></td></tr></table></figure>
-<h2 id="cron文件语法"><a href="#cron文件语法" class="headerlink" title="cron文件语法"></a>cron文件语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> 分     小时    日       月       星期     命令</div><div class="line"></div><div class="line">0-59    0-23    1-31    1-12     0-6     command     (取值范围,0表示周日一般一行对应一个任务)</div></pre></td></tr></table></figure>
-<p>记住几个特殊符号的含义:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">“*”代表取值范围内的数字,</div><div class="line">“/”代表”每”,</div><div class="line">“-”代表从某个数字到某个数字,</div><div class="line">“,”分开几个离散的数字</div></pre></td></tr></table></figure>
-<h2 id="cron-任务-demo"><a href="#cron-任务-demo" class="headerlink" title="cron 任务 demo"></a>cron 任务 demo</h2><blockquote>
-<p>**</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">5      *       *         *     *     ls             指定每小时的第5分钟执行一次ls命令</div><div class="line">30     5       *         *     *     ls             指定每天的 5:30 执行ls命令</div><div class="line">30     7       8         *     *     ls             指定每月8号的7：30分执行ls命令</div><div class="line">30     5       8         6     *     ls             指定每年的6月8日5：30执行ls命令</div><div class="line">30     6       *         *     0     ls             指定每星期日的6:30执行ls命令[注：0表示星期天，1表示星期1，</div></pre></td></tr></table></figure>
-<blockquote>
-<p>-/</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">30     3        10,20     *     *     ls     每月10号及20号的3：30执行ls命令[注：“，”用来连接多个不连续的时段]</div><div class="line"></div><div class="line">25     8-11     *         *     *     ls     每天8-11点的第25分钟执行ls命令[注：“-”用来连接连续的时段]</div><div class="line"></div><div class="line">*/15   *        *         *     *     ls     每15分钟执行一次ls命令 [即每个小时的第0 15 30 45 60分钟执行ls命令 ]</div><div class="line"></div><div class="line">30      6       */10      *     *     ls     每个月中，每隔10天6:30执行一次ls命令[即每月的1、11、21、31日是的6：30执行一次ls 命令。 ]</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1654,7 +1649,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -269,6 +269,108 @@
             
               
                 
+                <a class="post-title-link" href="/2018/08/24/docker/Docker容器开机自动启动/" itemprop="url">
+                  Docker容器开机自动启动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-24T09:05:51+08:00" content="2018-08-24">
+              2018-08-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="docker-run启动容器-使用–restart参数来设置"><a href="#docker-run启动容器-使用–restart参数来设置" class="headerlink" title="docker run启动容器 使用–restart参数来设置"></a>docker run启动容器 使用–restart参数来设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker run -m 512m --memory-swap 1G -it -p 6379:6379 --restart=always </div><div class="line">--name redis -d redis</div></pre></td></tr></table></figure>
+<h3 id="–restart具体参数值详细信息"><a href="#–restart具体参数值详细信息" class="headerlink" title="–restart具体参数值详细信息"></a>–restart具体参数值详细信息</h3><ul>
+<li>no -  容器退出时，不重启容器</li>
+<li>on-failure - 只有在非0状态退出时才从新启动容器</li>
+<li>always - 无论退出状态是如何，都重启容器</li>
+</ul>
+<p>还可以在使用 <code>on-failure</code> 策略时，指定 <code>Docker</code> 将尝试重新启动容器的最大次数。<br>默认情况下，<code>Docker</code> 将尝试永远重新启动容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run --restart=on-failure:10 redis</div></pre></td></tr></table></figure>
+<p>如果创建时未指定 <code>--restart=always</code> ,可通过 <code>update</code> 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker update --restart=always xxx</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/04/09/supervisord/解决unix-tmp-supervisor-sock-no-such-file的问题/" itemprop="url">
                   解决unix:///tmp/supervisor.sock no such file的问题
                 </a>
@@ -1466,128 +1568,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/16/mongodb/docker构建-mongodb-集群服务/" itemprop="url">
-                  docker构建 mongodb 集群服务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-16T11:22:27+08:00" content="2018-01-16">
-              2018-01-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mongodb/" itemprop="url" rel="index">
-                    <span itemprop="name">mongodb</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 27018:27017 -v /root/docker/mongo/data:/data/db  -d --name=mongo361 mongo --bind_ip_all --auth</div></pre></td></tr></table></figure>
-<h4 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it mongo361 mongo admin</div></pre></td></tr></table></figure>
-<p>创建 所有数据库角色</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123; user: &apos;zan&apos;, pwd: &apos;zan&apos;, roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ] &#125;);</div></pre></td></tr></table></figure>
-<p><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="external">更多角色说明</a></p>
-<p>认证进入 操作状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.auth(&quot;zan&quot;,&quot;zan&quot;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use test</div></pre></td></tr></table></figure>
-<h3 id="test-只读账号"><a href="#test-只读账号" class="headerlink" title="test 只读账号"></a>test 只读账号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123;user:&quot;test&quot;,pwd:&quot;test&quot;,roles:[&#123;role: &quot;read&quot;, db: &quot;test&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
-<h3 id="test1-读写账号"><a href="#test1-读写账号" class="headerlink" title="test1 读写账号"></a>test1 读写账号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123;user:&quot;test1&quot;,pwd:&quot;test&quot;,roles:[&#123;role: &quot;readWrite&quot;, db: &quot;test&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1633,7 +1613,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
