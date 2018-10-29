@@ -269,6 +269,261 @@
             
               
                 
+                <a class="post-title-link" href="/2018/10/29/javascript/JavaScript实现函数重载/" itemprop="url">
+                  JavaScript实现函数重载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-29T08:52:28+08:00" content="2018-10-29">
+              2018-10-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>重载是指函数或者方法有相同的名称，但是参数个数或类型不相同的情形，这样的同名不同参的函数或者方法之间，互相称之为重载函数或方法。</p>
+<p>我们知道，JavaScript函数可以随意传递任意数量、任意类型的参数，那么它有没有重载呢？</p>
+<p>答案是有的，下面我们通过3种方法来实现JavaScript的函数重载。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>我们有一个people对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> people = &#123;</div><div class="line">  values: [<span class="string">'Dean Edwards'</span>, <span class="string">'Sam Stephenson'</span>, <span class="string">'Alex Russell'</span>, <span class="string">'Dean Tom'</span>]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>想要实现一个find方法，不传参数的时候，输出所有名字，<br>只传1个参数的时候，输出所有fristName和参数相同的名字，<br>传2个参数的时候，输出所有firstName和lastName和2个参数分别相同的名字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">people.find();                          <span class="comment">// ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]</span></div><div class="line">people.find(<span class="string">'Dean'</span>);                    <span class="comment">// ["Dean Edwards", "Dean Tom"]</span></div><div class="line">people.find(<span class="string">'Dean'</span>, <span class="string">'Edwards'</span>);            <span class="comment">// ["Dean Edwards"]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>利用arguments和switch实现重载</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">people.find = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">switch</span> (<span class="built_in">arguments</span>.length) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.values;</div><div class="line"></div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">var</span> firstName = <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">        <span class="keyword">return</span> value.indexOf(firstName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">var</span> fullName = <span class="string">`<span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">0</span>]&#125;</span> <span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">1</span>]&#125;</span>`</span>;</div><div class="line">        <span class="keyword">return</span> value.indexOf(fullName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(people.find());                 <span class="comment">// ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(people.find(<span class="string">'Dean'</span>));           <span class="comment">// ["Dean Edwards", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(people.find(<span class="string">'Dean'</span>, <span class="string">'Edwards'</span>));   <span class="comment">// ["Dean Edwards"]</span></div></pre></td></tr></table></figure>
+<p>这种方式大家肯定都能看懂，就不多说啦。</p>
+<ul>
+<li>利用arguments和闭包实现重载</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addMethod</span> (<span class="params">object, name, fn</span>) </span>&#123;</div><div class="line">  <span class="comment">// 把前一次添加的方法存在一个临时变量old中</span></div><div class="line">  <span class="keyword">var</span> old = object[name];</div><div class="line"></div><div class="line">  <span class="comment">// 重写object[name]方法</span></div><div class="line">  object[name] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (fn.length === <span class="built_in">arguments</span>.length) &#123;</div><div class="line">      <span class="comment">// 如果调用object[name]方法时，如果实参和形参个数一致，则直接调用</span></div><div class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> old === <span class="string">'function'</span>) &#123;</div><div class="line">      <span class="comment">// 如果实参形参不一致，判断old是否是函数，如果是，就调用old</span></div><div class="line">      <span class="keyword">return</span> old.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">addMethod(people, <span class="string">'find'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.values;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">addMethod(people, <span class="string">'find'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">firstName</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> value.indexOf(firstName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">addMethod(people, <span class="string">'find'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">firstName, lastName</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> fullName = <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</div><div class="line">    <span class="keyword">return</span> value.indexOf(fullName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(people.find());                     <span class="comment">// ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(people.find(<span class="string">'Dean'</span>));               <span class="comment">// ["Dean Edwards", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(people.find(<span class="string">'Dean'</span>, <span class="string">'Edwards'</span>));    <span class="comment">// ["Dean Edwards"]</span></div></pre></td></tr></table></figure>
+<p>这里 <code>addMethod(object, name, fn)</code> 方法是核心。我们着重分析一下为什么这里会有闭包，可以保存上一个注册的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addMethod</span> (<span class="params">object, name, fn</span>) </span>&#123;</div><div class="line">  <span class="comment">// object, name, fn是传入的3个参数</span></div><div class="line">  <span class="keyword">var</span> old = object[name];</div><div class="line"></div><div class="line">  object[name] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 这里对old和fn进行了引用</span></div><div class="line">    <span class="keyword">if</span> (fn.length === <span class="built_in">arguments</span>.length) &#123;</div><div class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> old === <span class="string">'function'</span>) &#123;</div><div class="line">      <span class="keyword">return</span> old.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>object</code> 是另外一个引用对象，它的一个方法中引用了old和fn，所以对于addMethod来说，</p>
+<p>它的局部变量在addMethod函数执行完后，仍然被另外的变量所引用，导致它的 执行环境无法销毁，所以产生了闭包 。</p>
+<p>因此，每次调用 <code>addMethod</code> ，都会有一个执行环境保存着当时的 <code>old</code> 和 <code>fn</code>，<br>所以在调用 <code>people.find()</code> 的时候可以找到当时注入的fn，实现函数重载。</p>
+<ul>
+<li>利用Proxy和arguments实现重载</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(people, &#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, receiver</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (key === <span class="string">'find'</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (<span class="built_in">arguments</span>.length) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.values;</div><div class="line">      </div><div class="line">          <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">              <span class="keyword">var</span> firstName = <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">              <span class="keyword">return</span> value.indexOf(firstName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">            &#125;);</div><div class="line">      </div><div class="line">          <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.values.filter(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">              <span class="keyword">var</span> fullName = <span class="string">`<span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">0</span>]&#125;</span> <span class="subst">$&#123;<span class="built_in">arguments</span>[<span class="number">1</span>]&#125;</span>`</span>;</div><div class="line">              <span class="keyword">return</span> value.indexOf(fullName) !== <span class="number">-1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">      &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target , key , receiver);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, value, receiver</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, receiver);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(proxy.find());                     <span class="comment">// ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(proxy.find(<span class="string">'Dean'</span>));               <span class="comment">// ["Dean Edwards", "Dean Tom"]</span></div><div class="line"><span class="built_in">console</span>.log(proxy.find(<span class="string">'Dean'</span>, <span class="string">'Edwards'</span>));   <span class="comment">// ["Dean Edwards"]</span></div></pre></td></tr></table></figure>
+<p>这样写其实感觉有点画蛇添足了，就当成是另外一种思路吧。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>JavaScript</code> 可以实现函数重载，主要有两种思想：</p>
+<ol>
+<li>利用arguments类数组来判断接收参数的个数</li>
+<li>利用闭包保存以前注册进来的同名函数</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/10/08/nginx/Let-s-Encrypt-泛域名证书签发/" itemprop="url">
+                  Let's Encrypt 泛域名证书签发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-08T14:47:58+08:00" content="2018-10-08">
+              2018-10-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/域名/" itemprop="url" rel="index">
+                    <span itemprop="name">域名</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/08/24/docker/Docker容器开机自动启动/" itemprop="url">
                   Docker容器开机自动启动
                 </a>
@@ -1317,257 +1572,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/09/golang/linux-install-nsq-golang/" itemprop="url">
-                  linux install nsq golang 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-09T17:02:27+08:00" content="2018-02-09">
-              2018-02-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>down</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget   https://s3.amazonaws.com/bitly-downloads/nsq/nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz</div></pre></td></tr></table></figure>
-<h2 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h2><p>nsqlookupd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqlookupd]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqlookupd</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqlookupd/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqlookupd/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
-<p>nsqd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqd]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqd --lookupd-tcp-address=127.0.0.1:4160</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqd/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqd/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
-<p>nsqadmin.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[program:nsqadmin]</div><div class="line">user=root</div><div class="line">directory=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/</div><div class="line">command=/root/go/nsq-1.0.0-compat.linux-amd64.go1.8/bin/nsqadmin --lookupd-http-address=127.0.0.1:4161</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">startsecs=10</div><div class="line">stdout_logfile=/home/go/log/nsqadmin/log.log</div><div class="line">stdout_logfile_maxbytes=1MB</div><div class="line">stdout_logfile_backups=10</div><div class="line">stdout_capture_maxbytes=1MB</div><div class="line">stderr_logfile=/home/go/log/nsqadmin/err.log</div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">stopsignal=INT</div><div class="line">[supervisord]</div></pre></td></tr></table></figure>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
-<li><p>nsqlookupd: 管理nsqd节点拓扑信息并提供最终一致性的发现服务的守护进程</p>
-</li>
-<li><p>nsqd: 负责接收、排队、转发消息到客户端的守护进程，并且定时向nsqlookupd服务发送心跳</p>
-</li>
-<li><p>nsqadmin：nsqd的web统计界面，可实时查看集群的统计数据和执行一些管理任务</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/01/javascript/JS函数节流和函数防抖/" itemprop="url">
-                  JS函数节流和函数防抖
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-01T16:02:58+08:00" content="2018-02-01">
-              2018-02-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="函数防抖-debounce"><a href="#函数防抖-debounce" class="headerlink" title="函数防抖(debounce)"></a>函数防抖(debounce)</h2><p>概念: 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。</p>
-<p>生活中的实例： 如果有人进电梯（触发事件），那电梯将在10秒钟后出发（执行事件监听器），<br>这时如果又有人进电梯了（在10秒内再次触发该事件），我们又得等10秒再出发（重新计时）。</p>
-<h2 id="函数节流-throttle"><a href="#函数节流-throttle" class="headerlink" title="函数节流(throttle)"></a>函数节流(throttle)</h2><p>概念: 规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。</p>
-<p>生活中的实例： 我们知道目前的一种说法是当 1 秒内连续播放 24 张以上的图片时，在人眼的视觉中就会形成一个连贯的动画，所以在电影的播放（以前是，现在不知道）中基本是以每秒 24 张的速度播放的，为什么不 100 张或更多是因为 24 张就可以满足人类视觉需求的时候，100 张就会显得很浪费资源。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> context = <span class="keyword">this</span></div><div class="line">      <span class="keyword">var</span> args = <span class="built_in">arguments</span></div><div class="line">      <span class="keyword">if</span> (timer) &#123;</div><div class="line">          clearTimeout(timer);</div><div class="line">          timer = <span class="literal">null</span>;</div><div class="line">      &#125;</div><div class="line">      timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">          fn.apply(context, args)</div><div class="line">      &#125;, wait)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'boom'</span>)</div><div class="line">&#125;</div><div class="line">setInterval(debounce(fn,<span class="number">500</span>),<span class="number">1000</span>) <span class="comment">// 第一次在1500ms后触发，之后每1000ms触发一次</span></div><div class="line">setInterval(debounce(fn,<span class="number">2000</span>),<span class="number">1000</span>) <span class="comment">// 不会触发一次（我把函数防抖看出技能读条，如果读条没完成就用技能，便会失败而且重新读条）</span></div></pre></td></tr></table></figure>
-<p>之所以返回一个函数，因为防抖本身更像是一个函数修饰，所以就做了一次函数柯里化。里面也用到了闭包，闭包的变量是timer。</p>
-<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, gapTime</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _lastTime = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> _nowTime = + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">    <span class="keyword">if</span> (_nowTime - _lastTime &gt; gapTime || !_lastTime) &#123;</div><div class="line">      fn();</div><div class="line">      _lastTime = _nowTime</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'boom'</span>)</div><div class="line">&#125;</div><div class="line">setInterval(throttle(fn,<span class="number">1000</span>),<span class="number">10</span>)</div></pre></td></tr></table></figure>
-<p>如图是实现的一个简单的函数节流，结果是一秒打出一次boom</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>函数防抖和函数节流是在时间轴上控制函数的执行次数。<br>防抖可以类比为电梯不断上乘客,节流可以看做幻灯片限制频率播放电影。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000012387340" target="_blank" rel="external">函数防抖与函数节流</a><br><a href="https://segmentfault.com/a/1190000008768202" target="_blank" rel="external">函数防抖与函数节流</a><br><a href="https://mp.weixin.qq.com/s/3FZJ0nQLhj9PCi0pfBjc9A" target="_blank" rel="external">轻松理解JS函数节流和函数防抖</a><br><a href="https://github.com/hanzichi/underscore-analysis/issues/20" target="_blank" rel="external">JavaScript 函数节流和函数去抖应用场景辨析</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1613,7 +1617,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1621,7 +1625,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1630,7 +1634,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

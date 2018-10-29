@@ -269,6 +269,260 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/29/windows/使用-nssm-把go程序-exe-加入window-服务进程/" itemprop="url">
+                  使用 nssm 把go程序 exe 加入window 服务进程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-29T11:29:39+08:00" content="2017-08-29">
+              2017-08-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/windows/" itemprop="url" rel="index">
+                    <span itemprop="name">windows</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="install-nssm"><a href="#install-nssm" class="headerlink" title="install nssm"></a>install nssm</h3><p>下载安装 nssm </p>
+<p><a href="http://nssm.cc/download" target="_blank" rel="external">nssm官网</a></p>
+<p>命令行安装 (管理员打开方式)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">choco install nssm</div></pre></td></tr></table></figure>
+<h2 id="nssm命令使用"><a href="#nssm命令使用" class="headerlink" title="nssm命令使用"></a>nssm命令使用</h2><ol>
+<li>安装服务命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nssm install &lt;servicename&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt;</div><div class="line">nssm install &lt;servicename&gt; &lt;program&gt; [&lt;arguments&gt;]</div><div class="line">nssm install AAAAA D:\2017\go\wechat-token.exe</div></pre></td></tr></table></figure>
+<ol>
+<li>删除服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm remove</div><div class="line">nssm remove &lt;servicename&gt;</div><div class="line">nssm remove &lt;servicename&gt; confirm</div></pre></td></tr></table></figure>
+<ol>
+<li>启动、停止服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm start &lt;servicename&gt;</div><div class="line">nssm stop &lt;servicename&gt;</div><div class="line">nssm restart &lt;servicename&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>查询服务状态</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nssm status &lt;servicename&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>服务控制命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nssm pause &lt;servicename&gt;</div><div class="line">nssm continue &lt;servicename&gt;</div><div class="line">nssm rotate &lt;servicename&gt;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/22/nodejs/sh-1-node-Permission-denied/" itemprop="url">
+                  linux sh: 1: node: Permission denied
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-22T09:15:20+08:00" content="2017-08-22">
+              2017-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在 <code>Linux</code> 系统下 npm 安装报错 没有权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">root@zan:~# npm install spy-debugger -g</div><div class="line">npm WARN deprecated express@2.5.11: express 2.x series is deprecated</div><div class="line">npm WARN deprecated connect@1.9.2: connect 1.x series is deprecated</div><div class="line">/root/.nvm/versions/node/v8.2.1/bin/spy-debugger -&gt; /root/.nvm/versions/node/v8.2.1/lib/node_modules/spy-debugger/lib/index.js</div><div class="line"></div><div class="line">&gt; spy-debugger@3.6.5 postinstall /root/.nvm/versions/node/v8.2.1/lib/node_modules/spy-debugger</div><div class="line">&gt; node lib/scripts/postinstall.js</div><div class="line"></div><div class="line">sh: 1: node: Permission denied</div><div class="line">npm ERR! file sh</div><div class="line">npm ERR! code ELIFECYCLE</div><div class="line">npm ERR! errno ENOENT</div><div class="line">npm ERR! syscall spawn</div><div class="line">npm ERR! spy-debugger@3.6.5 postinstall: `node lib/scripts/postinstall.js`</div><div class="line">npm ERR! spawn ENOENT</div><div class="line">npm ERR! </div><div class="line">npm ERR! Failed at the spy-debugger@3.6.5 postinstall script.</div><div class="line">npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</div><div class="line"></div><div class="line">npm ERR! A complete log of this run can be found in:</div><div class="line">npm ERR!     /root/.npm/_logs/2017-08-22T01_12_38_462Z-debug.log</div></pre></td></tr></table></figure>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>执行一下命令即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set unsafe-perm true</div></pre></td></tr></table></figure>
+<p>如果还不行 再执行如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm config set user 0</div><div class="line">npm config set unsafe-perm true</div><div class="line">sudo npm install -g sm</div></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://sourcode.net/sh-1-node-permission-denied/" target="_blank" rel="external">参考</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/11/mysql/mysql-允许远程连接/" itemprop="url">
                   mysql 允许远程连接
                 </a>
@@ -1355,255 +1609,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/05/UTF-8/常用的UTF-8编码及编码范围/" itemprop="url">
-                  常用的UTF-8编码及编码范围
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-05T09:59:42+08:00" content="2017-06-05">
-              2017-06-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编码/" itemprop="url" rel="index">
-                    <span itemprop="name">编码</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="UTF-8-Unicode"><a href="#UTF-8-Unicode" class="headerlink" title="UTF-8 (Unicode)"></a>UTF-8 (Unicode)</h2><ol>
-<li>u4e00-u9fa5 (中文)</li>
-<li>x3130-x318F (韩文)</li>
-<li>xAC00-xD7A3 (韩文)</li>
-<li>u0800-u4e00 (日文)</li>
-</ol>
-<blockquote>
-<p>ps: 韩文是大于[u9fa5]的字符</p>
-</blockquote>
-<h2 id="另外一些："><a href="#另外一些：" class="headerlink" title="另外一些："></a>另外一些：</h2><p>有时候我们也会用到全角英文、特殊符号等<br>全角英文的 <code>UTF8</code> 是: <code>uff21 – uff5a</code> ，是从大写 <code>A</code> 开始到小写的 <code>z</code>。</p>
-<p><code>utf8</code> 中的 <code>uff20</code> 是 <code>@</code></p>
-<p><code>utf8</code> 中的 <code>uff01</code> 到 <code>uff09</code> 是我们美式键盘上 <code>shift</code> + 从 1 到 9 键上的特殊符号。</p>
-<p>要注意的是因为 <code>@</code> 是 <code>uff20</code> ，所以 <code>uff02</code> 是双引号，<br>同时6的……是两个符号的组合，所以也不存在，正题提前一位（也就是说 <code>ff06</code>是 <code>＆</code> ， <code>ff09</code>是 <code>）</code> ）。</p>
-<p><code>utf8</code> 中的全角数字是 <code>uff10 – uff19</code> ，对应关系自然是　<code>０ – ９</code> 。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/01/Translate/MS-Bing-Translate-API安全机制变化后的全新调用方式/" itemprop="url">
-                  MS Bing Translate API安全机制变化后的全新调用方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-01T15:34:31+08:00" content="2017-06-01">
-              2017-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/translate/" itemprop="url" rel="index">
-                    <span itemprop="name">translate</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前一阵子做一个自己的翻译网站时想加入一个Google Translate的网络翻译，<br>调查后发现Google现在已经开始收费，没办法，只好转微软的Bing Translate。<br>问题是，微软更新了API的调用方式，以前是只要有MSN账号，在bing的网站注册自己的开发者信息就可以通过安全key还是什么调用了，<br>而现在为了安全起见，微软同样需要你先去注册，<br>然后你想要调用API是需要先发送该注册账户到服务器，<br>微软会生成一个名为accessToken的key给你，之后你再拿这个key调用API，<br>此时才能真正的使用Bing Translate API。可见，旧的调用方式是一次web访问就可以，<br>而现在需要两次web访问，一次是为了获得accessToken，第二次才是调用API。<br>另外，需要注意的是，一次成功获得accessToken后有效期为10分钟，<br>在这10分钟内你调用Bing Translate API前不需要再重新获得新的accessToken。<br>做这个功能花了点时间，因为官方的文档只是简单提了一下他们的安全验证方式改了，<br>之前的那种方式不再使用，问题是API还是旧的，里面的例子也是旧的，<br>在网上找了很多资料，基本也都是微软修改之前的实现方式，<br>自己摸爬滚打总算实现了，在这里介绍一下，方便其他人参考：</p>
-<ol>
-<li>首先当然是前台的js： </li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BingTranslate</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">    <span class="keyword">var</span> options = &#123;  </div><div class="line">            url:<span class="string">'../doWebTranslate.do'</span>,  </div><div class="line">            type:<span class="string">'POST'</span>,  </div><div class="line">            dataType:<span class="string">'json'</span>,  </div><div class="line">            success: BingTranslateSucceed  </div><div class="line">        &#125;;  </div><div class="line">    $.ajax(options);        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面的代码中我省略了10分钟的判断，关键的其实就是发送ajax请求的这部分，<br>就是通过doWebTranslate.do这个action来获取accessToken的。<br>此次ajax相应成功后会执行BingTranslateSucceed函数，<br>该函数的作用才是访问Bing Translate API查单词的，<br>这里有两种方式访问，一种是直接通过js实现web访问，<br>另一种是通过java实现（当然需要另一个action了），简单起见，我用第一种： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**  </span></div><div class="line"><span class="comment">* response function for Bing Translate request </span></div><div class="line"><span class="comment">*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BingTranslateSucceed</span>(<span class="params">result</span>) </span>&#123;  </div><div class="line">    <span class="built_in">window</span>.mycallback = <span class="function"><span class="keyword">function</span>(<span class="params">searchResponse</span>) </span>&#123;  </div><div class="line">        preReqDoneFlg = <span class="literal">true</span>;  </div><div class="line">            </div><div class="line">        clearInterval(clock);  </div><div class="line">        $(<span class="string">"#bing-translate-result"</span>).text(searchResponse);  </div><div class="line">        sec = <span class="number">1</span>;  </div><div class="line">    &#125;;  </div><div class="line">    <span class="keyword">if</span> (!renewFlg) &#123;  </div><div class="line">        accessToken = result;  </div><div class="line">    &#125; <span class="keyword">else</span> &#123;  </div><div class="line">        accessToken = <span class="built_in">encodeURIComponent</span>(result.response.access_token);  </div><div class="line">    &#125;  </div><div class="line">        </div><div class="line">    <span class="keyword">var</span> text = $(<span class="string">'input[name=searchStr]'</span>).val();  </div><div class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="string">"en"</span>;  </div><div class="line">    <span class="keyword">var</span> to = <span class="string">"zh-CHS"</span>;  </div><div class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);  </div><div class="line">    s.type = <span class="string">"text/javascript"</span>;  </div><div class="line">    s.src = <span class="string">"http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&amp;appId=Bearer "</span> + accessToken + <span class="string">"&amp;from="</span> + <span class="keyword">from</span> + <span class="string">"&amp;to="</span> + to + <span class="string">"&amp;text="</span> + text;  </div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(s);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>至此就实现了<code>Bing Translate API</code> 的调用，那么究竟是如何获取 <code>accessToken</code> 的呢？ </p>
-<p>获取 <code>accessToken</code> 的核心部分，这部分其实就是通过java的HttpPost访问网络数据了： </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * request to Azure DataMarket to get access token</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> weishijie</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdmAuthentication</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">private</span> String clientId;</div><div class="line">    <span class="keyword">private</span> String clientSecret;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AdmAuthentication</span><span class="params">(String clientId, String clientSecret)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">this</span>.clientId = clientId;</div><div class="line">        <span class="keyword">this</span>.clientSecret = clientSecret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AdmAccessTokenVo <span class="title">GetAccessToken</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">return</span> HttpPost(AccessTokenGenConsts.DATA_MARKET_ACCESS_URI);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			LogUtil.log.info(e);</div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Make a http post request to the token service</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> DatamarketAccessUri https://datamarket.accesscontrol.windows.net/v2/OAuth2-13</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> AdmAccessTokenVo object</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> AdmAccessTokenVo <span class="title">HttpPost</span><span class="params">(String DatamarketAccessUri)</span> <span class="keyword">throws</span> Exception</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">    	HttpClient httpClient = <span class="keyword">new</span> DefaultHttpClient();</div><div class="line">    	<span class="comment">//建立HttpPost对象</span></div><div class="line">    	HttpPost httppost = <span class="keyword">new</span> HttpPost(DatamarketAccessUri);</div><div class="line">    	<span class="comment">//建立一个NameValuePair数组，用于存储欲传送的参数</span></div><div class="line">    	List&lt;NameValuePair&gt; params=<span class="keyword">new</span> ArrayList&lt;NameValuePair&gt;();</div><div class="line">    	<span class="comment">//添加参数</span></div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"client_id"</span>, <span class="keyword">this</span>.clientId));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"client_secret"</span>, <span class="keyword">this</span>.clientSecret));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"grant_type"</span>, AccessTokenGenConsts.GRANT_TYPE));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"scope"</span>, AccessTokenGenConsts.SCOPE));</div><div class="line">    	<span class="comment">//设置编码</span></div><div class="line">    	httppost.setEntity(<span class="keyword">new</span> UrlEncodedFormEntity(params, <span class="string">"UTF-8"</span>));</div><div class="line">    	<span class="comment">//发送Post,并返回一个HttpResponse对象</span></div><div class="line">    	HttpResponse response = httpClient.execute(httppost);</div><div class="line">    	</div><div class="line">    	String access_token = <span class="string">""</span>;</div><div class="line">        String token_type = <span class="string">""</span>;</div><div class="line">        String expires_in = <span class="string">""</span>;</div><div class="line">        String scope = <span class="string">""</span>;</div><div class="line">        <span class="comment">//如果状态码为200,就是正常返回</span></div><div class="line">    	<span class="keyword">if</span>(response.getStatusLine().getStatusCode() == <span class="number">200</span>)&#123;</div><div class="line">    		<span class="comment">//如果是下载文件,可以用response.getEntity().getContent()返回InputStream</span></div><div class="line">			String result=EntityUtils.toString(response.getEntity());</div><div class="line">			JSONObject jsonObj = JSONObject.fromObject(result);</div><div class="line">			</div><div class="line">			access_token = jsonObj.getString(<span class="string">"access_token"</span>);</div><div class="line">	        token_type = jsonObj.getString(<span class="string">"token_type"</span>);</div><div class="line">	        expires_in = jsonObj.getString(<span class="string">"expires_in"</span>);</div><div class="line">	        scope = jsonObj.getString(<span class="string">"scope"</span>);</div><div class="line">		&#125;</div><div class="line">        </div><div class="line">        AdmAccessTokenVo token = <span class="keyword">new</span> AdmAccessTokenVo(access_token, token_type, expires_in, scope);</div><div class="line">        <span class="keyword">return</span> token;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个代码中需要5个常量，其中3个是固定的，还有两个则是自己在微软服务器上注册后得到的： </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccessTokenGenConsts</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/** AccessTokenGen const */</span></div><div class="line">	</div><div class="line">	<span class="comment">/** uri of Azure DataMarket */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String DATA_MARKET_ACCESS_URI = <span class="string">"https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"</span>;</div><div class="line">	<span class="comment">/** grant type of Token Request Input Parameters */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String GRANT_TYPE = <span class="string">"client_credentials"</span>;</div><div class="line">	<span class="comment">/** scope of Token Request Input Parameters */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String SCOPE = <span class="string">"http://api.microsofttranslator.com"</span>;</div><div class="line">	<span class="comment">/** client id of Token Request Input Parameters</span></div><div class="line"><span class="comment">	 * (registered in Azure DataMarket:https://datamarket.azure.com/developer/applications/)</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String CLIENT_ID = <span class="string">"XXX"</span>;</div><div class="line">	<span class="comment">/** client secret of Token Request Input Parameters</span></div><div class="line"><span class="comment">	 * (registered in Azure DataMarket:https://datamarket.azure.com/developer/applications/)</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String CLIENT_SECRET =<span class="string">"XXX"</span>;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1649,7 +1654,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1657,7 +1662,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1666,7 +1671,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

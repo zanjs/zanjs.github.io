@@ -269,6 +269,255 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/05/UTF-8/常用的UTF-8编码及编码范围/" itemprop="url">
+                  常用的UTF-8编码及编码范围
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-05T09:59:42+08:00" content="2017-06-05">
+              2017-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编码/" itemprop="url" rel="index">
+                    <span itemprop="name">编码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="UTF-8-Unicode"><a href="#UTF-8-Unicode" class="headerlink" title="UTF-8 (Unicode)"></a>UTF-8 (Unicode)</h2><ol>
+<li>u4e00-u9fa5 (中文)</li>
+<li>x3130-x318F (韩文)</li>
+<li>xAC00-xD7A3 (韩文)</li>
+<li>u0800-u4e00 (日文)</li>
+</ol>
+<blockquote>
+<p>ps: 韩文是大于[u9fa5]的字符</p>
+</blockquote>
+<h2 id="另外一些："><a href="#另外一些：" class="headerlink" title="另外一些："></a>另外一些：</h2><p>有时候我们也会用到全角英文、特殊符号等<br>全角英文的 <code>UTF8</code> 是: <code>uff21 – uff5a</code> ，是从大写 <code>A</code> 开始到小写的 <code>z</code>。</p>
+<p><code>utf8</code> 中的 <code>uff20</code> 是 <code>@</code></p>
+<p><code>utf8</code> 中的 <code>uff01</code> 到 <code>uff09</code> 是我们美式键盘上 <code>shift</code> + 从 1 到 9 键上的特殊符号。</p>
+<p>要注意的是因为 <code>@</code> 是 <code>uff20</code> ，所以 <code>uff02</code> 是双引号，<br>同时6的……是两个符号的组合，所以也不存在，正题提前一位（也就是说 <code>ff06</code>是 <code>＆</code> ， <code>ff09</code>是 <code>）</code> ）。</p>
+<p><code>utf8</code> 中的全角数字是 <code>uff10 – uff19</code> ，对应关系自然是　<code>０ – ９</code> 。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/01/Translate/MS-Bing-Translate-API安全机制变化后的全新调用方式/" itemprop="url">
+                  MS Bing Translate API安全机制变化后的全新调用方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-01T15:34:31+08:00" content="2017-06-01">
+              2017-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/translate/" itemprop="url" rel="index">
+                    <span itemprop="name">translate</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前一阵子做一个自己的翻译网站时想加入一个Google Translate的网络翻译，<br>调查后发现Google现在已经开始收费，没办法，只好转微软的Bing Translate。<br>问题是，微软更新了API的调用方式，以前是只要有MSN账号，在bing的网站注册自己的开发者信息就可以通过安全key还是什么调用了，<br>而现在为了安全起见，微软同样需要你先去注册，<br>然后你想要调用API是需要先发送该注册账户到服务器，<br>微软会生成一个名为accessToken的key给你，之后你再拿这个key调用API，<br>此时才能真正的使用Bing Translate API。可见，旧的调用方式是一次web访问就可以，<br>而现在需要两次web访问，一次是为了获得accessToken，第二次才是调用API。<br>另外，需要注意的是，一次成功获得accessToken后有效期为10分钟，<br>在这10分钟内你调用Bing Translate API前不需要再重新获得新的accessToken。<br>做这个功能花了点时间，因为官方的文档只是简单提了一下他们的安全验证方式改了，<br>之前的那种方式不再使用，问题是API还是旧的，里面的例子也是旧的，<br>在网上找了很多资料，基本也都是微软修改之前的实现方式，<br>自己摸爬滚打总算实现了，在这里介绍一下，方便其他人参考：</p>
+<ol>
+<li>首先当然是前台的js： </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BingTranslate</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">    <span class="keyword">var</span> options = &#123;  </div><div class="line">            url:<span class="string">'../doWebTranslate.do'</span>,  </div><div class="line">            type:<span class="string">'POST'</span>,  </div><div class="line">            dataType:<span class="string">'json'</span>,  </div><div class="line">            success: BingTranslateSucceed  </div><div class="line">        &#125;;  </div><div class="line">    $.ajax(options);        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码中我省略了10分钟的判断，关键的其实就是发送ajax请求的这部分，<br>就是通过doWebTranslate.do这个action来获取accessToken的。<br>此次ajax相应成功后会执行BingTranslateSucceed函数，<br>该函数的作用才是访问Bing Translate API查单词的，<br>这里有两种方式访问，一种是直接通过js实现web访问，<br>另一种是通过java实现（当然需要另一个action了），简单起见，我用第一种： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**  </span></div><div class="line"><span class="comment">* response function for Bing Translate request </span></div><div class="line"><span class="comment">*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BingTranslateSucceed</span>(<span class="params">result</span>) </span>&#123;  </div><div class="line">    <span class="built_in">window</span>.mycallback = <span class="function"><span class="keyword">function</span>(<span class="params">searchResponse</span>) </span>&#123;  </div><div class="line">        preReqDoneFlg = <span class="literal">true</span>;  </div><div class="line">            </div><div class="line">        clearInterval(clock);  </div><div class="line">        $(<span class="string">"#bing-translate-result"</span>).text(searchResponse);  </div><div class="line">        sec = <span class="number">1</span>;  </div><div class="line">    &#125;;  </div><div class="line">    <span class="keyword">if</span> (!renewFlg) &#123;  </div><div class="line">        accessToken = result;  </div><div class="line">    &#125; <span class="keyword">else</span> &#123;  </div><div class="line">        accessToken = <span class="built_in">encodeURIComponent</span>(result.response.access_token);  </div><div class="line">    &#125;  </div><div class="line">        </div><div class="line">    <span class="keyword">var</span> text = $(<span class="string">'input[name=searchStr]'</span>).val();  </div><div class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="string">"en"</span>;  </div><div class="line">    <span class="keyword">var</span> to = <span class="string">"zh-CHS"</span>;  </div><div class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);  </div><div class="line">    s.type = <span class="string">"text/javascript"</span>;  </div><div class="line">    s.src = <span class="string">"http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=mycallback&amp;appId=Bearer "</span> + accessToken + <span class="string">"&amp;from="</span> + <span class="keyword">from</span> + <span class="string">"&amp;to="</span> + to + <span class="string">"&amp;text="</span> + text;  </div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(s);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此就实现了<code>Bing Translate API</code> 的调用，那么究竟是如何获取 <code>accessToken</code> 的呢？ </p>
+<p>获取 <code>accessToken</code> 的核心部分，这部分其实就是通过java的HttpPost访问网络数据了： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * request to Azure DataMarket to get access token</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> weishijie</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdmAuthentication</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">private</span> String clientId;</div><div class="line">    <span class="keyword">private</span> String clientSecret;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AdmAuthentication</span><span class="params">(String clientId, String clientSecret)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">this</span>.clientId = clientId;</div><div class="line">        <span class="keyword">this</span>.clientSecret = clientSecret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AdmAccessTokenVo <span class="title">GetAccessToken</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">return</span> HttpPost(AccessTokenGenConsts.DATA_MARKET_ACCESS_URI);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			LogUtil.log.info(e);</div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Make a http post request to the token service</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> DatamarketAccessUri https://datamarket.accesscontrol.windows.net/v2/OAuth2-13</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> AdmAccessTokenVo object</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> AdmAccessTokenVo <span class="title">HttpPost</span><span class="params">(String DatamarketAccessUri)</span> <span class="keyword">throws</span> Exception</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">    	HttpClient httpClient = <span class="keyword">new</span> DefaultHttpClient();</div><div class="line">    	<span class="comment">//建立HttpPost对象</span></div><div class="line">    	HttpPost httppost = <span class="keyword">new</span> HttpPost(DatamarketAccessUri);</div><div class="line">    	<span class="comment">//建立一个NameValuePair数组，用于存储欲传送的参数</span></div><div class="line">    	List&lt;NameValuePair&gt; params=<span class="keyword">new</span> ArrayList&lt;NameValuePair&gt;();</div><div class="line">    	<span class="comment">//添加参数</span></div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"client_id"</span>, <span class="keyword">this</span>.clientId));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"client_secret"</span>, <span class="keyword">this</span>.clientSecret));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"grant_type"</span>, AccessTokenGenConsts.GRANT_TYPE));</div><div class="line">    	params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"scope"</span>, AccessTokenGenConsts.SCOPE));</div><div class="line">    	<span class="comment">//设置编码</span></div><div class="line">    	httppost.setEntity(<span class="keyword">new</span> UrlEncodedFormEntity(params, <span class="string">"UTF-8"</span>));</div><div class="line">    	<span class="comment">//发送Post,并返回一个HttpResponse对象</span></div><div class="line">    	HttpResponse response = httpClient.execute(httppost);</div><div class="line">    	</div><div class="line">    	String access_token = <span class="string">""</span>;</div><div class="line">        String token_type = <span class="string">""</span>;</div><div class="line">        String expires_in = <span class="string">""</span>;</div><div class="line">        String scope = <span class="string">""</span>;</div><div class="line">        <span class="comment">//如果状态码为200,就是正常返回</span></div><div class="line">    	<span class="keyword">if</span>(response.getStatusLine().getStatusCode() == <span class="number">200</span>)&#123;</div><div class="line">    		<span class="comment">//如果是下载文件,可以用response.getEntity().getContent()返回InputStream</span></div><div class="line">			String result=EntityUtils.toString(response.getEntity());</div><div class="line">			JSONObject jsonObj = JSONObject.fromObject(result);</div><div class="line">			</div><div class="line">			access_token = jsonObj.getString(<span class="string">"access_token"</span>);</div><div class="line">	        token_type = jsonObj.getString(<span class="string">"token_type"</span>);</div><div class="line">	        expires_in = jsonObj.getString(<span class="string">"expires_in"</span>);</div><div class="line">	        scope = jsonObj.getString(<span class="string">"scope"</span>);</div><div class="line">		&#125;</div><div class="line">        </div><div class="line">        AdmAccessTokenVo token = <span class="keyword">new</span> AdmAccessTokenVo(access_token, token_type, expires_in, scope);</div><div class="line">        <span class="keyword">return</span> token;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个代码中需要5个常量，其中3个是固定的，还有两个则是自己在微软服务器上注册后得到的： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccessTokenGenConsts</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/** AccessTokenGen const */</span></div><div class="line">	</div><div class="line">	<span class="comment">/** uri of Azure DataMarket */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String DATA_MARKET_ACCESS_URI = <span class="string">"https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"</span>;</div><div class="line">	<span class="comment">/** grant type of Token Request Input Parameters */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String GRANT_TYPE = <span class="string">"client_credentials"</span>;</div><div class="line">	<span class="comment">/** scope of Token Request Input Parameters */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String SCOPE = <span class="string">"http://api.microsofttranslator.com"</span>;</div><div class="line">	<span class="comment">/** client id of Token Request Input Parameters</span></div><div class="line"><span class="comment">	 * (registered in Azure DataMarket:https://datamarket.azure.com/developer/applications/)</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String CLIENT_ID = <span class="string">"XXX"</span>;</div><div class="line">	<span class="comment">/** client secret of Token Request Input Parameters</span></div><div class="line"><span class="comment">	 * (registered in Azure DataMarket:https://datamarket.azure.com/developer/applications/)</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String CLIENT_SECRET =<span class="string">"XXX"</span>;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/24/javascript/react-page-render-improve/" itemprop="url">
                   React 单页面初始化渲染优化
                 </a>
@@ -1298,312 +1547,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/git/Git的10种撤销操作详解/" itemprop="url">
-                  Git的10种撤销操作详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T09:28:46+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="撤销一个公共修改"><a href="#撤销一个公共修改" class="headerlink" title="撤销一个公共修改"></a>撤销一个公共修改</h2><blockquote>
-<p>Undo a “public” change</p>
-</blockquote>
-<p>场景：你刚刚用 <code>git push</code> 将本地修改推送到了<code>GitHub</code>，这时你意识到在提交中有一个错误。</p>
-<p>你想撤销这次提交。使用撤销命令：<code>git revert</code></p>
-<p>发生了什么：<code>git revert</code> 将根据给定SHA的相反值，创建一个新的提交。</p>
-<p>如果旧提交是 <code>matter</code>，那么新的提交就是 <code>anti-matter</code> ——旧提交中所有已移除的东西将会被添加进到新提交中，<br>旧提交中增加的东西将在新提交中移除。</p>
-<p>这是 <code>Git</code> 最安全、也是最简单的“撤销”场景，因为这样不会修改历史记录——你现在可以 <code>git push</code>下刚刚 <code>revert</code> 之后的提交来纠正错误了。</p>
-<h2 id="修改最近一次的提交信息"><a href="#修改最近一次的提交信息" class="headerlink" title="修改最近一次的提交信息"></a>修改最近一次的提交信息</h2><blockquote>
-<p>Fix the last commit message</p>
-</blockquote>
-<p>场景：你只是在最后的提交信息中敲错了字，<br>比如你敲了 <code>git commit -m “Fxies bug #42″</code>，<br>而在执行 <code>git push</code> 之前你已经意识到你应该敲 <code>”Fixes bug #42″</code>。</p>
-<p>使用撤销命令：<code>git commit –amend</code> 或 <code>git commit –amend -m “Fixes bug #42″</code> ;</p>
-<p>发生了什么：<code>git commit –amend</code> 将使用一个包含了刚刚错误提交所有变更的新提交，来更新并替换这个错误提交。<br>由于没有 <code>staged</code> 的提交，所以实际上这个提交只是重写了先前的提交信息。</p>
-<h2 id="撤销本地更改"><a href="#撤销本地更改" class="headerlink" title="撤销本地更改"></a>撤销本地更改</h2><blockquote>
-<p>Undo “local” changes</p>
-</blockquote>
-<p>场景：你正在编辑的文件被保存了但是你的编辑器恰在此时崩溃了。<br>此时你并没有提交过代码。你期望撤销这个文件中的所有修改——将这个文件回退到上次提交的状态。</p>
-<p>使用撤销命令：<code>git checkout —</code></p>
-<p>发生了什么：<code>git checkout</code> 将工作目录 <code>（working directory）</code> 里的文件修改成先前 <code>Git</code> 已知的状态。<br>你可以提供一个期待回退分支的名字或者一个确切的<code>SHA码</code> ，<code>Git</code> 也会默认检出 HEAD——即：当前分支的上一次提交。</p>
-<p>注意：用这种方法“撤销”的修改都将真正的消失。它们永远不会被提交。<br>因此Git不能恢复它们。此时，一定要明确自己在做什么！（或许可以用 <code>git diff</code> 来确定）</p>
-<h2 id="重置本地修改"><a href="#重置本地修改" class="headerlink" title="重置本地修改"></a>重置本地修改</h2><blockquote>
-<p> Reset “local” changes</p>
-</blockquote>
-<p>场景：你已经在本地做了一些提交（还没push），<br>但所有的东西都糟糕透了，你想撤销最近的三次提交——就像它们从没发生过一样。</p>
-<p>使用撤销命令：<code>git reset</code> 或 <code>git reset –hard</code></p>
-<p>发生了什么：<code>git reset</code> 将你的仓库纪录一直回退到指定的最后一个SHA代表的提交，<br>那些提交就像从未发生过一样。</p>
-<p>默认情况下，<code>git reset</code> 会保留工作目录<code>（working directory）</code>。<br>这些提交虽然消失了，但是内容还在磁盘上。<br>这是最安全的做法，但通常情况是：你想使用一个命令来“撤销”所有提交和本地修改——那么请使用 <code>–hard</code> 参数吧。</p>
-<h2 id="撤销本地后重做"><a href="#撤销本地后重做" class="headerlink" title="撤销本地后重做"></a>撤销本地后重做</h2><blockquote>
-<p>Redo after undo “local”</p>
-</blockquote>
-<p>场景：你已经提交了一些内容，并使用 <code>git reset –hard</code> 撤销了这些更改（见上面），<br>突然意识到：你想还原这些修改！</p>
-<p>使用撤销命令：<code>git reflog</code> 和 <code>git reset</code> , 或者 <code>git checkout</code></p>
-<p>发生了什么：<code>git reflog</code> 是一个用来恢复项目历史记录的好办法。你可以通过 <code>git reflog</code> 恢复几乎任何已提交的内容。</p>
-<p>你或许对 <code>git log</code> 命令比较熟悉，它能显示提交列表。<br><code>git reflog</code> 与之类似，只不过 <code>git reflog</code> 显示的是HEAD变更次数的列表。<br>一些说明：</p>
-<ol>
-<li><p>只有HEAD会改变。当你切换分支时，用 <code>git commit</code> 提交变更时，或是用 <code>git reset</code> 撤销提交时，HEAD都会改变。<br>但当你用 <code>git checkout</code> –时， HEAD不会发生改变。（就像上文提到的情形，那些更改根本就没有提交，因此 <code>reflog</code> 就不能帮助我们进行恢复了）</p>
-</li>
-<li><p><code>git reflog</code> 不会永远存在。Git将会定期清理那些“不可达（unreachable）”的对象。不要期望能够在reflog里找到数月前的提交记录。</p>
-</li>
-<li><p><code>reflog</code> 只是你个人的。你不能用你的 <code>reflog</code> 来恢复其他开发者未 <code>push</code> 的提交。<br>因此，怎样合理使用 <code>reflog</code> 来找回之前“未完成”的提交呢？这要看你究竟要做什么：</p>
-<ul>
-<li><p>如果你想恢复项目历史到某次提交，那请使用 <code>git reset –hard</code></p>
-</li>
-<li><p>如果你想在工作目录（working direcotry）中恢复某次提交中的一个或多个文件，并且不改变提交历史，那请使用 <code>git checkout–</code></p>
-</li>
-<li><p>如果你想确切的回滚到某次提交，那么请使用 <code>git reset</code></p>
-</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/Ubuntu/ubuntu中crontab的用法手记/" itemprop="url">
-                  ubuntu中crontab的用法手记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T09:43:54+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Crontab/" itemprop="url" rel="index">
-                    <span itemprop="name">Crontab</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="crontab入门命令"><a href="#crontab入门命令" class="headerlink" title="crontab入门命令"></a>crontab入门命令</h2><p>cron是linux中的守护进程，用来定期执行一些任务。基本的命令包括以下几个：</p>
-<ul>
-<li>crontab -e 　编辑该用户的crontab，当指定crontab 不存在时新建。</li>
-<li>crontab -l 　列出该用户的crontab。</li>
-<li>crontab -r 　删除该用户的crontab。</li>
-<li>crontab -u &lt;用户名称&gt; 　指定要设定crontab的用户名称。</li>
-<li>crontab –v 显示上一次编辑的时间（只在某些操作系统上可用）</li>
-</ul>
-<p>作为一个新用户，首先需要的操作是，执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ crontab -e</div></pre></td></tr></table></figure>
-<p>在linux系统中，不同的用户打开的crontab文件是不同的。当你打开你用户所属的crontab,第一次用这个命令，会让你选择文本编辑器。<br>我的电脑上显示4中编辑器，如下，我选择是vim.basic。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. /bin/ed         </div><div class="line">2. /bin/nano      </div><div class="line">3. /usr/bin/vim.basic              </div><div class="line">4. /usr/bin/vim.tiny</div></pre></td></tr></table></figure>
-<p>如果你编辑时，选择错了编辑器，或者是想更改，可以使用下面的命令进行重新选择：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ select-editor</div></pre></td></tr></table></figure>
-<p>打开后的crontab内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># m h  dom mon dow   command      </div><div class="line">*/2 * * * * date &gt;&gt; ~/time.log</div></pre></td></tr></table></figure>
-<p>第二行是我为了测试写的一个定期任务，它的意思是，每隔两分钟就执行 date &gt;&gt; ~/time.log 命令（记录当前时间到time.log文件）。<br>你可以把它加入你的crontab中，然后保存退出。</p>
-<p>保存了crontab之后，我们还需要重启cron来应用这个计划任务。使用以下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo service cron restart</div></pre></td></tr></table></figure>
-<h2 id="开启日志功能"><a href="#开启日志功能" class="headerlink" title="开启日志功能"></a>开启日志功能</h2><p>修改配置文件：/etc/rsyslog.d/50-default.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/rsyslog.d/50-default.conf</div></pre></td></tr></table></figure>
-<p>在配置文件中，把</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#cron.*       /var/log/cron.log</div></pre></td></tr></table></figure>
-<p>前面的注释#号去掉就OK了。</p>
-<p>重启rsyslog服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rsyslog restart</div></pre></td></tr></table></figure>
-<p>再次查看cron日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /var/log/cron.log</div></pre></td></tr></table></figure>
-<p>备注：这里就有了 crontab 日志。</p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>crontab</code> 有一个坏毛病,就是它总是不会缺省的从用户 <code>profile</code> 文件中读取环境变量参数,<br>经常导致在手工执行某个脚本时是成功的,但是到 <code>crontab</code> 中试图让它定期执行时就是会出错.<br>看了这个就知道怎么修改脚本了,脚本的头上用缺省的 <code>#!/bin/sh</code> 就可以,然后然后第一个部分先写这些:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">. /etc/profile</div><div class="line">. ~/.bash_profile</div></pre></td></tr></table></figure>
-<h2 id="奇怪"><a href="#奇怪" class="headerlink" title="奇怪"></a>奇怪</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1649,7 +1592,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1657,7 +1600,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1666,7 +1609,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
